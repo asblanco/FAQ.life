@@ -1,0 +1,47 @@
+body{
+    
+}
+
+div#container {
+    border: 5px solid black;
+}
+
+div#head {
+    background: black;
+    color: white;
+}
+
+div#links {
+    background-color: lightgray;
+}
+
+div#main {
+    background-color: red;
+}
+
+div#news {
+    background-color: lightgray;
+}
+
+div#footer {
+    background-color: black;
+    color: whitesmoke;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 750px) {
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    body {
+        font-size: 18pt;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
