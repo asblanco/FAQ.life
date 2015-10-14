@@ -1,0 +1,45 @@
+/*ALL PAGES*/
+.navbar {
+    background-color: #842d85;
+}
+
+.navbar .nav > li > a {             /*Change navigation*/
+    font-size: 16pt;
+    color: white;
+    text-transform: uppercase;
+}
+
+.navbar .navbar-brand {     /*Change FAQ.life color*/
+    color: white;
+}
+
+/*INDEX PAGE*/
+.navbar-index {
+    background-color: transparent;
+}
+
+.intro-header {
+    height: 25em;
+    background-color: #842d85;
+}
+
+#parent-head{
+    display: table;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#child-head {
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    align-content: center;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 500%;
+    text-align: center;
+}
+
