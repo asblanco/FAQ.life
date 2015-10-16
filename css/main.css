@@ -19,7 +19,7 @@
 }
 
 .intro-header {
-    height: 25em;
+    height: 40vmin;
     background-color: #842d85;
 }
 
@@ -39,7 +39,7 @@
 
 h1 {
     font-weight: bold;
-    font-size: 500%;
+    font-size: 12vmin;
     text-align: center;
 }
 

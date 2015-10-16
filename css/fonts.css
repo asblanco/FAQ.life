@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "pacifico";
+    src: url(../fonts/Pacifico.otf);
+}
+
+.pacificoFont {
+    font-family: "pacifico";
+    font-size: 5vmin;
+}
+
+@font-face {
+    font-family: "OpenSans-Bold";
+    src: url(../fonts/OpenSans-Bold.otf);
+}
+
+.opSansBFont {
+    font-family: "OpenSans-Bold";
+}
+
+@font-face {
+    font-family: "OpenSans-ExtraBold";
+    src: url(../fonts/OpenSans-ExtraBold.otf);
+}
+
+.opSansExBFont {
+    font-family: "OpenSans-ExtraBold";
+}
+
+@font-face {
+    font-family: "OpenSans-Italic";
+    src: url(../fonts/OpenSans-Italic.otf);
+}
+
+.opSansItFont {
+    font-family: "OpenSans-Italic";
+}
+
+@font-face {
+    font-family: "OpenSans-Light";
+    src: url(../fonts/OpenSans-Light.otf);
+}
+
+.opSansLiFont {
+    font-family: "OpenSans-Light";
+}
+
+@font-face {
+    font-family: "OpenSans-Regular";
+    src: url(../fonts/OpenSans-Regular.otf);
+}
+
+.opSansReFont {
+    font-family: "OpenSans-Regular";
+}
+
+@font-face {
+    font-family: "OstrichSans-Heavy";
+    src: url(../fonts/OstrichSans-Heavy.otf);
+}
+
+.osSansFont {
+    font-family: "OstrichSans-Heavy";
+}
+
+
