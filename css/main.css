@@ -1,52 +1,26 @@
 /*ALL PAGES*/
-.navbar {
+.navbar-fixed-top {
     background-color: #842d85;
-    margin: 0px;
 }
 
-.navbar-index .nav > li > a {             /*Change navigation*/
+.navigation-text .nav > li > a {             /*Change navigation*/
     background-color: transparent;
     font-size: 16pt;
     color: white;
     text-transform: uppercase;
 }
 
-a.navbar-brand {     /*Change FAQ.life color*/
+a.navbar-logo {     /*Change FAQ.life color*/
     background-color: transparent;
     color: white;
     padding: 2vmin;
     text-align: center;
 }
 
-/*INDEX PAGE*/
-.navbar-index {
-    background-color: transparent;
-}
-
-/*
-.intro-header {
-    height: 50vmin;
-    background-color: #842d85;
-}
-*/
-
-.parent-head {
-    display: table;
-    width: 100%;
-    background-color: #842d85;
-    border-style: none;
-    border-radius: 0px;
-}
-
-h1 {
-    color: white;
-    font-size: 12vmin;
-    text-align: center;
-}
-
 p {
     color: black;
-    font-size: 3vmin;
+/*    font-size: 3vmin;*/
+    font-size: 12pt;
     text-align: justify;
 }
 
@@ -57,13 +31,7 @@ p {
     font-size: 5vmin;
 }
 
-.navbar-header2 {
-    align-items: center;
-    align-content: center;
-    align-self: center;
-}
-
-.botton-menu {
+.button-menu {
     background-color: #842d85;
     border-color: white;
     position: relative;
@@ -82,6 +50,36 @@ p {
 .autores {
     margin: 5vmin;
     color: darkgray;
-    font-size: 2vmin;
+/*    font-size: 2vmin;*/
+    font-size: 10pt;
 }
 
+.separator {
+    border-width: thick;
+}
+
+
+/*INDEX PAGE*/
+.head-index {
+    display: table;
+    width: 100%;
+    height: 40vmin;
+    background-color: #842d85;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.index-phrase {
+    color: white;
+    font-size: 12vmin;
+    text-align: center;
+}
+
+
+
+/*NOT INDEX PAGES*/
+.head {
+    background-color: #842d85;
+}

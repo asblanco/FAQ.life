@@ -5,65 +5,194 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Mobile first -->
         <meta name="author" content="Borxa Mendez Candeias & Andrea Sanchez Blanco">
-        
+
         <title>FAQ.life</title> <!-- Titulo de la pestaña -->
         <link rel="shortcut icon" href="img/logo.ico"/> <!-- Icono de la pestaña -->
-        
+
         <!-- Bootstrap CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        
+
         <!-- Custom CSS -->
         <link href="css/main.css" rel="stylesheet">
         <link href="css/fonts.css" rel="stylesheet" type="text/css">
     </head>
-    
-    <!-- Cabecera -->
+
     <body>
+        <header class="head-index">
             <!-- Barra de navegacion -->
-            <nav class="parent-head col-xs-12 col-sm-12 col-md-12 navbar navbar-index">
+            <nav class="navigation-text col-xs-12 col-sm-12 col-md-12">
                 <!-- div con el titulo y el icono en modo movil -->
-                <div class="col-md-2 navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle2 botton-menu" data-toggle="collapse" data-target="#navbar-collapse1">
+                <div class="col-md-2 navbar-header page-scroll ">
+                    <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                         <span class="text-menu-toggle osSansFont-menu">Menu</span>
                     </button>
-                    <a class="navbar-brand pacificoFont-menu" href="index.html">FAQ.life</a>
+                    <a class="navbar-logo pacificoFont-menu" href="index.html">FAQ.life</a>
                 </div>
+ 
                 <!-- div con la lista de navegacion -->
                 <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
                     <ul class="nav navbar-nav navbar-right osSansFont">
+                        <li> <!-- Search box --> 
+                            <form class="navbar-form" role="search">
+                                <div class="form-group has-feedback">
+                                    <input type="text" class="form-control" placeholder="Buscar"/>
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </form>
+                        </li>
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="categorias.html">Categorias</a></li>
-                        <li><a href="login.html">Login</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
                         <li><a href="registro.html">Registrarse</a></li>
                     </ul>
                 </div>
             </nav>
             
-            <!-- div con el titulo de la pagina -->
-            <div class="parent-head col-xs-12 col-sm-12 col-md-12">
-                <h1 class="opSansBFont">Pregunta!</h1>
-                <hr class="small">
+            <!-- div con la frase de la pagina -->
+            <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+              <div class="index-phrase opSansBFont">Pregunta!</div>
+              <hr class="small">
             </div>
+        </header>
+
         <!-- Contenido Principal -->
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="row"><p></p></div> <!-- div superior de separacion -->
-            <div class="col-sm-2 col-md-2 hidden-phone"></div>
-            <div class="col-xs-12 col-sm-8 col-md-8">
-                <p>asdfasd</p>
+            <!--  QUESTION 1 -->
+            <div class="row">
+                <div class="col-sm-2 col-md-2"></div>
+                <div class="col-xs-12 col-sm-8 col-md-8"> <!-- nested grid question -->
+                    <div class="row">  
+                        <div class="col-sm-4 col-md-2"> <!-- div contador -->
+                            <br>
+                            <img src="img/visitas.png" alt="views">
+                            <span> 5 </span>
+                            <img src="img/positivo.png" alt="views">
+                            <span> 3 </span>
+                            <br>
+                            <br>
+                            <img src="img/respuestas.png" alt="views">
+                            <span> 4 </span>
+                            <img src="img/negativo.png" alt="views">
+                            <span> 0 </span>
+                        </div>
+                        <div class="col-sm-8 col-md-10"> <!-- Question -->
+                            <h1>¿Cómo se hace?</h1>
+                            <p>Ni idea de como solucionar mi problema. ¿Alguien me ayuda?</p>
+                            <div class="opSansItFont">Preguntado por @clark_kent el 29 de septiembre de 2015 a las 17:58</div>
+                        </div>
+                    </div>
+                    <hr class="small separator">
+                </div>
+                <div class="col-sm-2 col-md-2"></div>
             </div>
-            <div class="col-sm-2 col-md-2 hidden-phone"></div>
+            
+            <!--  QUESTION 2 -->
+            <div class="row">
+                <div class="col-sm-2 col-md-2"></div>
+                <div class="col-xs-12 col-sm-8 col-md-8"> <!-- nested grid question -->
+                    <div class="row">  
+                        <div class="col-sm-4 col-md-2"> <!-- div contador -->
+                            <br>
+                            <img src="img/visitas.png" alt="views">
+                            <span> 5 </span>
+                            <img src="img/positivo.png" alt="views">
+                            <span> 3 </span>
+                            <br>
+                            <br>
+                            <img src="img/respuestas.png" alt="views">
+                            <span> 4 </span>
+                            <img src="img/negativo.png" alt="views">
+                            <span> 0 </span>
+                        </div>
+                        <div class="col-sm-8 col-md-10"> <!-- Question -->
+                            <h1>¿Cómo se hace?</h1>
+                            <p>Ni idea de como solucionar mi problema. ¿Alguien me ayuda?</p>
+                            <div class="opSansItFont">Preguntado por @clark_kent el 29 de septiembre de 2015 a las 17:58</div>
+                        </div>
+                    </div>
+                    <hr class="small separator">
+                </div>
+                <div class="col-sm-2 col-md-2"></div>
+            </div>
+            
+            <!--  QUESTION 3 -->
+            <div class="row">
+                <div class="col-sm-2 col-md-2"></div>
+                <div class="col-xs-12 col-sm-8 col-md-8"> <!-- nested grid question -->
+                    <div class="row">  
+                        <div class="col-sm-4 col-md-2"> <!-- div contador -->
+                            <br>
+                            <img src="img/visitas.png" alt="views">
+                            <span> 5 </span>
+                            <img src="img/positivo.png" alt="views">
+                            <span> 3 </span>
+                            <br>
+                            <br>
+                            <img src="img/respuestas.png" alt="views">
+                            <span> 4 </span>
+                            <img src="img/negativo.png" alt="views">
+                            <span> 0 </span>
+                        </div>
+                        <div class="col-sm-8 col-md-10"> <!-- Question -->
+                            <h1>¿Cómo se hace?</h1>
+                            <p>Ni idea de como solucionar mi problema. ¿Alguien me ayuda?</p>
+                            <div class="opSansItFont">Preguntado por @clark_kent el 29 de septiembre de 2015 a las 17:58</div>
+                        </div>
+                    </div>
+                    <hr class="small separator">
+                </div>
+                <div class="col-sm-2 col-md-2"></div>
+            </div>
         </div>
+
+        <!-- Login Modal Page -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
+              </div>
+                
+            <!-- Contenido de la página login modal -->
+              <div class="modal-body">
+                 <form name="sentMessage" id="loginForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Email address</label>
+                            <input type="email" class="form-control" placeholder="Email address" id="email" required data-validation-required-message="Please enter your email.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+              </div>
+                
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
     </body>
-    
+
     <!-- Footer -->
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <footer class="col-xs-12 col-sm-12 col-md-12">
         <hr class="small">
         <p class="autores">Copyright &copy; FAQ.life 2015 - Borxa Mendez Candeias & Andrea Sanchez Blanco</p>
-    </div>
-        
+    </footer>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
+
 </html>

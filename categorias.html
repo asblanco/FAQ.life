@@ -17,29 +17,35 @@
         <link href="css/fonts.css" rel="stylesheet" type="text/css">
     </head>
     
-    <!-- Cabecera -->
     <body>
-<!--        <div class="parent-head">-->
-            <!-- Barra de navegacion -->
-            <nav class="parent-head col-xs-12 col-sm-12 col-md-12 navbar navbar-index">
-                <!-- div con el titulo y el icono en modo movil -->
-                <div class="col-md-2 navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle2 botton-menu" data-toggle="collapse" data-target="#navbar-collapse1">
-                        <span class="text-menu-toggle osSansFont-menu">Menu</span>
-                    </button>
-                    <a class="navbar-brand pacificoFont-menu" href="index.html">FAQ.life</a>
-                </div>
-                <!-- div con la lista de navegacion -->
-                <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
-                    <ul class="nav navbar-nav navbar-right osSansFont">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="categorias.html">Categorias</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="registro.html">Registrarse</a></li>
-                    </ul>
-                </div>
-            </nav>
-        
+        <!-- Barra de navegacion -->
+        <nav class="head navigation-text col-xs-12 col-sm-12 col-md-12x">
+            <!-- div con el titulo y el icono en modo movil -->
+            <div class="col-md-2 navbar-header page-scroll">
+                <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
+                    <span class="text-menu-toggle osSansFont-menu">Menu</span>
+                </button>
+                <a class="navbar-logo pacificoFont-menu" href="index.html">FAQ.life</a>
+            </div>
+            <!-- div con la lista de navegacion -->
+            <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
+                <ul class="nav navbar-nav navbar-right osSansFont">
+                    <li> <!-- Search box --> 
+                        <form class="navbar-form" role="search">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Buscar"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </form>
+                    </li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                </ul>
+            </div>
+        </nav>
+
         <!-- Contenido Principal -->
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="row"><p></p></div> <!-- div superior de separacion -->
@@ -49,14 +55,51 @@
             </div>
             <div class="col-sm-2 col-md-2 hidden-phone"></div>
         </div>
+        
+        <!-- Login Modal Page -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
+              </div>
+                
+            <!-- Contenido de la página login modal -->
+              <div class="modal-body">
+                 <form name="sentMessage" id="loginForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Email address</label>
+                            <input type="email" class="form-control" placeholder="Email address" id="email" required data-validation-required-message="Please enter your email.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </form>
+              </div>
+                
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
     </body>
-    
+
     <!-- Footer -->
-    <!-- Footer -->
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <footer class="col-xs-12 col-sm-12 col-md-12">
         <hr class="small">
         <p class="autores">Copyright &copy; FAQ.life 2015 - Borxa Mendez Candeias & Andrea Sanchez Blanco</p>
-    </div>
+    </footer>
         
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
