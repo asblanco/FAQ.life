@@ -1,16 +1,21 @@
 /*ALL PAGES*/
 .navbar {
     background-color: #842d85;
+    margin: 0px;
 }
 
-.navbar .nav > li > a {             /*Change navigation*/
+.navbar-index .nav > li > a {             /*Change navigation*/
+    background-color: transparent;
     font-size: 16pt;
     color: white;
     text-transform: uppercase;
 }
 
-.navbar .navbar-brand {     /*Change FAQ.life color*/
+a.navbar-brand {     /*Change FAQ.life color*/
+    background-color: transparent;
     color: white;
+    padding: 2vmin;
+    text-align: center;
 }
 
 /*INDEX PAGE*/
@@ -18,28 +23,65 @@
     background-color: transparent;
 }
 
+/*
 .intro-header {
-    height: 40vmin;
+    height: 50vmin;
     background-color: #842d85;
 }
+*/
 
-#parent-head{
+.parent-head {
     display: table;
     width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#child-head {
-    color: white;
-    display: table-cell;
-    vertical-align: middle;
-    align-content: center;
+    background-color: #842d85;
+    border-style: none;
+    border-radius: 0px;
 }
 
 h1 {
-    font-weight: bold;
+    color: white;
     font-size: 12vmin;
     text-align: center;
+}
+
+p {
+    color: black;
+    font-size: 3vmin;
+    text-align: justify;
+}
+
+
+.text-menu-toggle {
+    text-align: center;
+    color: white;
+    font-size: 5vmin;
+}
+
+.navbar-header2 {
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.botton-menu {
+    background-color: #842d85;
+    border-color: white;
+    position: relative;
+    float: right;
+    border: 1px solid white;
+    border-radius: 4px;
+    margin: 2vmin;
+}
+
+@media (min-width: 768px) {
+    .navbar-toggle2 {
+        display: none;
+    }
+}
+
+.autores {
+    margin: 5vmin;
+    color: darkgray;
+    font-size: 2vmin;
 }
 

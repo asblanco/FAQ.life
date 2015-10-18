@@ -3,6 +3,11 @@
     src: url(../fonts/Pacifico.otf);
 }
 
+.pacificoFont-menu {
+    font-family: "pacifico";
+    font-size: 2em;;
+}
+
 .pacificoFont {
     font-family: "pacifico";
     font-size: 5vmin;
@@ -58,8 +63,11 @@
     src: url(../fonts/OstrichSans-Heavy.otf);
 }
 
+.osSansFont-menu {
+    font-family: "OstrichSans-Heavy";
+    font-size: 1.5em;
+}
+
 .osSansFont {
     font-family: "OstrichSans-Heavy";
 }
-
-
