@@ -58,6 +58,46 @@ p {
     border-width: thick;
 }
 
+.btn-login {                    /*Changed Bootstrap button*/
+    display: inline-block;
+    background-color: #842d85;
+    color: white;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-login:hover {
+    background-color: #840085;
+    color: white;
+}
+
+.btn-login:active {
+    background-color: #511c52;
+    color: white;
+}
+
+.btn-register {
+    float: right;
+    background-color: white;
+    color: black;
+    border-color: #842d85;
+}
+
+.btn-register:hover {
+    background-color: #842d85;
+    color: white;
+}
+
 
 /*INDEX PAGE*/
 .head-index {
