@@ -17,9 +17,12 @@ a.navbar-logo {     /*Change FAQ.life color*/
     text-align: center;
 }
 
+a.navbar-logo:hover {
+    text-decoration: none;
+}
+
 p {
     color: black;
-/*    font-size: 3vmin;*/
     font-size: 12pt;
     text-align: justify;
 }
@@ -52,15 +55,10 @@ h1 {
     }
 }
 
-.autores {
+.footer-autores {
     margin: 5vmin;
     color: darkgray;
-/*    font-size: 2vmin;*/
     font-size: 10pt;
-}
-
-.separator {
-    border-width: thick;
 }
 
 .btn-login {                    /*Changed Bootstrap button*/
@@ -125,7 +123,18 @@ div#navbar-collapse1 {
     text-align: center;
 }
 
+div#contador {
+    padding-top: 15px;
+}
 
+.preview-pregunta {
+    color: black;
+}
+
+.preview-pregunta:hover {
+    text-decoration: none;
+    color: black;
+}
 
 /*NOT INDEX PAGES*/
 .head {
@@ -136,47 +145,38 @@ div#navbar-collapse1 {
     padding: 5px;
 }
 
-/*
-@media (max-width: 768px) {
-    .contador-left {
-        width: 50%;
-        float: left;
-    }
-}
-*/
 
-/*
-@media (max-width: 768px) {
-    .contador-right {
-        width: 50%;
-        float: right;
-    }
-}
-*/
-
-.contador-padding {
-    margin-top: 10px;
-}
-
-.contador-margin {
-    margin: 5px;
-}
-
-div#contador {
-	padding-top: 15px;
+/*Paginas INDEX & PREGUNTA*/
+hr#separador {
+    border-color: grey;
+    border-width: 3px; 
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .iconos {
-	margin: 4px;
+    margin: 4px;
 }
 
 .centrado {
-	text-align: center;
+    text-align: center;
 }
 
-hr#separador {
-	border-color: grey;
-	border-width: 3px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+/*PAGINA PREGUNTA*/
+#container-imagen {
+    height: 10em;
+}
+
+#container-imagen img {
+    height: 100%;
+    border-radius: 5px;
+    /*  Center image  */
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.separatorQuestion{
+    border-width: thick;
+    border-color: #842d85;
 }
