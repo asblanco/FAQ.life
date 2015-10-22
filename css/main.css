@@ -24,6 +24,11 @@ p {
     text-align: justify;
 }
 
+h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 
 .text-menu-toggle {
     text-align: center;
@@ -98,6 +103,9 @@ p {
     color: white;
 }
 
+div#navbar-collapse1 {
+    overflow-y: visible;
+}
 
 /*INDEX PAGE*/
 .head-index {
@@ -122,4 +130,53 @@ p {
 /*NOT INDEX PAGES*/
 .head {
     background-color: #842d85;
+}
+
+.estado {
+    padding: 5px;
+}
+
+/*
+@media (max-width: 768px) {
+    .contador-left {
+        width: 50%;
+        float: left;
+    }
+}
+*/
+
+/*
+@media (max-width: 768px) {
+    .contador-right {
+        width: 50%;
+        float: right;
+    }
+}
+*/
+
+.contador-padding {
+    margin-top: 10px;
+}
+
+.contador-margin {
+    margin: 5px;
+}
+
+div#contador {
+	padding-top: 15px;
+}
+
+.iconos {
+	margin: 4px;
+}
+
+.centrado {
+	text-align: center;
+}
+
+hr#separador {
+	border-color: grey;
+	border-width: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
