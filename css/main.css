@@ -136,6 +136,33 @@ div#contador {
     color: black;
 }
 
+.preguntaTitulo {
+	color: black;
+	background-color: #AAAAAA;
+	margin-top: 15px;
+	border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+	border-color: white;
+/*    opacity: 0.2;*/
+}
+
+.preguntaCuerpo {
+	color: black;
+	background-color: #AAAAAA;
+	margin-bottom: 5px;
+	border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+	border-color: white;
+	display: block;
+	padding: 10px;
+	min-height: 20px;
+}
+
+.button-preguntar {
+    position: relative;
+    float: right;
+}
+
 /*NOT INDEX PAGES*/
 .head {
     background-color: #842d85;
@@ -179,34 +206,9 @@ hr#separador {
 .separatorQuestion{
     border-width: thick;
     border-color: #842d85;
-}
+ }
 
-.preguntaTitulo {
-	color: black;
-	background-color: #AAAAAA;
-	margin-top: 15px;
-	border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-	border-color: white;
-/*    opacity: 0.2;*/
-}
 
-.preguntaCuerpo {
-	color: black;
-	background-color: #AAAAAA;
-	margin-bottom: 5px;
-	border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-	border-color: white;
-	display: block;
-	padding: 10px;
-	min-height: 20px;
-}
-
-.button-preguntar {
-    position: relative;
-    float: right;
-}
 
 /* PLACEHOLDER COLOR */
 input::-webkit-input-placeholder {
