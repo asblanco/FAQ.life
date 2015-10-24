@@ -138,17 +138,27 @@ div#contador {
 
 .preguntaTitulo {
 	color: black;
-	background-color: #AAAAAA;
+	background-color: #E5E5E5;
 	margin-top: 15px;
 	border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
 	border-color: white;
-/*    opacity: 0.2;*/
+}
+
+.preguntaCategoria {
+	color: black;
+	background-color: #E5E5E5;
+	margin-top: 15px;
+	border-top-right-radius: 15px;
+	border-color: white;
+}
+
+.cajaTituloCategoria {
+	padding:0px;
 }
 
 .preguntaCuerpo {
 	color: black;
-	background-color: #AAAAAA;
+	background-color: #E5E5E5;
 	margin-bottom: 5px;
 	border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -242,3 +252,4 @@ textarea::-moz-placeholder {
 textarea:-ms-input-placeholder {  
    color: #7F7F7F !important;
 }
+
