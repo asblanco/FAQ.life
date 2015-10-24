@@ -145,7 +145,7 @@ div#contador {
 }
 
 .preguntaCategoria {
-	color: black;
+	color: grey;
 	background-color: #E5E5E5;
 	margin-top: 15px;
 	border-top-right-radius: 15px;
@@ -154,6 +154,10 @@ div#contador {
 
 .cajaTituloCategoria {
 	padding:0px;
+}
+
+select > option {
+	background-color: #E5E5E5;
 }
 
 .preguntaCuerpo {
@@ -218,8 +222,6 @@ hr#separador {
     border-color: #842d85;
  }
 
-
-
 /* PLACEHOLDER COLOR */
 input::-webkit-input-placeholder {
    color: #7F7F7F !important;
@@ -252,4 +254,3 @@ textarea::-moz-placeholder {
 textarea:-ms-input-placeholder {  
    color: #7F7F7F !important;
 }
-
