@@ -172,6 +172,17 @@ select > option {
 	min-height: 20px;
 }
 
+.respuestaCuerpo {
+	color: black;
+	background-color: #E5E5E5;
+	margin-bottom: 5px;
+	border-radius: 15px;
+	border-color: white;
+	display: block;
+	padding: 10px;
+	min-height: 20px;
+}
+
 .button-preguntar {
     position: relative;
     float: right;
