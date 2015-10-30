@@ -230,6 +230,10 @@ hr#separador {
     margin-right: auto
 }
 
+#caja-pregunta {
+    margin-bottom: 20px;
+}
+
 .separatorQuestion{
     border-width: thick;
     border-color: #842d85;
