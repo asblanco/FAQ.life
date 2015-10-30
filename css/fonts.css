@@ -20,6 +20,12 @@
 
 .opSansBFont {
     font-family: "OpenSans-Bold";
+    color: black;
+}
+
+.opSansBFontTitle {
+    font-family: "OpenSans-Bold";
+    color: white;
 }
 
 @font-face {
