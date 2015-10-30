@@ -188,6 +188,8 @@ select > option {
     float: right;
 }
 
+textarea { resize: vertical; }
+
 /*NOT INDEX PAGES*/
 .head {
     background-color: #842d85;
