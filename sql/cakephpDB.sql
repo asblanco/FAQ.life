@@ -8,19 +8,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema FAQ.life
+-- Schema cakephpDB
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema FAQ.life
+-- Schema cakephpDB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `FAQ.life` DEFAULT CHARACTER SET utf8 ;
-USE `FAQ.life` ;
+CREATE SCHEMA IF NOT EXISTS `cakephpDB` DEFAULT CHARACTER SET utf8 ;
+CREATE USER 'cakephpuser'@'localhost' identified by 'cakephppass';
+GRANT ALL PRIVILEGES ON cakephpDB.* TO 'cakephpuser'@'localhost' WITH GRANT OPTION;
+
+USE cakephpDB;
 
 -- -----------------------------------------------------
--- Table `FAQ.life`.`Usuario`
+-- Table `cakephpDB`.`Usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FAQ.life`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `cakephpDB`.`Usuarios` (
   `login` VARCHAR(30) NOT NULL,
   `nombre` VARCHAR(100) NOT NULL,
   `foto` VARCHAR(50) NULL DEFAULT './img_users/default.png',
@@ -30,18 +33,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `FAQ.life`.`Categorias`
+-- Table `cakephpDB`.`Categorias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FAQ.life`.`Categorias` (
+CREATE TABLE IF NOT EXISTS `cakephpDB`.`Categorias` (
   `nombreCategorias` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`nombreCategorias`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `FAQ.life`.`Pregunta`
+-- Table `cakephpDB`.`Preguntas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FAQ.life`.`Pregunta` (
+CREATE TABLE IF NOT EXISTS `cakephpDB`.`Preguntas` (
   `idPregunta` INT NOT NULL AUTO_INCREMENT,
   `titulo` LONGTEXT NOT NULL,
   `cuerpo` LONGTEXT NOT NULL,
@@ -50,52 +53,46 @@ CREATE TABLE IF NOT EXISTS `FAQ.life`.`Pregunta` (
   `respuestas` INT NULL,
   `positivos` INT NULL,
   `negativos` INT NULL,
-  `Usuario_login` VARCHAR(30) NOT NULL,
+  `Usuarios_login` VARCHAR(30) NOT NULL,
   `Categorias_nombreCategorias` VARCHAR(30) NOT NULL,
-  PRIMARY KEY (`idPregunta`, `Usuario_login`, `Categorias_nombreCategorias`),
-  INDEX `fk_Pregunta_Usuario_idx` (`Usuario_login` ASC),
-  INDEX `fk_Pregunta_Categorias1_idx` (`Categorias_nombreCategorias` ASC),
-  CONSTRAINT `fk_Pregunta_Usuario`
-    FOREIGN KEY (`Usuario_login`)
-    REFERENCES `FAQ.life`.`Usuario` (`login`)
+  PRIMARY KEY (`idPregunta`, `Usuarios_login`, `Categorias_nombreCategorias`),
+  INDEX `fk_Preguntas_Usuarios_idx` (`Usuarios_login` ASC),
+  INDEX `fk_Preguntas_Categorias1_idx` (`Categorias_nombreCategorias` ASC),
+  CONSTRAINT `fk_Preguntas_Usuarios`
+    FOREIGN KEY (`Usuarios_login`)
+    REFERENCES `cakephpDB`.`Usuarios` (`login`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Pregunta_Categorias1`
+  CONSTRAINT `fk_Preguntas_Categorias1`
     FOREIGN KEY (`Categorias_nombreCategorias`)
-    REFERENCES `FAQ.life`.`Categorias` (`nombreCategorias`)
+    REFERENCES `cakephpDB`.`Categorias` (`nombreCategorias`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `FAQ.life`.`Respuesta`
+-- Table `cakephpDB`.`Respuestas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FAQ.life`.`Respuesta` (
+CREATE TABLE IF NOT EXISTS `cakephpDB`.`Respuestas` (
   `idRespuesta` INT NOT NULL AUTO_INCREMENT,
   `cuerpoRes` LONGTEXT NOT NULL,
-  `Usuario_login` VARCHAR(30) NOT NULL,
-  `Pregunta_idPregunta` INT NOT NULL,
-  PRIMARY KEY (`idRespuesta`, `Usuario_login`, `Pregunta_idPregunta`),
-  INDEX `fk_Respuesta_Usuario1_idx` (`Usuario_login` ASC),
-  INDEX `fk_Respuesta_Pregunta1_idx` (`Pregunta_idPregunta` ASC),
-  CONSTRAINT `fk_Respuesta_Usuario1`
-    FOREIGN KEY (`Usuario_login`)
-    REFERENCES `FAQ.life`.`Usuario` (`login`)
+  `Usuarios_login` VARCHAR(30) NOT NULL,
+  `Preguntas_idPregunta` INT NOT NULL,
+  PRIMARY KEY (`idRespuesta`, `Usuarios_login`, `Preguntas_idPregunta`),
+  INDEX `fk_Respuestas_Usuarios1_idx` (`Usuarios_login` ASC),
+  INDEX `fk_Respuestas_Preguntas1_idx` (`Preguntas_idPregunta` ASC),
+  CONSTRAINT `fk_Respuestas_Usuarios1`
+    FOREIGN KEY (`Usuarios_login`)
+    REFERENCES `cakephpDB`.`Usuarios` (`login`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Respuesta_Pregunta1`
-    FOREIGN KEY (`Pregunta_idPregunta`)
-    REFERENCES `FAQ.life`.`Pregunta` (`idPregunta`)
+  CONSTRAINT `fk_Respuestas_Preguntas1`
+    FOREIGN KEY (`Preguntas_idPregunta`)
+    REFERENCES `cakephpDB`.`Preguntas` (`idPregunta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-CREATE USER 'faq_life' IDENTIFIED BY 'faq_lifepass';
-
-GRANT SELECT ON TABLE `FAQ.life`.* TO 'faq_life';
-GRANT SELECT, INSERT, TRIGGER ON TABLE `FAQ.life`.* TO 'faq_life';
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `FAQ.life`.* TO 'faq_life';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
