@@ -26,7 +26,7 @@ USE cakephpDB;
 CREATE TABLE IF NOT EXISTS `cakephpDB`.`Usuarios` (
   `login` VARCHAR(30) NOT NULL,
   `nombre` VARCHAR(100) NOT NULL,
-  `foto` VARCHAR(50) NULL DEFAULT './img_users/default.png',
+  `foto` VARCHAR(50) NULL DEFAULT '/img_users/default.png',
   `idioma` VARCHAR(2) NULL DEFAULT 'es',
   PRIMARY KEY (`login`))
 ENGINE = InnoDB;

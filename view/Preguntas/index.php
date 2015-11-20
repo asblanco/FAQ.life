@@ -66,7 +66,8 @@
                 </div>
             </form>
             
-            <!--  QUESTION 1 -->
+            <!--  QUESTIONS -->
+            <?php foreach ($preguntas as $pregunta): ?>
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
                 <div class="col-sm-8 col-md-8">
@@ -97,14 +98,14 @@
                             <div class="centrado opSansReFont">5</div>
                         </div>
                     </div>
-                     
+
                     <!-- Div preview pregunta -->
                     <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
                         <a href="pregunta.html" class="preview-pregunta">
-                            <h1 class="opSansBFont">¿Si satanas castiga a los malos, eso no lo hace ser bueno?</h1>
-                        </a>
-                        <p class="opSansReFont">Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?<p>
-                        <p class="opSansItFont">Preguntado por <a href="">Manolo</a> el 22/10/2015 a las 10:20 horas en la categoría de <a href="">Religión</a>.</p>
+                            <h1 class="opSansBFont"><?php echo $pregunta['Pregunta']['titulo']; ?></h1>
+                        </a>                        
+                        <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
+                        <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Pregunta']['Usuarios_login']; ?></a> el 22/10/2015 a las 10:20 horas en la categoría de <a href=""><?php echo $pregunta['Pregunta']['Categorias_nombreCategoria']; ?></a>.</p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <hr class="small" id="separador">
@@ -112,108 +113,10 @@
                 </div>
                 <div class="col-sm-2 col-md-2"></div>
             </div>
-            
-            <!--  QUESTION 2 -->
-            <div class="row">
-                <div class="col-sm-2 col-md-2"></div>
-                <div class="col-sm-8 col-md-8">
-                    <!-- Contador de visitas -->
-                    <div class="col-xs-12 col-sm-3 col-md-2" id="contador">
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">124</div>
-                        </div>
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">65</div>
-                        </div>
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">32</div>
-                        </div>
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">12</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Div preview pregunta -->
-                    <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
-                        <a href="pregunta.html" class="preview-pregunta">
-                            <h1 class="opSansBFont">¿A dónde va la luz cuando le doy al interruptor?</h1>
-                        </a>
-                        <p class="opSansReFont">Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?<p>
-                        <p class="opSansItFont">Preguntado por <a href="">Juanito</a> el 18/10/2015 a las 13:42 horas en la categoría de <a href="">Electricidad</a>.</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <hr class="small" id="separador">
-                    </div>
-                </div>
-                <div class="col-sm-2 col-md-2"></div>
-            </div>
-            
-            <!--  QUESTION 3 -->
-            <div class="row">
-                <div class="col-sm-2 col-md-2"></div>
-                <div class="col-sm-8 col-md-8">
-                    <!-- Contador de visitas -->
-                    <div class="col-xs-12 col-sm-3 col-md-2" id="contador">
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">218</div>
-                        </div>
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">48</div>
-                        </div>
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">96</div>
-                        </div>
-                        <div class="col-xs-3 col-sm-6 col-md-6">
-                            <div class="centrado">
-                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
-                            </div>
-                            <div class="centrado opSansReFont">3</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Div preview pregunta -->
-                    <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
-                        <a href="pregunta.html" class="preview-pregunta">
-                            <h1 class="opSansBFont">Carlinhos Brown perseguirá a los morosos tocando el tambor</h1>
-                        </a>
-                        <p class="opSansReFont">Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
-El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.</p>
-<p class="opSansReFont">Si se contrata la opción premium, Brown se desplazará en una caravana con un equipo de sonido de alta potencia, quinientas bailarinas brasileñas de más de 70 años, dos serpientes de 30 metros de largo fabricadas en seda a modo de los tradicionales dragones chinos y un arsenal compuesto por 1500 timbales.</p>
-<p class="opSansReFont">“Debemos dinero pero no somos monstruos”, explica uno de los afectados por las agresivas estrategias de recobro extrajudicial de deudas. “Te encierras en el baño a hacer de vientre y logra colarse dentro, donde el sonido del tambor aún retumba con más fuerza”, se queja.</p>
-<p class="opSansReFont">“Tô te querendo como mingúem, to te querendo como deus quiser, to te querendo como te quero, to te querendo como se quer, pe pe pe pepepe pe pe”, gritaba la pasada madrugada Carlinhos Brown mientras un empresario se arrojaba al interior de un camión de la basura.</p>
-<p class="opSansReFont">Aunque la empresa del músico apenas ha empezado a operar en España, son muchos los deudores que han pagado sacando el dinero de debajo de las piedras. “Basta con mandarles a casa un cedé de Carlinhos Brown. Es mucho más efectivo que dejarles una cabeza de caballo en la cama”, reconoce un acreedor.</p>
-                        <p class="opSansItFont">Preguntado por <a href="">Juanito</a> el 19/10/2015 a las 15:33 horas en la categoría de <a href="">Noticias</a>.</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <hr class="small" id="separador">
-                    </div>
-                </div>
-                <div class="col-sm-2 col-md-2"></div>
-            </div>
+            <?php endforeach; ?>
             
         </div>
-        
+
         <!-- Login Modal Page -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
