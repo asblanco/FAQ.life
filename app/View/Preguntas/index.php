@@ -77,25 +77,25 @@
                             <div class="centrado">
                                 <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
-                            <div class="centrado opSansReFont">16</div>
+                            <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['visto']; ?></div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado opSansReFont">
                                 <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
-                            <div class="centrado opSansReFont">2</div>
+                            <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['respuestas']; ?></div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado opSansReFont">
                                 <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
-                            <div class="centrado opSansReFont">16</div>
+                            <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
                                 <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
-                            <div class="centrado opSansReFont">5</div>
+                            <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
                         </div>
                     </div>
 
