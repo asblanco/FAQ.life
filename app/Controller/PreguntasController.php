@@ -9,8 +9,22 @@ class PreguntasController extends AppController {
         $this->set('preguntas', $this->Pregunta->find('all'));
         $this->layout = 'faq_life';
     }
-    public function pregunta() {
+    
+    public function pregunta($id = null) {
+        $this->layout = 'faq_life';
         
+        if (!$id) {
+            throw new NotFoundException(__('Invalid pregunta'));
+        }
+
+        $pregunta = $this->Pregunta->findById($id);
+        if (!$pregunta) {
+            throw new NotFoundException(__('Invalid pregunta'));
+        }
+        
+        $usuario = ClassRegistry::init('Usuario')->findById($pregunta['Pregunta']['Usuario_id']);
+        $this->set('usuario', $usuario);
+        $this->set('pregunta', $pregunta);
     }
 }
 ?>

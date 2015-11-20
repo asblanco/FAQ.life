@@ -24,26 +24,29 @@ USE faq_life;
 -- Table `faq_life`.`Usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Usuarios` (
-  `login` VARCHAR(30) NOT NULL,
+  `id` VARCHAR(30) NOT NULL,
   `nombre` VARCHAR(100) NOT NULL,
-  `foto` VARCHAR(50) NULL DEFAULT '/img_users/default.png',
+  `foto` VARCHAR(50) NULL DEFAULT 'img_users/default.png',
   `idioma` VARCHAR(2) NULL DEFAULT 'es',
-  PRIMARY KEY (`login`))
+  `Pregunta_id`VARCHAR(30) NOT NULL,
+  `Respuesta_id`VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `faq_life`.`Categorias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Categorias` (
-  `nombreCategoria` VARCHAR(30) NOT NULL,
-  PRIMARY KEY (`nombreCategoria`))
+  `id` VARCHAR(30) NOT NULL,
+  `Pregunta_id`VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `faq_life`.`Preguntas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
-  `idPregunta` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `titulo` LONGTEXT NOT NULL,
   `cuerpo` LONGTEXT NOT NULL,
   `fecha` DATETIME NOT NULL,
@@ -51,19 +54,19 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
   `respuestas` INT NULL DEFAULT 0,
   `positivos` INT NULL DEFAULT 0,
   `negativos` INT NULL DEFAULT 0,
-  `Usuarios_login` VARCHAR(30) NOT NULL,
-  `Categorias_nombreCategoria` VARCHAR(30) NOT NULL,
-  PRIMARY KEY (`idPregunta`, `Usuarios_login`, `Categorias_nombreCategoria`),
-  INDEX `fk_Preguntas_Usuarios_idx` (`Usuarios_login` ASC),
-  INDEX `fk_Preguntas_Categorias1_idx` (`Categorias_nombreCategoria` ASC),
+  `Usuario_id` VARCHAR(30) NOT NULL,
+  `Categoria_id` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`, `Usuario_id`, `Categoria_id`),
+  INDEX `fk_Preguntas_Usuario_idx` (`Usuario_id` ASC),
+  INDEX `fk_Preguntas_Categorias1_idx` (`Categoria_id` ASC),
   CONSTRAINT `fk_Preguntas_Usuarios`
-    FOREIGN KEY (`Usuarios_login`)
-    REFERENCES `faq_life`.`Usuarios` (`login`)
+    FOREIGN KEY (`Usuario_id`)
+    REFERENCES `faq_life`.`Usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Preguntas_Categorias1`
-    FOREIGN KEY (`Categorias_nombreCategoria`)
-    REFERENCES `faq_life`.`Categorias` (`nombreCategoria`)
+    FOREIGN KEY (`Categoria_id`)
+    REFERENCES `faq_life`.`Categorias` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -74,19 +77,19 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `faq_life`.`Respuestas` (
   `idRespuesta` INT NOT NULL AUTO_INCREMENT,
   `cuerpoRes` LONGTEXT NOT NULL,
-  `Usuarios_login` VARCHAR(30) NOT NULL,
-  `Preguntas_idPregunta` INT NOT NULL,
-  PRIMARY KEY (`idRespuesta`, `Usuarios_login`, `Preguntas_idPregunta`),
-  INDEX `fk_Respuestas_Usuarios1_idx` (`Usuarios_login` ASC),
-  INDEX `fk_Respuestas_Preguntas1_idx` (`Preguntas_idPregunta` ASC),
-  CONSTRAINT `fk_Respuestas_Usuarios1`
-    FOREIGN KEY (`Usuarios_login`)
-    REFERENCES `faq_life`.`Usuarios` (`login`)
+  `Usuario_id` VARCHAR(30) NOT NULL,
+  `Pregunta_id` INT NOT NULL,
+  PRIMARY KEY (`idRespuesta`, `Usuario_id`, `Pregunta_id`),
+  INDEX `fk_Respuesta_Usuarios1_idx` (`Usuario_id` ASC),
+  INDEX `fk_Respuesta_Preguntas1_idx` (`Pregunta_id` ASC),
+  CONSTRAINT `fk_Respuesta_Usuarios1`
+    FOREIGN KEY (`Usuario_id`)
+    REFERENCES `faq_life`.`Usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Respuestas_Preguntas1`
-    FOREIGN KEY (`Preguntas_idPregunta`)
-    REFERENCES `faq_life`.`Preguntas` (`idPregunta`)
+  CONSTRAINT `fk_Respuesta_Preguntas1`
+    FOREIGN KEY (`Pregunta_id`)
+    REFERENCES `faq_life`.`Preguntas` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -97,24 +100,24 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- Insercion de datos en las tablas
 
-INSERT INTO `Usuarios` (`login`, `nombre`, `foto`, `idioma`) VALUES
-('Manolo', 'Manolo Perez', '', 'ES'),
-('Juanito', 'Juan Sanchez', '', 'EN'),
-('Carlito', 'Carlos Mendez', '', 'ES'),
-('Marco', 'Marco Perez', '', 'ES'),
-('Lucas', 'Lucas Rodriguez', '', 'EN');
+INSERT INTO `Usuarios` (`id`, `nombre`, `foto`, `idioma`) VALUES
+('Manolo', 'Manolo Perez', NULL, 'ES'),
+('Juanito', 'Juan Sanchez', NULL, 'EN'),
+('Carlito', 'Carlos Mendez', NULL, 'ES'),
+('Marco', 'Marco Perez', NULL, 'ES'),
+('Lucas', 'Lucas Rodriguez', NULL, 'EN');
 
-INSERT INTO `Categorias` (`nombreCategoria`) VALUES
+INSERT INTO `Categorias` (`id`) VALUES
 ('Religion'),
 ('Electricidad'),
 ('Noticias');
 
-INSERT INTO `Preguntas` (`idPregunta`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `Usuarios_login`, `Categorias_nombreCategoria`) VALUES
-(0, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 'Manolo', 'Religion'),
-(1, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 'Juanito', 'Electricidad'),
-(2, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
+INSERT INTO `Preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `Usuario_id`, `Categoria_id`) VALUES
+(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 'Manolo', 'Religion'),
+(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 'Juanito', 'Electricidad'),
+(null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
 El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 'Juanito', 'Noticias');
 
-INSERT INTO `Respuestas` (`idRespuesta`, `cuerpoRes`, `Usuarios_login`, `Preguntas_idPregunta`) VALUES
-(0, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', 'Marco', 0),
-(1, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', 'Lucas', 0);
+INSERT INTO `Respuestas` (`idRespuesta`, `cuerpoRes`, `Usuario_id`, `Pregunta_id`) VALUES
+(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', 'Marco', 1),
+(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', 'Lucas', 1);

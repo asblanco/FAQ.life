@@ -1,22 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Mobile first -->
-        <meta name="author" content="Borxa Mendez Candeias & Andrea Sanchez Blanco">
-
-        <title>FAQ.life</title> <!-- Titulo de la pestaña -->
-        <link rel="shortcut icon" href="img/logo.ico"/> <!-- Icono de la pestaña -->
-
-        <!-- Bootstrap CSS-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-        <!-- Custom CSS -->
-        <link href="css/main.css" rel="stylesheet">
-        <link href="css/fonts.css" rel="stylesheet" type="text/css">
-    </head>
-    
     <body>
         <!-- Barra de navegacion -->
         <nav class="head navigation-text col-xs-12 col-sm-12 col-md-12">
@@ -25,7 +8,9 @@
               <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                   <span class="text-menu-toggle osSansFont-menu">Menu</span>
               </button>
-              <a class="navbar-logo pacificoFont-menu" href="index.html">FAQ.life</a>
+              <a class="navbar-logo pacificoFont-menu">
+              <?php echo $this->Html->link('FAQ.life', array('controller' => 'preguntas', 'action' => 'index', 'class' => 'navbar-logo')); ?>
+              </a>
           </div>
           <!-- div con la lista de navegacion -->
           <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
@@ -55,39 +40,39 @@
                         <div class="col-xs-12 col-sm-3 col-md-2">
                             <!-- Profile picture -->
                             <div id="container-imagen">
-                                <img src="img/superman.jpg" alt="views">
+                                <?php echo $this->Html->image($usuario['Usuario']['foto'], array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <!-- Contador de visitas -->
                             <div class="col-xs-3 col-sm-6 col-md-6">
                                 <div class="centrado">
-                                    <img src="img/visitas.png" class="centrado iconos">
+                                    <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
                                 </div>
-                                <div class="centrado opSansReFont">126</div>
+                                <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['visto']; ?></div>
                             </div>
                             <div class="col-xs-3 col-sm-6 col-md-6">
                                 <div class="centrado opSansReFont">
-                                    <img src="img/respuestas.png" class="centrado iconos">
+                                    <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
                                 </div>
-                                <div class="centrado opSansReFont">57</div>
+                                <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['respuestas']; ?></div>
                             </div>
                             <div class="col-xs-3 col-sm-6 col-md-6">
                                 <div class="centrado opSansReFont">
-                                    <img src="img/positivo.png" class="centrado iconos">
+                                    <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
                                 </div>
-                                <div class="centrado opSansReFont">16</div>
+                                <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
                             </div>
                             <div class="col-xs-3 col-sm-6 col-md-6">
                                 <div class="centrado">
-                                    <img src="img/negativo.png" class="centrado iconos">
+                                    <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
                                 </div>
-                                <div class="centrado opSansReFont">5</div>
+                                <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
                             </div>
                         </div>
                          <!-- Question -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <h1 class="opSansBFont">¿Si satanas castiga a los malos, eso no lo hace ser bueno? </h1>
-                            <p class="opSansReFont">Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?<p>
-                            <p class="opSansItFont">Preguntado por <a href="">Manolo</a> el 22/10/2015 a las 10:20 horas en la categoría de <a href="">Religión</a>.</p>
+                            <h1 class="opSansBFont"> <?php echo $pregunta['Pregunta']['titulo']; ?> </h1>
+                            <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
+                            <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Pregunta']['Usuario_id']; ?></a> el <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $pregunta['Pregunta']['Categoria_id']; ?></a>.</p>
                         </div>
                     </div>
                     <hr class="small separatorQuestion">
@@ -107,6 +92,7 @@
             </form>
             
             <!-- ANSWERS -->
+            <?php foreach ($respuestas as $respuesta): ?>
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
                 <div class="col-xs-12 col-sm-8 col-md-8"> <!-- nested grid - answers -->
@@ -144,41 +130,10 @@
                         </div>
                     </div>
                     
-                    <!-- Answer 2 -->
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-3 col-md-2">
-                            <!-- Profile picture -->
-                            <div class="col-xs-12 col-sm-12 col-md-12" id="container-imagen">
-                                <img src="img/pluto_lengua.jpg" alt="views">
-                            </div>
-                            <!-- Votos -->
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="centrado opSansReFont">
-                                        <img src="img/positivo.png" class="centrado iconos">
-                                    </div>
-                                    <div class="centrado opSansReFont">16</div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="centrado">
-                                        <img src="img/negativo.png" class="centrado iconos">
-                                    </div>
-                                    <div class="centrado opSansReFont">5</div>
-                                </div>
-                            </div>
-                        </div>
-                         <!-- Content -->
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <h3 class="opSansBFont">Lucas Rodriguez </h3>
-                            <p class="opSansReFont">Tus premisas son acertadas pero como Satanas no existe eso no es valido<p>
-                            <p class="opSansItFont">Respondido por <a href="">Lucas</a> el 30/10/2015 a las 10:20 horas.</p>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <hr class="small" id="separador">
-                        </div>
-                    </div>
                 </div>
             </div>
+            <?php endforeach; ?>
+            
         </div>
         
         <!-- Login Modal Page -->
@@ -218,16 +173,5 @@
             </div>
         </div>
         
-    </body>
-    
-    <!-- Footer -->
-    <footer class="col-xs-12 col-sm-12 col-md-12">
-        <hr class="small">
-        <p class="footer-autores">Copyright &copy; FAQ.life 2015 - Borxa Mendez Candeias &amp; Andrea Sanchez Blanco</p>
-    </footer>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>    
+    </body>  
 </html>

@@ -10,14 +10,14 @@
     text-transform: uppercase;
 }
 
-a.navbar-logo {     /*Change FAQ.life color*/
-    background-color: transparent;
-    color: white;
-    padding: 2vmin;
-    text-align: center;
+.navbar-logo {     /*Change FAQ.life color*/
+    background-color: transparent !important;
+    color: white !important;
+    padding: 2vmin !important;
+    text-align: center !important;
 }
 
-a.navbar-logo:hover {
+.navbar-logo:hover {
     text-decoration: none;
 }
 

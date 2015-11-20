@@ -66,7 +66,7 @@
                 </div>
             </form>
             
-            <!--  QUESTIONS -->
+            <!-- QUESTIONS -->
             <?php foreach ($preguntas as $pregunta): ?>
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
@@ -102,10 +102,10 @@
                     <!-- Div preview pregunta -->
                     <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
                         <a href="pregunta.html" class="preview-pregunta">
-                            <h1 class="opSansBFont"><?php echo $pregunta['Pregunta']['titulo']; ?></h1>
+                            <h1 class="opSansBFont"><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'pregunta', $pregunta['Pregunta']['id'])); ?></h1>
                         </a>                        
                         <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
-                        <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Pregunta']['Usuarios_login']; ?></a> el 22/10/2015 a las 10:20 horas en la categoría de <a href=""><?php echo $pregunta['Pregunta']['Categorias_nombreCategoria']; ?></a>.</p>
+                        <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Pregunta']['Usuario_id']; ?></a> el <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $pregunta['Pregunta']['Categoria_id']; ?></a>.</p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <hr class="small" id="separador">
