@@ -74,25 +74,25 @@
                     <div class="col-xs-12 col-sm-3 col-md-2" id="contador">
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/visitas.png" class="centrado iconos">
+                                <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">16</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado opSansReFont">
-                                <img src="img/respuestas.png" class="centrado iconos">
+                                <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">2</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado opSansReFont">
-                                <img src="img/positivo.png" class="centrado iconos">
+                                <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">16</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/negativo.png" class="centrado iconos">
+                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">5</div>
                         </div>
@@ -121,25 +121,25 @@
                     <div class="col-xs-12 col-sm-3 col-md-2" id="contador">
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/visitas.png" class="centrado iconos">
+                                <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">124</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/respuestas.png" class="centrado iconos">
+                                <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">65</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/positivo.png" class="centrado iconos">
+                                <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">32</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/negativo.png" class="centrado iconos">
+                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">12</div>
                         </div>
@@ -168,25 +168,25 @@
                     <div class="col-xs-12 col-sm-3 col-md-2" id="contador">
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/visitas.png" class="centrado iconos">
+                                <?php echo $this->Html->image('visitas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">218</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/respuestas.png" class="centrado iconos">
+                                <?php echo $this->Html->image('respuestas.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">48</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/positivo.png" class="centrado iconos">
+                                <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">96</div>
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <img src="img/negativo.png" class="centrado iconos">
+                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <div class="centrado opSansReFont">3</div>
                         </div>

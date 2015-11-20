@@ -1,6 +1,6 @@
 @font-face {
     font-family: "pacifico";
-    src: url(../fonts/Pacifico.otf);
+    src: url(/fonts/Pacifico.otf);
 }
 
 .pacificoFont-menu {
@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: "OpenSans-Bold";
-    src: url(../fonts/OpenSans-Bold.otf);
+    src: url(/fonts/OpenSans-Bold.otf);
 }
 
 .opSansBFont {
@@ -30,7 +30,7 @@
 
 @font-face {
     font-family: "OpenSans-ExtraBold";
-    src: url(../fonts/OpenSans-ExtraBold.otf);
+    src: url(/fonts/OpenSans-ExtraBold.otf);
 }
 
 .opSansExBFont {
@@ -39,7 +39,7 @@
 
 @font-face {
     font-family: "OpenSans-Italic";
-    src: url(../fonts/OpenSans-Italic.otf);
+    src: url(/fonts/OpenSans-Italic.otf);
 }
 
 .opSansItFont {
@@ -50,7 +50,7 @@
 
 @font-face {
     font-family: "OpenSans-Light";
-    src: url(../fonts/OpenSans-Light.otf);
+    src: url(/fonts/OpenSans-Light.otf);
 }
 
 .opSansLiFont {
@@ -59,7 +59,7 @@
 
 @font-face {
     font-family: "OpenSans-Regular";
-    src: url(../fonts/OpenSans-Regular.otf);
+    src: url(/fonts/OpenSans-Regular.otf);
 }
 
 .opSansReFont {
@@ -68,7 +68,7 @@
 
 @font-face {
     font-family: "OstrichSans-Heavy";
-    src: url(../fonts/OstrichSans-Heavy.otf);
+    src: url(/fonts/OstrichSans-Heavy.otf);
 }
 
 .osSansFont-menu {

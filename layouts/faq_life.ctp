@@ -7,7 +7,7 @@
         <meta name="author" content="Borxa Mendez Candeias & Andrea Sanchez Blanco">
 
         <title>FAQ.life</title> <!-- Titulo de la pestaña -->
-        <link rel="shortcut icon" href="img/logo.ico"/> <!-- Icono de la pestaña -->
+        <?php echo $this->Html->meta('icon'); ?><!-- Icono de la pestaña -->
 
         <!-- Bootstrap CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
