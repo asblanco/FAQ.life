@@ -79,6 +79,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `faq_life`.`Respuestas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cuerpoRes` LONGTEXT NOT NULL,
+  `positivos` INT NULL DEFAULT 0,
+  `negativos` INT NULL DEFAULT 0,
   `Usuario_id` VARCHAR(30) NOT NULL,
   `Pregunta_id` INT NOT NULL,
   PRIMARY KEY (`id`, `Usuario_id`, `Pregunta_id`),

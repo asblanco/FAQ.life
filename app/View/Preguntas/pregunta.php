@@ -121,8 +121,8 @@
                         </div>
                          <!-- Content -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <h3 class="opSansBFont">Marco Perez </h3>
-                            <p class="opSansReFont">yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna<p>
+                            <h3 class="opSansBFont"><?php echo $respuesta['Respuestas']['Usuario_id']; ?></h3>
+                            <p class="opSansReFont"><?php echo $respuesta['Respuestas']['cuerpoRes']; ?><p>
                             <p class="opSansItFont">Respondido por <a href="">Marco</a> el 22/10/2015 a las 09:20 horas.</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
