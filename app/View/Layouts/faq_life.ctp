@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Mobile first -->
-        <meta name="author" content="Borxa Mendez Candeias & Andrea Sanchez Blanco">
+        <meta name="author" content="Borxa Mendez Candeias &amp; Andrea Sanchez Blanco">
 
         <title>FAQ.life</title> <!-- Titulo de la pestaña -->
         <?php echo $this->Html->meta('icon'); ?><!-- Icono de la pestaña -->

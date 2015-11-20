@@ -15,6 +15,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema faq_life
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `faq_life` DEFAULT CHARACTER SET utf8 ;
+CREATE USER 'faq_life'@'localhost' identified by 'faqpass';
+GRANT ALL PRIVILEGES ON faq_life.* TO 'faq_life'@'localhost' WITH GRANT OPTION;
 USE `faq_life` ;
 
 -- -----------------------------------------------------
@@ -25,6 +27,8 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Usuarios` (
   `nombre` VARCHAR(100) NOT NULL,
   `foto` VARCHAR(50) NULL DEFAULT 'img_users/default.png',
   `idioma` VARCHAR(2) NULL DEFAULT 'es',
+  `Pregunta_id`VARCHAR(30) NOT NULL,
+  `Respuesta_id`VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -34,6 +38,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Categorias` (
   `id` VARCHAR(30) NOT NULL,
+  `Pregunta_id`VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -46,10 +51,10 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
   `titulo` LONGTEXT NOT NULL,
   `cuerpo` LONGTEXT NOT NULL,
   `fecha` DATETIME NOT NULL,
-  `visto` INT NULL,
-  `respuestas` INT NULL,
-  `positivos` INT NULL,
-  `negativos` INT NULL,
+  `visto` INT NULL DEFAULT 0,
+  `respuestas` INT NULL DEFAULT 0,
+  `positivos` INT NULL DEFAULT 0,
+  `negativos` INT NULL DEFAULT 0,
   `Usuario_id` VARCHAR(30) NOT NULL,
   `Categoria_id` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`, `Usuario_id`, `Categoria_id`),
@@ -91,11 +96,6 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Respuestas` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE USER 'faq_life' IDENTIFIED BY 'faqpass';
-
-GRANT SELECT ON TABLE `faq_life`.* TO 'faq_life';
-GRANT SELECT, INSERT, TRIGGER ON TABLE `faq_life`.* TO 'faq_life';
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `faq_life`.* TO 'faq_life';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
