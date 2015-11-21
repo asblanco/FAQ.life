@@ -123,6 +123,6 @@ INSERT INTO `Preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas
 (null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
 El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 'Juanito', 'Noticias');
 
-INSERT INTO `Respuestas` (`id`, `cuerpoRes`, `Usuario_id`, `Pregunta_id`) VALUES
-(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', 'Marco', 1),
-(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', 'Lucas', 1);
+INSERT INTO `Respuestas` (`id`, `cuerpoRes`, `positivos`, `negativos`, `Usuario_id`, `Pregunta_id`) VALUES
+(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', 0, 0, 'Marco', 1),
+(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', 0, 0, 'Lucas', 1);
