@@ -27,8 +27,6 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Usuarios` (
   `nombre` VARCHAR(100) NOT NULL,
   `foto` VARCHAR(50) NULL DEFAULT 'img_users/default.png',
   `idioma` VARCHAR(2) NULL DEFAULT 'es',
-  `Pregunta_id`VARCHAR(30) NOT NULL,
-  `Respuesta_id`VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -38,7 +36,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Categorias` (
   `id` VARCHAR(30) NOT NULL,
-  `Pregunta_id`VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -57,20 +54,17 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
   `negativos` INT NULL DEFAULT 0,
   `Usuario_id` VARCHAR(30) NOT NULL,
   `Categoria_id` VARCHAR(30) NOT NULL,
-  `Respuesta_id` VARCHAR(30) NULL,
-  PRIMARY KEY (`id`, `Usuario_id`, `Categoria_id`),
-  INDEX `fk_Pregunta_Usuario_idx` (`Usuario_id` ASC),
-  INDEX `fk_Preguntas_Categorias1_idx` (`Categoria_id` ASC),
-  CONSTRAINT `fk_Pregunta_Usuario`
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_Preguntas_Usuarios`
     FOREIGN KEY (`Usuario_id`)
     REFERENCES `faq_life`.`Usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Preguntas_Categorias1`
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Preguntas_Categorias`
     FOREIGN KEY (`Categoria_id`)
     REFERENCES `faq_life`.`Categorias` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -79,24 +73,23 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Respuestas` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `cuerpoRes` LONGTEXT NOT NULL,
+  `cuerpo_res` LONGTEXT NOT NULL,
+  `fecha_res` DATETIME NOT NULL,
   `positivos` INT NULL DEFAULT 0,
   `negativos` INT NULL DEFAULT 0,
   `Usuario_id` VARCHAR(30) NOT NULL,
   `Pregunta_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `Usuario_id`, `Pregunta_id`),
-  INDEX `fk_Respuestas_Usuarios1_idx` (`Usuario_id` ASC),
-  INDEX `fk_Respuestas_Preguntas1_idx` (`Pregunta_id` ASC),
-  CONSTRAINT `fk_Respuestas_Usuarios1`
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_Respuestas_Usuarios`
     FOREIGN KEY (`Usuario_id`)
     REFERENCES `faq_life`.`Usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Respuestas_Preguntas1`
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Respuestas_Preguntas`
     FOREIGN KEY (`Pregunta_id`)
     REFERENCES `faq_life`.`Preguntas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -124,6 +117,6 @@ INSERT INTO `Preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas
 (null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
 El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 'Juanito', 'Noticias');
 
-INSERT INTO `Respuestas` (`id`, `cuerpoRes`, `positivos`, `negativos`, `Usuario_id`, `Pregunta_id`) VALUES
-(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', 0, 0, 'Marco', 1),
-(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', 0, 0, 'Lucas', 1);
+INSERT INTO `Respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `Usuario_id`, `Pregunta_id`) VALUES
+(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 0, 0, 'Marco', 1),
+(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', '2015-10-18 11:30:00', 0, 0, 'Lucas', 1);

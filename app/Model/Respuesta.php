@@ -1,6 +1,6 @@
 <?php
 class Respuesta extends AppModel {
-    public $hasOne = array(
+    public $belongsTo = array(
         'Pregunta', 'Usuario'
     );
 }

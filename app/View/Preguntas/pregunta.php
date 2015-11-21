@@ -130,8 +130,8 @@
                          <!-- Content -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
                             <h3 class="opSansBFont"><?php echo $respuesta['Usuario_id']; ?></h3>
-                            <p class="opSansReFont"><?php echo $respuesta['cuerpoRes']; ?><p>
-                            <p class="opSansItFont">Respondido por <a href="">Marco</a> el 22/10/2015 a las 09:20 horas.</p>
+                            <p class="opSansReFont"><?php echo $respuesta['cuerpo_res']; ?><p>
+                            <p class="opSansItFont">Respondido por <a href=""><?php echo $respuesta['Usuario_id']; ?></a> el <?php echo $this->Time->format($respuesta['fecha_res'], '%e %B %Y a las %H:%M'); ?> horas.</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <hr class="small" id="separador">

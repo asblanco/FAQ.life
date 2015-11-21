@@ -1,6 +1,6 @@
 <?php
 class Pregunta extends AppModel {
-    public $hasOne = array(
+    public $belongsTo = array(
         'Categoria', 'Usuario'
     );
     public $hasMany = 'Respuesta';
