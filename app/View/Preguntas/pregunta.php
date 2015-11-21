@@ -40,7 +40,7 @@
                         <div class="col-xs-12 col-sm-3 col-md-2">
                             <!-- Profile picture -->
                             <div id="container-imagen">
-                                <?php echo $this->Html->image($usuario['Usuario']['foto'], array('class' => 'centrado', 'iconos')) ?>
+                                <?php echo $this->Html->image($pregunta['Usuario']['foto'], array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <!-- Contador de visitas -->
                             <div class="col-xs-3 col-sm-6 col-md-6">
@@ -92,7 +92,14 @@
             </form>
             
             <!-- ANSWERS -->
-            <?php foreach ($respuestas as $respuesta): ?>
+            <?php if(empty($pregunta['Respuesta'])){ ?>
+             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2">
+                <p>Esta pregunta todavia no tiene respuestas. Se el primero!</p>
+            </div>
+            <?php } ?>
+            
+            <!-- Acceder a las respuestas de la preguntas -->
+            <?php foreach ($pregunta['Respuesta'] as $respuesta): ?>
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
                 <div class="col-xs-12 col-sm-8 col-md-8"> <!-- nested grid - answers -->
@@ -101,19 +108,20 @@
                         <div class="col-xs-12 col-sm-3 col-md-2">
                             <!-- Profile picture -->
                             <div class="col-xs-12 col-sm-12 col-md-12" id="container-imagen">
-                                <img src="img/pluto_posando.jpg" alt="views">
+                                <?php 
+                                echo $this->Html->image($respuesta['Usuario']['foto'], array('class' => 'centrado', 'iconos')) ?>
                             </div>
                             <!-- Votos -->
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="centrado opSansReFont">
-                                        <img src="img/positivo.png" class="centrado iconos">
+                                        <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
                                     </div>
                                     <div class="centrado opSansReFont">16</div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="centrado">
-                                        <img src="img/negativo.png" class="centrado iconos">
+                                        <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
                                     </div>
                                     <div class="centrado opSansReFont">5</div>
                                 </div>
@@ -121,8 +129,8 @@
                         </div>
                          <!-- Content -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <h3 class="opSansBFont"><?php echo $respuesta['Respuestas']['Usuario_id']; ?></h3>
-                            <p class="opSansReFont"><?php echo $respuesta['Respuestas']['cuerpoRes']; ?><p>
+                            <h3 class="opSansBFont"><?php echo $respuesta['Usuario_id']; ?></h3>
+                            <p class="opSansReFont"><?php echo $respuesta['cuerpoRes']; ?><p>
                             <p class="opSansItFont">Respondido por <a href="">Marco</a> el 22/10/2015 a las 09:20 horas.</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">

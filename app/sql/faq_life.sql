@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
   `negativos` INT NULL DEFAULT 0,
   `Usuario_id` VARCHAR(30) NOT NULL,
   `Categoria_id` VARCHAR(30) NOT NULL,
+  `Respuesta_id` VARCHAR(30) NULL,
   PRIMARY KEY (`id`, `Usuario_id`, `Categoria_id`),
   INDEX `fk_Pregunta_Usuario_idx` (`Usuario_id` ASC),
   INDEX `fk_Preguntas_Categorias1_idx` (`Categoria_id` ASC),

@@ -21,11 +21,7 @@ class PreguntasController extends AppController {
         if (!$pregunta) {
             throw new NotFoundException(__('Invalid pregunta'));
         }
-        
-        $usuario = ClassRegistry::init('Usuario')->findById($pregunta['Pregunta']['Usuario_id']);
-        $respuestas = ClassRegistry::init('Respuesta')->query('SELECT * FROM Respuestas WHERE Pregunta_id ='. $pregunta['Pregunta']['id']);
-        $this->set('usuario', $usuario);
-        $this->set('respuestas', $respuestas);
+
         $this->set('pregunta', $pregunta);
     }
 }
