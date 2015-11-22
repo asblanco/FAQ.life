@@ -14,10 +14,10 @@ class UsuariosController extends AppController {
         // if we get the post information, try to authenticate
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                $this->Session->setFlash(__('Welcome, '. $this->Auth->user('username')));
+                $this->Flash->success(__('Welcome, '. $this->Auth->user('username')));
                 $this->redirect($this->Auth->redirectUrl());
             } else {
-                $this->Session->setFlash(__('Invalid username or password'));
+                $this->Flash->warning(__('Invalid username or password'));
             }
         } 
     }
@@ -33,10 +33,10 @@ class UsuariosController extends AppController {
                  
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been created'));
-                $this->redirect(array('action' => '../../preguntas/index'));
+                $this->Flash->success(__('The user has been created'));
+                $this->redirect(array('action' => '../preguntas/index'));
             } else {
-                $this->Session->setFlash(__('The user could not be created. Please, try again.'));
+                $this->Flash->set(__('The user could not be created. Please, try again.'));
             }   
         }
     }
