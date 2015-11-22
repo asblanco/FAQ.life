@@ -8,20 +8,8 @@ class UsuariosController extends AppController {
         $this->Auth->allow('registro');
     }
 
+    //El index de usuarios es el registro de un nuevo usuario
     public function index() {
-        $this->Usuario->recursive = 0;
-        $this->set('usuarios', $this->paginate());
-    }
-
-    public function view($id = null) {
-        $this->Usuario->id = $id;
-        if (!$this->Usuario->exists()) {
-            throw new NotFoundException(__('Invalid user'));
-        }
-        $this->set('usuario', $this->Usuario->findById($id));
-    }
-
-    public function registro() {
         $this->layout = 'faq_life';
         if ($this->request->is('post')) {
             $this->Usuario->create();
@@ -33,6 +21,15 @@ class UsuariosController extends AppController {
                 __('The user could not be saved. Please, try again.')
             );
         }
+    }
+
+    public function view($id = null) {
+        $this->layout = 'faq_life';
+        $this->Usuario->id = $id;
+        if (!$this->Usuario->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->set('usuario', $this->Usuario->findById($id));
     }
 
     public function edit($id = null) {

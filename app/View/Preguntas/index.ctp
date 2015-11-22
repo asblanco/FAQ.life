@@ -1,3 +1,5 @@
+<!-- app/View/Preguntas/index.ctp
+Lista de todas las preguntas -->
 <!DOCTYPE html>
 <html lang="en">
     <body>
@@ -93,7 +95,7 @@
                         </div>
                         <div class="col-xs-3 col-sm-6 col-md-6">
                             <div class="centrado">
-                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
+                                <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')); ?>
                             </div>
                             <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
                         </div>
@@ -102,7 +104,7 @@
                     <!-- Div preview pregunta -->
                     <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
                         <a href="pregunta.html" class="preview-pregunta">
-                            <h1 class="opSansBFont"><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'pregunta', $pregunta['Pregunta']['id'])); ?></h1>
+                            <h1 class="opSansBFont"><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'view', $pregunta['Pregunta']['id'])); ?></h1>
                         </a>                        
                         <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
                         <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Pregunta']['Usuario_id']; ?></a> el <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $pregunta['Pregunta']['Categoria_id']; ?></a>.</p>

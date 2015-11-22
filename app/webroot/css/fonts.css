@@ -50,7 +50,7 @@
 
 @font-face {
     font-family: "OpenSans-Light";
-    src: url(fonts/OpenSans-Light.otf) format("openformat");
+    src: url(fonts/OpenSans-Light.otf);
 }
 
 .opSansLiFont {

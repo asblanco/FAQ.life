@@ -1,4 +1,6 @@
-<!-- app/View/Usuarios/registro.ctp -->
+<!-- app/View/Usuarios/index.ctp
+Registro de nuevos usuarios -->
+
 <!DOCTYPE html>
 <html lang="en">    
     <body>
@@ -40,13 +42,16 @@
                         <legend><?php echo __('Registrarse'); ?></legend>
                         <?php echo $this->Form->input('username', array('class' => 'form-control'));
                         echo $this->Form->input('password', array('class' => 'form-control'));
-                        echo $this->Form->input('nombre', array('class' => 'form-control')); ?>
+                        echo $this->Form->input('nombre', array('class' => 'form-control')); 
+                        echo $this->Form->input('Foto de perfil', array('type' => 'file'));?>
                     </fieldset>
-                <?php echo $this->Form->end('Submit'); ?>
+                    <br>
+                    <button type="submit" class="btn-login">Submit</button>
+                <?php echo $this->Form->end(); ?>
                 </div>
-                </form>
+             </form>
           </div>
-          <div class="col-sm-2 col-md-2 hidden-phone"></div>
+          <div class="col-sm-2 col-md-2"></div>
       </div>
     </body>
 </html>

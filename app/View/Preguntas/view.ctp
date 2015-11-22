@@ -1,3 +1,5 @@
+<!-- app/View/Preguntas/view.ctp
+Vista en detalle de una pregunta -->
 <!DOCTYPE html>
 <html lang="en">
     <body>

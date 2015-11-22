@@ -10,7 +10,7 @@ class PreguntasController extends AppController {
         $this->layout = 'faq_life';
     }
     
-    public function pregunta($id = null) {
+    public function view($id = null) {
         $this->layout = 'faq_life';
         
         if (!$id) {
