@@ -100,11 +100,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Insercion de datos en las tablas
 
 INSERT INTO `Usuarios` (`id`, `nombre`, `foto`, `idioma`) VALUES
-('Manolo', 'Manolo Perez', 'img_users/default.png', 'ES'),
+('Manolo', 'Manolo Perez', 'img_users/superman.jpg', 'ES'),
 ('Juanito', 'Juan Sanchez', 'img_users/default.png', 'EN'),
 ('Carlito', 'Carlos Mendez', 'img_users/default.png', 'ES'),
-('Marco', 'Marco Perez', 'img_users/default.png', 'ES'),
-('Lucas', 'Lucas Rodriguez', 'img_users/default.png', 'EN');
+('Marco', 'Marco Perez', 'img_users/pluto_lengua.jpg', 'ES'),
+('Lucas', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
 INSERT INTO `Categorias` (`id`) VALUES
 ('Religion'),
@@ -118,5 +118,5 @@ INSERT INTO `Preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas
 El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 'Juanito', 'Noticias');
 
 INSERT INTO `Respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `Usuario_id`, `Pregunta_id`) VALUES
-(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 0, 0, 'Marco', 1),
-(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', '2015-10-18 11:30:00', 0, 0, 'Lucas', 1);
+(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 1, 0, 'Marco', 1),
+(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', '2015-11-08 1:28:00', 0, 5, 'Lucas', 1);

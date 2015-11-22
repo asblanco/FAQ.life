@@ -9,7 +9,7 @@
                   <span class="text-menu-toggle osSansFont-menu">Menu</span>
               </button>
               <a class="navbar-logo pacificoFont-menu">
-              <?php echo $this->Html->link('FAQ.life', array('controller' => 'preguntas', 'action' => 'index', 'class' => 'navbar-logo')); ?>
+              <?php echo $this->Html->link('FAQ.life', array('controller' => 'preguntas', 'action' => 'index', 'class' => 'navbar-logo', 'pacificoFont-menu')); ?>
               </a>
           </div>
           <!-- div con la lista de navegacion -->
@@ -94,12 +94,15 @@
             <!-- ANSWERS -->
             <?php if(empty($pregunta['Respuesta'])){ ?>
              <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2">
-                <p>Esta pregunta todavia no tiene respuestas. Se el primero!</p>
+                <p class="opSansReFont">Esta pregunta todavia no tiene respuestas. Se el primero!</p>
             </div>
             <?php } ?>
             
             <!-- Acceder a las respuestas de la preguntas -->
-            <?php foreach ($pregunta['Respuesta'] as $respuesta): ?>
+            <?php
+            $cont = -1;
+            foreach ($pregunta['Respuesta'] as $respuesta): 
+             $cont++; ?>
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
                 <div class="col-xs-12 col-sm-8 col-md-8"> <!-- nested grid - answers -->
@@ -109,21 +112,28 @@
                             <!-- Profile picture -->
                             <div class="col-xs-12 col-sm-12 col-md-12" id="container-imagen">
                                 <?php 
-                                echo $this->Html->image($respuesta['Usuario']['foto'], array('class' => 'centrado', 'iconos')) ?>
+                                //Recorre las fotos de los usuarios que respondieron
+                                foreach($fotos as $clave => $foto){
+                                    //Si cont coincide con la clave, es la foto del usuario actual
+                                    if($clave == $cont){
+                                       echo $this->Html->image($foto['Usuario']['foto'], array('class' => 'centrado', 'iconos')); 
+                                    }
+                                }
+                                ?>
                             </div>
                             <!-- Votos -->
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="centrado opSansReFont">
-                                        <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
+                                        <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos'));?>
                                     </div>
-                                    <div class="centrado opSansReFont">16</div>
+                                    <div class="centrado opSansReFont"><?php echo $respuesta['positivos']; ?></div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="centrado">
-                                        <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
+                                        <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')); ?>
                                     </div>
-                                    <div class="centrado opSansReFont">5</div>
+                                    <div class="centrado opSansReFont"><?php echo $respuesta['negativos']; ?></div>
                                 </div>
                             </div>
                         </div>
@@ -180,6 +190,5 @@
                 </div>
             </div>
         </div>
-        
     </body>  
 </html>
