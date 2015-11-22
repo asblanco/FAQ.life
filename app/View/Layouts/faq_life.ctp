@@ -10,7 +10,7 @@
         <?php echo $this->Html->meta('icon'); ?><!-- Icono de la pestaña -->
 
         <!-- Bootstrap CSS-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <?php echo $this->Html->css('bootstrap.min'); ?>
 
         <!-- Custom CSS -->
         <?php echo $this->Html->css('main');
@@ -30,8 +30,8 @@
     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <?php echo $this->Html->script('jquery.min'); ?>
     <!-- Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <?php echo $this->Html->script('bootstrap.min'); ?>
 
 </html>
