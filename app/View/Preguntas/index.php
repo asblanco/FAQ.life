@@ -9,7 +9,7 @@
                     <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                         <span class="text-menu-toggle osSansFont-menu">Menu</span>
                     </button>
-                    <a class="navbar-logo pacificoFont-menu" href="index.html">FAQ.life</a>
+                    <a class="navbar-logo pacificoFont-menu" href="index">FAQ.life</a>
                 </div>
  
                 <!-- div con la lista de navegacion -->

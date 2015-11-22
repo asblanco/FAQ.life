@@ -9,7 +9,7 @@
                   <span class="text-menu-toggle osSansFont-menu">Menu</span>
               </button>
               <a class="navbar-logo pacificoFont-menu">
-              <?php echo $this->Html->link('FAQ.life', array('controller' => 'preguntas', 'action' => 'index', 'class' => 'navbar-logo', 'pacificoFont-menu')); ?>
+              <?php echo $this->Html->link('FAQ.life', array('controller' => 'preguntas/index', 'action' => 'index')); ?>
               </a>
           </div>
           <!-- div con la lista de navegacion -->
@@ -112,11 +112,11 @@
                             <!-- Profile picture -->
                             <div class="col-xs-12 col-sm-12 col-md-12" id="container-imagen">
                                 <?php 
-                                //Recorre las fotos de los usuarios que respondieron
-                                foreach($fotos as $clave => $foto){
+                                //Recorre los usuarios que respondieron
+                                foreach($usuarios as $clave => $usu){
                                     //Si cont coincide con la clave, es la foto del usuario actual
                                     if($clave == $cont){
-                                       echo $this->Html->image($foto['Usuario']['foto'], array('class' => 'centrado', 'iconos')); 
+                                       echo $this->Html->image($usu['Usuario']['foto'], array('class' => 'centrado', 'iconos')); 
                                     }
                                 }
                                 ?>
@@ -139,7 +139,14 @@
                         </div>
                          <!-- Content -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <h3 class="opSansBFont"><?php echo $respuesta['Usuario_id']; ?></h3>
+                            <?php 
+                                //Recorre los usuarios que respondieron
+                                foreach($usuarios as $clave => $usu){
+                                    //Si cont coincide con la clave, coge el nombre del usuario actual
+                                    if($clave == $cont){ ?>
+                                        <h3 class="opSansBFont"><?php echo $usu['Usuario']['nombre']; ?></h3>  
+                                   <?php }
+                                } ?>
                             <p class="opSansReFont"><?php echo $respuesta['cuerpo_res']; ?><p>
                             <p class="opSansItFont">Respondido por <a href=""><?php echo $respuesta['Usuario_id']; ?></a> el <?php echo $this->Time->format($respuesta['fecha_res'], '%e %B %Y a las %H:%M'); ?> horas.</p>
                         </div>

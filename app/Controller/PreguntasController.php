@@ -25,12 +25,12 @@ class PreguntasController extends AppController {
         $this->set('pregunta', $pregunta);
         
         //Array con las fotos de todos los usuarios que respondieron en el mismo orden que las respuestas
-        $fotos = array();
+        $usuarios = array();
         foreach ($pregunta['Respuesta'] as $respuesta){
-            $fotos[] = ClassRegistry::init('Usuario')->findById($respuesta['Usuario_id']);
+            $usuarios[] = ClassRegistry::init('Usuario')->findById($respuesta['Usuario_id']);
         }
         
-        $this->set('fotos', $fotos);
+        $this->set('usuarios', $usuarios);
     }
 }
 ?>
