@@ -116,43 +116,6 @@
             <?php endforeach; ?>
             
         </div>
-
-        <!-- Login Modal Page -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button href="categorias.html" type="submit" class="btn btn-register">Registrarse</button>
-                        <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
-                    </div>
-                    
-                    <!-- Contenido de la página login modal -->
-                    <div class="modal-body">
-                        <form name="sentMessage" id="loginForm" novalidate>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Email address</label>
-                                    <input type="email" class="form-control" placeholder="Email address" id="email" required data-validation-required-message="Please enter your email.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn-login">Iniciar sesion</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </body>
 
 </html>

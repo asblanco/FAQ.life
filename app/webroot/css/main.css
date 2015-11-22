@@ -13,8 +13,8 @@
 .navbar-logo {     /*Change FAQ.life color*/
     background-color: transparent !important;
     color: white !important;
-    padding: 2vmin !important;
-    text-align: center !important;
+    padding: 2vmin;
+    text-align: center;
 }
 
 .navbar-logo:hover {
@@ -115,6 +115,11 @@ div#navbar-collapse1 {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+
+h1 {
+    color: black;
+    text-decoration: none;
 }
 
 .index-phrase {

@@ -28,6 +28,43 @@
         <hr class="small">
         <p class="footer-autores">Copyright &copy; FAQ.life 2015 - Borxa Mendez Candeias &amp; Andrea Sanchez Blanco</p>
     </footer>
+    
+    <!-- Login Modal Page -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button href="../Usuarios/registro" class="btn btn-register" data-dismiss="modal">Registrarse</button>
+                    <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
+                </div>
+
+                <!-- Contenido de la página login modal -->
+                <div class="modal-body">
+                    <form name="sentMessage" id="loginForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control" placeholder="Usuario" id="username" required data-validation-required-message="Please enter your username.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn-login">Iniciar sesion</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <?php echo $this->Html->script('jquery.min'); ?>

@@ -8,9 +8,7 @@
               <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                   <span class="text-menu-toggle osSansFont-menu">Menu</span>
               </button>
-              <a class="navbar-logo pacificoFont-menu">
-              <?php echo $this->Html->link('FAQ.life', array('controller' => 'preguntas/index', 'action' => 'index')); ?>
-              </a>
+              <a class="navbar-logo pacificoFont-menu" href="../../preguntas/index">FAQ.life</a>
           </div>
           <!-- div con la lista de navegacion -->
           <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
@@ -159,43 +157,6 @@
             </div>
             <?php endforeach; ?>
             
-        </div>
-        
-        <!-- Login Modal Page -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button href="categorias.html" type="submit" class="btn btn-register">Registrarse</button>
-                        <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
-                    </div>
-                    
-                    <!-- Contenido de la página login modal -->
-                    <div class="modal-body">
-                        <form name="sentMessage" id="loginForm" novalidate>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Email address</label>
-                                    <input type="email" class="form-control" placeholder="Email address" id="email" required data-validation-required-message="Please enter your email.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn-login">Iniciar sesion</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </body>  
 </html>

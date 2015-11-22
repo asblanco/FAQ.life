@@ -32,4 +32,31 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     public $ext = '.php';
+
+    public function beforeFilter() {
+        $this->Auth->allow('index', 'view');
+    }
+    
+    public $components = array(
+        'Flash',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'preguntas', 'action' => 'index'),
+            'logoutRedirect' => array(
+                'controller' => 'pages',
+                'action' => 'display',
+                'home'
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'passwordHasher' => 'Blowfish'
+                )
+            ),
+            'authorize' => array('Controller') // Added this line
+        )
+    );
+
+    public function isAuthorized($user) {
+        // Default allow
+        return true;
+    }
 }

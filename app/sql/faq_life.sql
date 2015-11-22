@@ -10,10 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema faq_life
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema faq_life
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `faq_life` DEFAULT CHARACTER SET utf8 ;
 CREATE USER 'faq_life'@'localhost' identified by 'faqpass';
 GRANT ALL PRIVILEGES ON faq_life.* TO 'faq_life'@'localhost' WITH GRANT OPTION;
@@ -24,6 +20,8 @@ USE `faq_life` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Usuarios` (
   `id` VARCHAR(30) NOT NULL,
+  `username` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `nombre` VARCHAR(100) NOT NULL,
   `foto` VARCHAR(50) NULL DEFAULT 'img_users/default.png',
   `idioma` VARCHAR(2) NULL DEFAULT 'es',
@@ -36,7 +34,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Categorias` (
   `id` VARCHAR(30) NOT NULL,
-  PRIMARY KEY (`id`))
+   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -99,12 +97,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- Insercion de datos en las tablas
 
-INSERT INTO `Usuarios` (`id`, `nombre`, `foto`, `idioma`) VALUES
-('Manolo', 'Manolo Perez', 'img_users/superman.jpg', 'ES'),
-('Juanito', 'Juan Sanchez', 'img_users/default.png', 'EN'),
-('Carlito', 'Carlos Mendez', 'img_users/default.png', 'ES'),
-('Marco', 'Marco Perez', 'img_users/pluto_lengua.jpg', 'ES'),
-('Lucas', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
+INSERT INTO `Usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`) VALUES
+('Manolo', 'Manolo', 'manolo', 'Manolo Perez', 'img_users/superman.jpg', 'ES'),
+('Juanito', 'Juanito', 'juanito', 'Juan Sanchez', 'img_users/default.png', 'EN'),
+('Carlito', 'Juanito', 'juanito', 'Carlos Mendez', 'img_users/default.png', 'ES'),
+('Marco', 'Marco', 'marco', 'Marco Perez', 'img_users/pluto_lengua.jpg', 'ES'),
+('Lucas', 'Lucas', 'lucas', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
 INSERT INTO `Categorias` (`id`) VALUES
 ('Religion'),
