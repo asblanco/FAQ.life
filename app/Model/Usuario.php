@@ -1,5 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
+//Password hashing
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class Usuario extends AppModel {
     public $hasMany = array(
@@ -27,5 +29,16 @@ class Usuario extends AppModel {
             )
         )
     );
+    
+    //Password hashing, encriptar las contraseñas para no almacenarlas en texto plano en la BD
+    public function beforeSave($options = array()) {
+        if (isset($this->data[$this->alias]['password'])) {
+            $passwordHasher = new BlowfishPasswordHasher();
+            $this->data[$this->alias]['password'] = $passwordHasher->hash(
+                $this->data[$this->alias]['password']
+            );
+        }
+        return true;
+    }
 }
 ?>

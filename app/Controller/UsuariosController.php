@@ -2,24 +2,42 @@
 App::uses('AppController', 'Controller');
 
 class UsuariosController extends AppController {
+    
+    public function login() {
+        $this->layout = 'faq_life';
+        
+        //if already logged-in, redirect
+        if($this->Session->check('Auth.User')){
+            $this->redirect(array('action' => 'index'));      
+        }
+         
+        // if we get the post information, try to authenticate
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                $this->Session->setFlash(__('Welcome, '. $this->Auth->user('username')));
+                $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Session->setFlash(__('Invalid username or password'));
+            }
+        } 
+    }
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('registro');
+    public function logout() {
+        return $this->redirect($this->Auth->logout());
     }
 
     //El index de usuarios es el registro de un nuevo usuario
     public function index() {
         $this->layout = 'faq_life';
         if ($this->request->is('post')) {
+                 
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
-                return $this->redirect(array('action' => 'index'));
-            }
-            $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
-            );
+                $this->Session->setFlash(__('The user has been created'));
+                $this->redirect(array('action' => '../../preguntas/index'));
+            } else {
+                $this->Session->setFlash(__('The user could not be created. Please, try again.'));
+            }   
         }
     }
 
@@ -40,7 +58,7 @@ class UsuariosController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Usuario->save($this->request->data)) {
                 $this->Flash->success(__('The user has been saved'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => '../usuarios/index'));
             }
             $this->Flash->error(
                 __('The user could not be saved. Please, try again.')
@@ -65,6 +83,5 @@ class UsuariosController extends AppController {
         $this->Flash->error(__('User was not deleted'));
         return $this->redirect(array('action' => 'index'));
     }
-
 }
 ?>

@@ -35,23 +35,34 @@ Registro de nuevos usuarios -->
           <div class="row"><p></p></div> <!-- div superior de separacion -->
           <div class="col-sm-2 col-md-2 hidden-phone"></div>
           <div class="col-xs-12 col-sm-8 col-md-8">
-            <form>
-                <div class="form-group">
-                <?php echo $this->Form->create('Usuario'); ?>
-                    <fieldset>
-                        <legend><?php echo __('Registrarse'); ?></legend>
-                        <?php echo $this->Form->input('username', array('class' => 'form-control'));
-                        echo $this->Form->input('password', array('class' => 'form-control'));
-                        echo $this->Form->input('nombre', array('class' => 'form-control')); 
-                        echo $this->Form->input('Foto de perfil', array('type' => 'file'));?>
-                    </fieldset>
-                    <br>
-                    <button type="submit" class="btn-login">Submit</button>
-                <?php echo $this->Form->end(); ?>
-                </div>
-             </form>
+            <div class="form-group">
+            <?php echo $this->Form->create('Usuario'); ?>
+                <fieldset>
+                    <legend><?php echo __('Registrarse'); ?></legend>
+                    <?php echo $this->Form->input('username', array('label' => 'Nombre de usuario *','class' => 'form-control')); 
+                    echo $this->Form->input('password', array('label' => 'Contraseña *', 'class' => 'form-control'));
+                    echo $this->Form->input('password_confirm', array('label' => 'Confirmar contraseña *', 'maxLength' => 255, 'title' => 'Confirm password', 'type'=>'password', 'class' => 'form-control'));
+                    echo $this->Form->input('nombre', array('label' => 'Nombre *', 'class' => 'form-control')); 
+                    echo $this->Form->input('foto', array('label' => 'Foto de perfil', 'type' => 'file'));
+                    echo "<br>";
+                    echo $this->Form->submit('Submit', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?>
+                </fieldset>
+            <?php echo $this->Form->end(); ?>
+            </div>
           </div>
           <div class="col-sm-2 col-md-2"></div>
       </div>
     </body>
 </html>
+
+
+<!-- Prueba para saber como se muestran diferentes vistas segun si esta logueado o no -->
+<?php 
+if($this->Session->check('Auth.User')){
+    echo $this->Html->link( "Return to Dashboard",  array('action'=>'../preguntas/index') ); 
+    echo "<br>";
+    echo $this->Html->link( "Logout",   array('action'=>'logout') ); 
+}else{
+    echo $this->Html->link( "Return to Login Screen",   array('action'=>'../preguntas/index') ); 
+}
+?>

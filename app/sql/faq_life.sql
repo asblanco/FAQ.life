@@ -11,6 +11,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema faq_life
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `faq_life` DEFAULT CHARACTER SET utf8 ;
+GRANT USAGE ON *.* TO 'faq_life'@'localhost';
+DROP USER 'faq_life'@'localhost';
 CREATE USER 'faq_life'@'localhost' identified by 'faqpass';
 GRANT ALL PRIVILEGES ON faq_life.* TO 'faq_life'@'localhost' WITH GRANT OPTION;
 USE `faq_life` ;
@@ -19,13 +21,12 @@ USE `faq_life` ;
 -- Table `faq_life`.`Usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Usuarios` (
-  `id` VARCHAR(30) NOT NULL,
-  `username` VARCHAR(50) NOT NULL,
+  `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `username` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
   `nombre` VARCHAR(100) NOT NULL,
   `foto` VARCHAR(50) NULL DEFAULT 'img_users/default.png',
-  `idioma` VARCHAR(2) NULL DEFAULT 'es',
-  PRIMARY KEY (`id`))
+  `idioma` VARCHAR(2) NULL DEFAULT 'es')
 ENGINE = InnoDB;
 
 
@@ -33,8 +34,8 @@ ENGINE = InnoDB;
 -- Table `faq_life`.`Categorias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Categorias` (
-  `id` VARCHAR(30) NOT NULL,
-   PRIMARY KEY (`id`))
+  `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `nombre_categoria` VARCHAR(30) NOT NULL)
 ENGINE = InnoDB;
 
 
@@ -42,7 +43,7 @@ ENGINE = InnoDB;
 -- Table `faq_life`.`Preguntas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   `titulo` LONGTEXT NOT NULL,
   `cuerpo` LONGTEXT NOT NULL,
   `fecha` DATETIME NOT NULL,
@@ -50,9 +51,8 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
   `respuestas` INT NULL DEFAULT 0,
   `positivos` INT NULL DEFAULT 0,
   `negativos` INT NULL DEFAULT 0,
-  `Usuario_id` VARCHAR(30) NOT NULL,
-  `Categoria_id` VARCHAR(30) NOT NULL,
-  PRIMARY KEY (`id`),
+  `Usuario_id` INT UNSIGNED NOT NULL,
+  `Categoria_id` INT UNSIGNED NOT NULL,
   CONSTRAINT `fk_Preguntas_Usuarios`
     FOREIGN KEY (`Usuario_id`)
     REFERENCES `faq_life`.`Usuarios` (`id`)
@@ -70,14 +70,13 @@ ENGINE = InnoDB;
 -- Table `faq_life`.`Respuestas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `faq_life`.`Respuestas` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   `cuerpo_res` LONGTEXT NOT NULL,
   `fecha_res` DATETIME NOT NULL,
   `positivos` INT NULL DEFAULT 0,
   `negativos` INT NULL DEFAULT 0,
-  `Usuario_id` VARCHAR(30) NOT NULL,
-  `Pregunta_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
+  `Usuario_id` INT UNSIGNED NOT NULL,
+  `Pregunta_id` INT UNSIGNED NOT NULL,
   CONSTRAINT `fk_Respuestas_Usuarios`
     FOREIGN KEY (`Usuario_id`)
     REFERENCES `faq_life`.`Usuarios` (`id`)
@@ -98,23 +97,23 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Insercion de datos en las tablas
 
 INSERT INTO `Usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`) VALUES
-('Manolo', 'Manolo', 'manolo', 'Manolo Perez', 'img_users/superman.jpg', 'ES'),
-('Juanito', 'Juanito', 'juanito', 'Juan Sanchez', 'img_users/default.png', 'EN'),
-('Carlito', 'Juanito', 'juanito', 'Carlos Mendez', 'img_users/default.png', 'ES'),
-('Marco', 'Marco', 'marco', 'Marco Perez', 'img_users/pluto_lengua.jpg', 'ES'),
-('Lucas', 'Lucas', 'lucas', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
+(1, 'Manolo', 'manolo', 'Manolo Perez', 'img_users/superman.jpg', 'ES'),
+(2, 'Juanito', 'juanito', 'Juan Sanchez', 'img_users/default.png', 'EN'),
+(3, 'Carlito', 'carlito', 'Carlos Mendez', 'img_users/default.png', 'ES'),
+(4, 'Marco', 'marco', 'Marco Perez', 'img_users/pluto_lengua.jpg', 'ES'),
+(5, 'Lucas', 'lucas', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
-INSERT INTO `Categorias` (`id`) VALUES
-('Religion'),
-('Electricidad'),
-('Noticias');
+INSERT INTO `Categorias` (`id`, `nombre_categoria`) VALUES
+(1, 'Religion'),
+(2, 'Electricidad'),
+(3, 'Noticias');
 
 INSERT INTO `Preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `Usuario_id`, `Categoria_id`) VALUES
-(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 'Manolo', 'Religion'),
-(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 'Juanito', 'Electricidad'),
+(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 1, 1),
+(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 3, 2),
 (null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
-El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 'Juanito', 'Noticias');
+El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 3, 3);
 
 INSERT INTO `Respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `Usuario_id`, `Pregunta_id`) VALUES
-(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 1, 0, 'Marco', 1),
-(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', '2015-11-08 1:28:00', 0, 5, 'Lucas', 1);
+(null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 1, 0, 4, 1),
+(null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', '2015-11-08 1:28:00', 0, 5, 5, 1);

@@ -7,7 +7,7 @@
         <meta name="author" content="Borxa Mendez Candeias &amp; Andrea Sanchez Blanco">
 
         <title>FAQ.life</title> <!-- Titulo de la pestaña -->
-        <?php echo $this->Html->meta('icon'); ?><!-- Icono de la pestaña -->
+        <?php echo $this->Html->meta('icon');?> <!-- Icono de la pestaña -->
 
         <!-- Bootstrap CSS-->
         <?php echo $this->Html->css('bootstrap.min'); ?>
@@ -34,27 +34,28 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button href="../Usuarios/registro" class="btn btn-register" data-dismiss="modal">Registrarse</button>
+                    <a href="../usuarios/index" class="btn btn-register"> Registrarse </a>
                     <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
                 </div>
 
                 <!-- Contenido de la página login modal -->
                 <div class="modal-body">
                     <form name="sentMessage" id="loginForm" novalidate>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Usuario</label>
-                                <input type="text" class="form-control" placeholder="Usuario" id="username" required data-validation-required-message="Please enter your username.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
+                        <?php echo $this->Flash->render('auth'); ?>
+                        <?php echo $this->Form->create('Usuario'); ?>
+                            <fieldset>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
+                                    </div>
+                                </div>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        <?php echo $this->Form->end(); ?>
                     </form>
                 </div>
 
