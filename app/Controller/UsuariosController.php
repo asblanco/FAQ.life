@@ -1,20 +1,32 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('AuthComponent', 'Controller/Component');
 
 class UsuariosController extends AppController {
+    public $helpers = array('Html', 'Form');
+    
+     public function beforeFilter() {
+         $this->Auth->allow('index', 'view');
+         
+        $this->Auth->authenticate = array(
+            'all' => array('userModel' => 'Usuario'),
+            'Form',
+            'Basic'
+        );
+    }
     
     public function login() {
         $this->layout = 'faq_life';
         
         //if already logged-in, redirect
-        if($this->Session->check('Auth.User')){
+        if($this->Session->check('Auth.Usuario')){
             $this->redirect(array('action' => 'index'));      
         }
          
         // if we get the post information, try to authenticate
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                $this->Flash->success(__('Welcome, '. $this->Auth->user('username')));
+                $this->Flash->success(__('Welcome, '. $this->Auth->usuario('username')));
                 $this->redirect($this->Auth->redirectUrl());
             } else {
                 $this->Flash->warning(__('Invalid username or password'));

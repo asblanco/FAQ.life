@@ -72,7 +72,7 @@ Vista en detalle de una pregunta -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
                             <h1 class="opSansBFont"> <?php echo $pregunta['Pregunta']['titulo']; ?> </h1>
                             <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
-                            <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Pregunta']['Usuario_id']; ?></a> el <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $pregunta['Pregunta']['Categoria_id']; ?></a>.</p>
+                            <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Usuario']['username']; ?></a> el <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $pregunta['Categoria']['nombre_categoria']; ?></a>.</p>
                         </div>
                     </div>
                     <hr class="small separatorQuestion">
@@ -80,6 +80,7 @@ Vista en detalle de una pregunta -->
             </div>
             
            <!-- RESPONDER -->
+            <?php if($this->Session->check('Auth.User')){ ?>
             <form>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="col-xs-12 col-sm-2 col-md-2"></div>
@@ -90,6 +91,7 @@ Vista en detalle de una pregunta -->
                     <div class="col-xs-12 col-sm-2 col-md-2"></div>
                 </div>
             </form>
+            <?php } ?>
             
             <!-- ANSWERS -->
             <?php if(empty($pregunta['Respuesta'])){ ?>
@@ -145,10 +147,12 @@ Vista en detalle de una pregunta -->
                                     //Si cont coincide con la clave, coge el nombre del usuario actual
                                     if($clave == $cont){ ?>
                                         <h3 class="opSansBFont"><?php echo $usu['Usuario']['nombre']; ?></h3>  
+                                        <p class="opSansReFont"><?php echo $respuesta['cuerpo_res']; ?><p>
+                                        <p class="opSansItFont">Respondido por <a href="">
+                                            <?php echo $usu['Usuario']['username']; ?>
+                                            </a> el <?php echo $this->Time->format($respuesta['fecha_res'], '%e %B %Y a las %H:%M'); ?> horas.</p>
                                    <?php }
                                 } ?>
-                            <p class="opSansReFont"><?php echo $respuesta['cuerpo_res']; ?><p>
-                            <p class="opSansItFont">Respondido por <a href=""><?php echo $respuesta['Usuario_id']; ?></a> el <?php echo $this->Time->format($respuesta['fecha_res'], '%e %B %Y a las %H:%M'); ?> horas.</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <hr class="small" id="separador">
@@ -159,6 +163,44 @@ Vista en detalle de una pregunta -->
             </div>
             <?php endforeach; ?>
             
+        </div>
+        
+        <!-- Login Modal Page -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="../../usuarios/index" class="btn btn-register"> Registrarse </a>
+                        <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
+                    </div>
+
+                    <!-- Contenido de la página login modal -->
+                    <div class="modal-body">
+                        <form name="sentMessage" id="loginForm" novalidate>
+                            <?php echo $this->Flash->render('auth'); ?>
+                            <?php echo $this->Form->create('Usuario'); ?>
+                                <fieldset>
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                                            <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
+                                        </div>
+                                    </div>
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                                            <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            <?php echo $this->Form->end(); ?>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn-login">Iniciar sesion</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>  
 </html>
