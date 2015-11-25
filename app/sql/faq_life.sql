@@ -16,9 +16,9 @@ GRANT ALL PRIVILEGES ON faq_life.* TO 'faq_life'@'localhost' WITH GRANT OPTION;
 USE `faq_life` ;
 
 -- -----------------------------------------------------
--- Table `faq_life`.`Usuarios`
+-- Table `faq_life`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `faq_life`.`Usuarios` (
+CREATE TABLE IF NOT EXISTS `faq_life`.`usuarios` (
   `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `username` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
@@ -29,18 +29,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `faq_life`.`Categorias`
+-- Table `faq_life`.`categorias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `faq_life`.`Categorias` (
+CREATE TABLE IF NOT EXISTS `faq_life`.`categorias` (
   `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `nombre_categoria` VARCHAR(30) NOT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `faq_life`.`Preguntas`
+-- Table `faq_life`.`preguntas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
+CREATE TABLE IF NOT EXISTS `faq_life`.`preguntas` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   `titulo` LONGTEXT NOT NULL,
   `cuerpo` LONGTEXT NOT NULL,
@@ -49,40 +49,40 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`Preguntas` (
   `respuestas` INT NULL DEFAULT 0,
   `positivos` INT NULL DEFAULT 0,
   `negativos` INT NULL DEFAULT 0,
-  `Usuario_id` INT UNSIGNED NOT NULL,
-  `Categoria_id` INT UNSIGNED NOT NULL,
-  CONSTRAINT `fk_Preguntas_Usuarios`
-    FOREIGN KEY (`Usuario_id`)
-    REFERENCES `faq_life`.`Usuarios` (`id`)
+  `usuario_id` INT UNSIGNED NOT NULL,
+  `categoria_id` INT UNSIGNED NOT NULL,
+  CONSTRAINT `fk_s_usuarios`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `faq_life`.`usuarios` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Preguntas_Categorias`
-    FOREIGN KEY (`Categoria_id`)
-    REFERENCES `faq_life`.`Categorias` (`id`)
+  CONSTRAINT `fk_preguntas_categorias`
+    FOREIGN KEY (`categoria_id`)
+    REFERENCES `faq_life`.`categorias` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `faq_life`.`Respuestas`
+-- Table `faq_life`.`respuestas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `faq_life`.`Respuestas` (
+CREATE TABLE IF NOT EXISTS `faq_life`.`respuestas` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   `cuerpo_res` LONGTEXT NOT NULL,
   `fecha_res` DATETIME NOT NULL,
   `positivos` INT NULL DEFAULT 0,
   `negativos` INT NULL DEFAULT 0,
-  `Usuario_id` INT UNSIGNED NOT NULL,
-  `Pregunta_id` INT UNSIGNED NOT NULL,
-  CONSTRAINT `fk_Respuestas_Usuarios`
-    FOREIGN KEY (`Usuario_id`)
-    REFERENCES `faq_life`.`Usuarios` (`id`)
+  `usuario_id` INT UNSIGNED NOT NULL,
+  `pregunta_id` INT UNSIGNED NOT NULL,
+  CONSTRAINT `fk_respuestas_usuarios`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `faq_life`.`usuarios` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Respuestas_Preguntas`
-    FOREIGN KEY (`Pregunta_id`)
-    REFERENCES `faq_life`.`Preguntas` (`id`)
+  CONSTRAINT `fk_respuestas_preguntas`
+    FOREIGN KEY (`pregunta_id`)
+    REFERENCES `faq_life`.`preguntas` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -94,24 +94,24 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- Insercion de datos en las tablas
 
-INSERT INTO `Usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`) VALUES
+INSERT INTO `usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`) VALUES
 (1, 'Manolo', 'manolo', 'Manolo Perez', 'img_users/superman.jpg', 'ES'),
 (2, 'Juanito', 'juanito', 'Juan Sanchez', 'img_users/default.png', 'EN'),
 (3, 'Carlito', 'carlito', 'Carlos Mendez', 'img_users/default.png', 'ES'),
 (4, 'Marco', 'marco', 'Marco Perez', 'img_users/pluto_lengua.jpg', 'ES'),
 (5, 'Lucas', 'lucas', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
-INSERT INTO `Categorias` (`id`, `nombre_categoria`) VALUES
+INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
 (1, 'Religion'),
 (2, 'Electricidad'),
 (3, 'Noticias');
 
-INSERT INTO `Preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `Usuario_id`, `Categoria_id`) VALUES
+INSERT INTO `preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `usuario_id`, `categoria_id`) VALUES
 (null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 1, 1),
 (null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 3, 2),
 (null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
 El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 3, 3);
 
-INSERT INTO `Respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `Usuario_id`, `Pregunta_id`) VALUES
+INSERT INTO `respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `usuario_id`, `pregunta_id`) VALUES
 (null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 1, 0, 4, 1),
 (null, 'Tus premisas son acertadas pero como Satanas no existe eso no es valido', '2015-11-08 1:28:00', 0, 5, 5, 1);

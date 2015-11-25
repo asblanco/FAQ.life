@@ -67,7 +67,4 @@ class AppController extends Controller {
         $this->set("loggedUser", $this->Auth->user());
        
     }
-    
-    
-   
 }

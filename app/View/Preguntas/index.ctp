@@ -140,9 +140,9 @@ Lista de todas las preguntas -->
                     </div>
 
                     <!-- Contenido de la página login modal -->
-                        <div class="modal-body">aaaa
-                                <?php echo $this->Flash->render('auth'); ?>bbbb
-                                <?php echo $this->Form->create('Usuario', array("controller"=>"usuarios", "action"=>"login")); ?>cccc
+                        <div class="modal-body">
+                                <?php echo $this->Flash->render('auth'); ?>
+                                <?php echo $this->Form->create('Usuario', array("controller"=>"usuarios", "action"=>"login")); ?>
                                     <fieldset>
                                         <div class="row control-group">
                                             <div class="form-group col-xs-12 floating-label-form-group controls">
