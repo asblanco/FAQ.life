@@ -26,7 +26,7 @@
     <!-- Footer -->
     <footer class="col-xs-12 col-sm-12 col-md-12">
         <hr class="small">
-        <p class="footer-autores">Copyright &copy; FAQ.life 2015 - Borxa Mendez Candeias &amp; Andrea Sanchez Blanco</p>
+        <p class="footer-autores"><?= $loggedUser["username"]?> Copyright &copy; FAQ.life 2015 - Borxa Mendez Candeias &amp; Andrea Sanchez Blanco</p>
     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

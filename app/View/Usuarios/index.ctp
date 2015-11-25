@@ -11,7 +11,9 @@ Registro de nuevos usuarios -->
               <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                   <span class="text-menu-toggle osSansFont-menu">Menu</span>
               </button>
-              <a class="navbar-logo pacificoFont-menu" href="../preguntas/index">FAQ.life</a>
+              <?php 
+                echo $this->Html->link("FAQ.life", array("controller"=>"preguntas", "action"=>"index"), array("class"=>"navbar-logo pacificoFont-menu"));
+            ?>
           </div>
           <!-- div con la lista de navegacion -->
           <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">

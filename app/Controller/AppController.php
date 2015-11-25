@@ -35,6 +35,11 @@ class AppController extends Controller {
         'Flash',
         'Session',
         'Auth' => array(
+            'loginAction' => array(
+            'controller' => 'usuarios',
+            'action' => 'login'
+            /*'plugin' => 'users'*/
+            ),
             'loginRedirect' => array(
                 'controller' => 'preguntas',
                 'action' => 'index'
@@ -46,7 +51,8 @@ class AppController extends Controller {
             ),
             'authenticate' => array(
                 'Form' => array(
-                    'passwordHasher' => 'Blowfish'
+                    'passwordHasher' => 'Blowfish',
+                    'userModel'=>'Usuario'
                 )
             )
         )
@@ -56,30 +62,12 @@ class AppController extends Controller {
     //En este caso todas las que se llamen index y view de cualquier controlador se pueden acceder
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
-    }
     
         
-    public function login() {
-        $this->layout = 'faq_life';
-        
-        //if already logged-in, redirect
-        if($this->Session->check('Auth.Usuario')){
-            $this->redirect(array('action' => 'index'));      
-        }
-         
-        // if we get the post information, try to authenticate
-        if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                $this->Flash->success(__('Welcome, '. $this->Auth->usuario('username')));
-                $this->redirect($this->Auth->redirectUrl());
-            } else {
-                $this->Flash->warning(__('Invalid username or password'));
-            }
-        } 
+        $this->set("loggedUser", $this->Auth->user());
+       
     }
-
-    public function logout() {
-        return $this->redirect($this->Auth->logout());
-    }
-
+    
+    
+   
 }

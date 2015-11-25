@@ -11,14 +11,15 @@
 }
 
 .navbar-logo {     /*Change FAQ.life color*/
-    background-color: transparent !important;
-    color: white !important;
+    background-color: transparent;
+    color: white;
     padding: 2vmin;
     text-align: center;
 }
 
 .navbar-logo:hover {
     text-decoration: none;
+    color: white;
 }
 
 p {

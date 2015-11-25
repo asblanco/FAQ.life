@@ -8,11 +8,7 @@ class UsuariosController extends AppController {
      public function beforeFilter() {
          $this->Auth->allow('index', 'view');
          
-        $this->Auth->authenticate = array(
-            'all' => array('userModel' => 'Usuario'),
-            'Form',
-            'Basic'
-        );
+        
     }
     
     //El index de usuarios es el registro de un nuevo usuario
@@ -72,5 +68,32 @@ class UsuariosController extends AppController {
         $this->Flash->error(__('User was not deleted'));
         return $this->redirect(array('action' => 'index'));
     }
+    
+    public function login() {
+        
+        $this->layout = 'faq_life';
+        //if already logged-in, redirect
+        if($this->Session->check('Auth.Usuario')){
+            $this->redirect(array('action' => 'index'));      
+        }
+         
+        // if we get the post information, try to authenticate
+        if ($this->request->is('post')) {
+            print_r($this->request->data);
+            
+            if ($this->Auth->login()) {
+                $this->Flash->success(__('Welcome, '. $this->Auth->user('username')));
+                $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->warning(__('Invalid username or password'));
+            }
+        } 
+        $this->Flash->error("fuera de aqui!");
+        $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
+    }
+ public function logout() {
+        return $this->redirect($this->Auth->logout());
+    }
+
 }
 ?>

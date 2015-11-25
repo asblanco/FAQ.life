@@ -11,7 +11,9 @@ Lista de todas las preguntas -->
                     <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                         <span class="text-menu-toggle osSansFont-menu">Menu</span>
                     </button>
-                    <a class="navbar-logo pacificoFont-menu" href="index">FAQ.life</a>
+                    <?php 
+                        echo $this->Html->link("FAQ.life", array("controller"=>"preguntas", "action"=>"index"), array("class"=>"navbar-logo pacificoFont-menu"));
+                    ?>
                 </div>
  
                 <!-- div con la lista de navegacion -->
@@ -27,7 +29,9 @@ Lista de todas las preguntas -->
                         </li>
                         <li><a href="categorias.html">Categorias</a></li>
                         <?php if($this->Session->check('Auth.User')){ ?>
-                        <li><a href="" data-toggle="modal" data-target="#loginModal">Logout</a></li>
+                        <li><?php 
+                            echo $this->Html->link("Logout", array("controller"=>"usuarios", "action"=>"logout"));
+                        ?></li>
                         <?php }else { ?>
                             <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
                         <?php } ?>
@@ -108,7 +112,7 @@ Lista de todas las preguntas -->
                     <!-- Div preview pregunta -->
                     <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
                         <a href="pregunta.html" class="preview-pregunta">
-                            <h1 class="opSansBFont"><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'view', $pregunta['Pregunta']['id'])); ?></h1>
+                            <h1><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'view', $pregunta['Pregunta']['id']), array('class' => 'opSansBFont')); ?></h1> 
                         </a>                        
                         <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
                         <p class="opSansItFont">Preguntado por <a href=""><?php echo $pregunta['Usuario']['username']; ?></a> el <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $pregunta['Categoria']['nombre_categoria']; ?></a>.</p>
@@ -128,15 +132,17 @@ Lista de todas las preguntas -->
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <a href="../usuarios/index" class="btn btn-register"> Registrarse </a>
+                        <?php 
+                            echo $this->Html->link("Registrarse", array("controller"=>"usuarios", "action"=>"index"), array("class"=>"btn btn-register"));
+                        ?>
+                      
                         <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
                     </div>
 
                     <!-- Contenido de la página login modal -->
-                    <form name="form-group">
-                        <div class="modal-body">
-                                <?php echo $this->Flash->render('auth'); ?>
-                                <?php echo $this->Form->create('Usuario'); ?>
+                        <div class="modal-body">aaaa
+                                <?php echo $this->Flash->render('auth'); ?>bbbb
+                                <?php echo $this->Form->create('Usuario', array("controller"=>"usuarios", "action"=>"login")); ?>cccc
                                     <fieldset>
                                         <div class="row control-group">
                                             <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -153,10 +159,10 @@ Lista de todas las preguntas -->
 
                         <div class="modal-footer">
                             <div type="button" class="btn btn-default" data-dismiss="modal">Cancelar</div>
-                            <div><?php echo $this->Form->submit('Iniciar sesion', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?></div>
+                            <div><?php echo $this->Form->submit('Iniciar sesion', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?></div>   
                         </div>
                         <?php echo $this->Form->end(); ?>
-                    </form>
+                    
                 </div>
             </div>
         </div>
