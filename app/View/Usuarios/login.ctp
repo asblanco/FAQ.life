@@ -12,3 +12,17 @@
 <?php
  echo $this->Html->link( "Add A New User",   array('action'=>'index') );
 ?>
+
+<h2>Login</h2>
+<?php
+echo $this->Form->create('Usuario', array(
+    'url' => array(
+        'controller' => 'usuarios',
+        'action' => 'login'
+    )
+));
+
+echo $this->Form->input('Usuario.username');
+echo $this->Form->input('Usuario.password');
+echo $this->Form->end('Login');
+?>

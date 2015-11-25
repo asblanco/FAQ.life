@@ -63,44 +63,32 @@ Registro de nuevos usuarios -->
                 </div>
 
                 <!-- Contenido de la página login modal -->
-                <div class="modal-body">
-                    <form name="sentMessage" id="loginForm" novalidate>
-                        <?php echo $this->Flash->render('auth'); ?>
-                        <?php echo $this->Form->create('Usuario'); ?>
-                            <fieldset>
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 floating-label-form-group controls">
-                                        <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
+                 <form name="form-group">
+                    <div class="modal-body">
+                            <?php echo $this->Flash->render('auth'); ?>
+                            <?php echo $this->Form->create('Usuario'); ?>
+                                <fieldset>
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                                            <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 floating-label-form-group controls">
-                                        <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                                            <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
+                                        </div>
                                     </div>
-                                </div>
-                            </fieldset>
-                        <?php echo $this->Form->end(); ?>
-                    </form>
-                </div>
+                                </fieldset>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn-login">Iniciar sesion</button>
-                </div>
+                    <div class="modal-footer">
+                        <div type="button" class="btn btn-default" data-dismiss="modal">Cancelar</div>
+                        <div><?php echo $this->Form->submit('Iniciar sesion', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?></div>
+                    </div>
+                    <?php echo $this->Form->end(); ?>
+                </form>
             </div>
         </div>
     </div>
     </body>
 </html>
-
-
-<!-- Prueba para saber como se muestran diferentes vistas segun si esta logueado o no -->
-<?php 
-if($this->Session->check('Auth.User')){
-    echo $this->Html->link( "Return to Dashboard",  array('action'=>'../preguntas/index') ); 
-    echo "<br>";
-    echo $this->Html->link( "Logout",   array('action'=>'logout') ); 
-}else{
-    echo $this->Html->link( "Return to Login Screen",   array('action'=>'../preguntas/index') ); 
-}
-?>

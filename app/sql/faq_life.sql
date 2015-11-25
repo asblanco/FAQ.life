@@ -11,8 +11,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema faq_life
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `faq_life` DEFAULT CHARACTER SET utf8 ;
-GRANT USAGE ON *.* TO 'faq_life'@'localhost';
-DROP USER 'faq_life'@'localhost';
 CREATE USER 'faq_life'@'localhost' identified by 'faqpass';
 GRANT ALL PRIVILEGES ON faq_life.* TO 'faq_life'@'localhost' WITH GRANT OPTION;
 USE `faq_life` ;

@@ -15,29 +15,6 @@ class UsuariosController extends AppController {
         );
     }
     
-    public function login() {
-        $this->layout = 'faq_life';
-        
-        //if already logged-in, redirect
-        if($this->Session->check('Auth.Usuario')){
-            $this->redirect(array('action' => 'index'));      
-        }
-         
-        // if we get the post information, try to authenticate
-        if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                $this->Flash->success(__('Welcome, '. $this->Auth->usuario('username')));
-                $this->redirect($this->Auth->redirectUrl());
-            } else {
-                $this->Flash->warning(__('Invalid username or password'));
-            }
-        } 
-    }
-
-    public function logout() {
-        return $this->redirect($this->Auth->logout());
-    }
-
     //El index de usuarios es el registro de un nuevo usuario
     public function index() {
         $this->layout = 'faq_life';
