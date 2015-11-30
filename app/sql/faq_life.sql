@@ -95,11 +95,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Insercion de datos en las tablas
 
 INSERT INTO `usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`) VALUES
-(1, 'manolo', '$2a$10$OwSsRUbGDPwJwJ9kT9Mz..vT/w8fEqbRNVwXfKtqq7XSQufpQgSUO', 'Manolo Pérez', 'superman.jpg', 'ES'),
-(2, 'juanito', '$2a$10$BJdR5.cvZrV9Y06qmMUNe..zJkHHM3T./WIhT1NxniKNjBBh7hWUq', 'Juan Sánchez', 'default.png', 'EN'),
-(3, 'carlitos', '$2a$10$JlS1DEAdsVXIV8ieoWTp/.zKEiObYAw9BTBNL.kAVyXENpsKK86V2', 'Carlos Méndez', 'default.png', 'ES'),
-(4, 'marco', '$2a$10$zSn4yxbFaLUv5HrBqNAUL.VBSzGdwOBuMHt4K6KF/7kDp1Z9c6Ghm', 'Marco Pérez', 'pluto_lengua.jpg', 'ES'),
-(5, 'lucas', '$2a$10$4YTabU7ZcCIBxHVXZMJd8OUIM5/ASXJGmfPjJwmB9o5TLiTt8t.Zq', 'Lucas Rodriguez', 'pluto_posando.jpg', 'EN');
+(1, 'manolo', '$2a$10$OwSsRUbGDPwJwJ9kT9Mz..vT/w8fEqbRNVwXfKtqq7XSQufpQgSUO', 'Manolo Pérez', 'img_users/superman.jpg', 'ES'),
+(2, 'juanito', '$2a$10$BJdR5.cvZrV9Y06qmMUNe..zJkHHM3T./WIhT1NxniKNjBBh7hWUq', 'Juan Sánchez', 'img_users/default.png', 'EN'),
+(3, 'carlitos', '$2a$10$JlS1DEAdsVXIV8ieoWTp/.zKEiObYAw9BTBNL.kAVyXENpsKK86V2', 'Carlos Méndez', 'img_users/default.png', 'ES'),
+(4, 'marco', '$2a$10$zSn4yxbFaLUv5HrBqNAUL.VBSzGdwOBuMHt4K6KF/7kDp1Z9c6Ghm', 'Marco Pérez', 'img_users/pluto_lengua.jpg', 'ES'),
+(5, 'lucas', '$2a$10$4YTabU7ZcCIBxHVXZMJd8OUIM5/ASXJGmfPjJwmB9o5TLiTt8t.Zq', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
 INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
 (1, 'Religion'),
