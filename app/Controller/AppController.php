@@ -36,8 +36,8 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'loginAction' => array(
-            'controller' => 'usuarios',
-            'action' => 'login'
+                'controller' => 'usuarios',
+                'action' => 'login'
             /*'plugin' => 'users'*/
             ),
             'loginRedirect' => array(
@@ -62,9 +62,9 @@ class AppController extends Controller {
     //En este caso todas las que se llamen index y view de cualquier controlador se pueden acceder
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
-    
-        
+
+
         $this->set("loggedUser", $this->Auth->user());
-       
+
     }
 }

@@ -4,5 +4,10 @@ class Pregunta extends AppModel {
         'Categoria', 'Usuario'
     );
     public $hasMany = 'Respuesta';
+
+    public $validate = array(
+        'titulo' => array('rule' => 'notBlank'),
+        'cuerpo' => array('rule' => 'notBlank')
+    );
 }
 ?>

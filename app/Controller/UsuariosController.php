@@ -4,25 +4,23 @@ App::uses('AuthComponent', 'Controller/Component');
 
 class UsuariosController extends AppController {
     public $helpers = array('Html', 'Form');
-    
+
      public function beforeFilter() {
          $this->Auth->allow('index', 'view');
-         
-        
     }
-    
+
     //El index de usuarios es el registro de un nuevo usuario
     public function index() {
         $this->layout = 'faq_life';
         if ($this->request->is('post')) {
-                 
+
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
                 $this->Flash->success(__('The user has been created'));
                 $this->redirect(array('action' => '../preguntas/index'));
             } else {
                 $this->Flash->set(__('The user could not be created. Please, try again.'));
-            }   
+            }
         }
     }
 
@@ -45,9 +43,7 @@ class UsuariosController extends AppController {
                 $this->Flash->success(__('The user has been saved'));
                 return $this->redirect(array('action' => '../usuarios/index'));
             }
-            $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         } else {
             $this->request->data = $this->Usuario->findById($id);
             unset($this->request->data['Usuario']['password']);
@@ -68,31 +64,35 @@ class UsuariosController extends AppController {
         $this->Flash->error(__('User was not deleted'));
         return $this->redirect(array('action' => 'index'));
     }
-    
+
     public function login() {
-        
+        // print_r($this->Auth->redirectUrl()); die();
         $this->layout = 'faq_life';
         //if already logged-in, redirect
         if($this->Session->check('Auth.Usuario')){
-            $this->redirect(array('action' => 'index'));      
+            $this->redirect(array('action' => 'index'));
         }
-         
         // if we get the post information, try to authenticate
         if ($this->request->is('post')) {
-            print_r($this->request->data);
-            
+            // print_r($this->request->data);
             if ($this->Auth->login()) {
                 $this->Flash->success(__('Welcome, '. $this->Auth->user('username')));
                 $this->redirect($this->Auth->redirectUrl());
+
+                // $this->redirect($this->here);
             } else {
                 $this->Flash->warning(__('Invalid username or password'));
+                // $this->Flash->error("fuera de aqui!");
+                // $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
             }
-        } 
+        }
         $this->Flash->error("fuera de aqui!");
         $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
     }
- public function logout() {
-        return $this->redirect($this->Auth->logout());
+
+     public function logout() {
+         $this->Auth->logout();
+         $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
     }
 
 }

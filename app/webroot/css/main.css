@@ -78,6 +78,7 @@ h1 {
     cursor: pointer;
     border: 1px solid transparent;
     border-radius: 4px;
+    float: right;
 }
 
 .btn-login:hover {
@@ -100,6 +101,10 @@ h1 {
 .btn-register:hover {
     background-color: #842d85;
     color: white;
+}
+
+.btn-cancel {
+    float: left;
 }
 
 div#navbar-collapse1 {
@@ -209,7 +214,7 @@ textarea { resize: vertical; }
 /*Paginas INDEX & PREGUNTA*/
 hr#separador {
     border-color: grey;
-    border-width: 3px; 
+    border-width: 3px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -225,6 +230,7 @@ hr#separador {
 /*PAGINA PREGUNTA*/
 #container-imagen {
     height: 10em;
+    margin: 1em;
 }
 
 #container-imagen img {
@@ -233,7 +239,7 @@ hr#separador {
     /*  Center image  */
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 #caja-pregunta {
@@ -258,7 +264,7 @@ input::-moz-placeholder {
    color: #7F7F7F !important;
 }
 
-input:-ms-input-placeholder {  
+input:-ms-input-placeholder {
    color: #7F7F7F !important;
 }
 
@@ -274,6 +280,6 @@ textarea::-moz-placeholder {
    color: #7F7F7F !important;
 }
 
-textarea:-ms-input-placeholder {  
+textarea:-ms-input-placeholder {
    color: #7F7F7F !important;
 }

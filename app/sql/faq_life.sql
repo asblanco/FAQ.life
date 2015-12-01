@@ -102,15 +102,15 @@ INSERT INTO `usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`)
 (5, 'lucas', '$2a$10$4YTabU7ZcCIBxHVXZMJd8OUIM5/ASXJGmfPjJwmB9o5TLiTt8t.Zq', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
 INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
-(1, 'Religion'),
-(2, 'Electricidad'),
-(3, 'Noticias');
+(0, 'Religion'),
+(1, 'Electricidad'),
+(2, 'Noticias');
 
 INSERT INTO `preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `usuario_id`, `categoria_id`) VALUES
-(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 1, 1),
-(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 3, 2),
+(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 1, 0),
+(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 3, 1),
 (null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
-El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 3, 3);
+El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 3, 2);
 
 INSERT INTO `respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `usuario_id`, `pregunta_id`) VALUES
 (null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 1, 0, 4, 1),

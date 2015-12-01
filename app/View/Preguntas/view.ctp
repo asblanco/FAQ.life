@@ -3,34 +3,6 @@ Vista en detalle de una pregunta -->
 <!DOCTYPE html>
 <html lang="en">
     <body>
-        <!-- Barra de navegacion -->
-        <nav class="head navigation-text col-xs-12 col-sm-12 col-md-12">
-          <!-- div con el titulo y el icono en modo movil -->
-          <div class="col-md-2 navbar-header page-scroll">
-              <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
-                  <span class="text-menu-toggle osSansFont-menu">Menu</span>
-              </button>
-              <?php 
-                echo $this->Html->link("FAQ.life", array("controller"=>"preguntas", "action"=>"index"), array("class"=>"navbar-logo pacificoFont-menu"));
-              ?>
-          </div>
-          <!-- div con la lista de navegacion -->
-          <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
-              <ul class="nav navbar-nav navbar-right osSansFont">
-                  <li> <!-- Search box --> 
-                    <form class="navbar-form" role="search">
-                        <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="Buscar"/>
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        </div>
-                    </form>
-                  </li>
-                  <li><a href="categorias.html">Categorias</a></li>
-                  <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
-              </ul>
-          </div>
-        </nav>
-        
         <!-- Contenido Principal -->
         <div class="col-xs-12 col-sm-12 col-md-12">
             <br>
@@ -38,7 +10,7 @@ Vista en detalle de una pregunta -->
             <div class="row">
                 <div class="col-sm-1 col-md-1"></div>
                 <div class="col-xs-12 col-sm-10 col-md-10"> <!-- nested grid - question -->
-                    <div class="row">                          
+                    <div class="row">
                         <div class="col-xs-12 col-sm-3 col-md-2">
                             <!-- Profile picture -->
                             <div id="container-imagen">
@@ -80,32 +52,35 @@ Vista en detalle de una pregunta -->
                     <hr class="small separatorQuestion">
                 </div>
             </div>
-            
+
            <!-- RESPONDER -->
             <?php if($this->Session->check('Auth.User')){ ?>
-            <form>
+            <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"responder")); ?>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="col-xs-12 col-sm-2 col-md-2"></div>
                     <div class="col-xs-12 col-sm-8 col-md-8" id="caja-pregunta">
-                        <textarea class="form-control respuestaCuerpo opSansLiFont" rows="4" placeholder="Respuesta"></textarea>
-                        <button type="submit" class="btn-login button-preguntar">Responder!</button>
+                        <!-- <textarea class="form-control respuestaCuerpo opSansLiFont" rows="4" placeholder="Respuesta"></textarea> -->
+                        <?php echo $this->Form->textarea('cuerpo_res', array('class' => 'form-control respuestaCuerpo opSansLiFont', 'rows' => 4, 'placeholder' => 'Respuesta')); ?>
+                        <!-- <button type="submit" class="btn-login button-preguntar">Responder!</button> -->
+                        <?php echo $this->Form->input('id',array('value' => $pregunta['Pregunta']['id'], 'hiden' => true)); ?>
+                        <?php echo $this->Form->submit('Responder!', array('class' => 'btn-login button-preguntar')); ?>
                     </div>
                     <div class="col-xs-12 col-sm-2 col-md-2"></div>
                 </div>
-            </form>
+            <?php echo $this->Form->end(); ?>
             <?php } ?>
-            
+
             <!-- ANSWERS -->
             <?php if(empty($pregunta['Respuesta'])){ ?>
              <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2">
                 <p class="opSansReFont">Esta pregunta todavia no tiene respuestas. Se el primero!</p>
             </div>
             <?php } ?>
-            
+
             <!-- Acceder a las respuestas de la preguntas -->
             <?php
             $cont = -1;
-            foreach ($pregunta['Respuesta'] as $respuesta): 
+            foreach ($pregunta['Respuesta'] as $respuesta):
              $cont++; ?>
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
@@ -114,13 +89,13 @@ Vista en detalle de una pregunta -->
                     <div class="row">
                         <div class="col-xs-12 col-sm-3 col-md-2">
                             <!-- Profile picture -->
-                            <div class="col-xs-12 col-sm-12 col-md-12" id="container-imagen">
-                                <?php 
+                            <div id="container-imagen"> <!--  class="col-xs-12 col-sm-12 col-md-12"  -->
+                                <?php
                                 //Recorre los usuarios que respondieron
                                 foreach($usuarios as $clave => $usu){
                                     //Si cont coincide con la clave, es la foto del usuario actual
                                     if($clave == $cont){
-                                       echo $this->Html->image($usu['Usuario']['foto'], array('class' => 'centrado', 'iconos')); 
+                                       echo $this->Html->image($usu['Usuario']['foto'], array('class' => 'centrado', 'iconos'));
                                     }
                                 }
                                 ?>
@@ -143,12 +118,12 @@ Vista en detalle de una pregunta -->
                         </div>
                          <!-- Content -->
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <?php 
+                            <?php
                                 //Recorre los usuarios que respondieron
                                 foreach($usuarios as $clave => $usu){
                                     //Si cont coincide con la clave, coge el nombre del usuario actual
                                     if($clave == $cont){ ?>
-                                        <h3 class="opSansBFont"><?php echo $usu['Usuario']['nombre']; ?></h3>  
+                                        <h3 class="opSansBFont"><?php echo $usu['Usuario']['nombre']; ?></h3>
                                         <p class="opSansReFont"><?php echo $respuesta['cuerpo_res']; ?><p>
                                         <p class="opSansItFont">Respondido por <a href="">
                                             <?php echo $usu['Usuario']['username']; ?>
@@ -160,49 +135,14 @@ Vista en detalle de una pregunta -->
                             <hr class="small" id="separador">
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <?php endforeach; ?>
-            
+
         </div>
-        
+
         <!-- Login Modal Page -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a href="../../usuarios/index" class="btn btn-register"> Registrarse </a>
-                        <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
-                    </div>
 
-                    <!-- Contenido de la página login modal -->
-                    <form name="form-group">
-                        <div class="modal-body">
-                                <?php echo $this->Flash->render('auth'); ?>
-                                <?php echo $this->Form->create('Usuario'); ?>
-                                    <fieldset>
-                                        <div class="row control-group">
-                                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                                <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
-                                            </div>
-                                        </div>
-                                        <div class="row control-group">
-                                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                                <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                        </div>
-
-                        <div class="modal-footer">
-                            <div type="button" class="btn btn-default" data-dismiss="modal">Cancelar</div>
-                            <div><?php echo $this->Form->submit('Iniciar sesion', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?></div>
-                        </div>
-                        <?php echo $this->Form->end(); ?>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </body>  
+    </body>
 </html>

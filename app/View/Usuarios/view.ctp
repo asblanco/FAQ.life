@@ -10,14 +10,14 @@ Se muestra el perfil del usuario -->
               <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
                   <span class="text-menu-toggle osSansFont-menu">Menu</span>
               </button>
-              <?php 
+              <?php
                 echo $this->Html->link("FAQ.life", array("controller"=>"preguntas", "action"=>"index"), array("class"=>"navbar-logo pacificoFont-menu"));
               ?>
           </div>
           <!-- div con la lista de navegacion -->
           <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
               <ul class="nav navbar-nav navbar-right osSansFont">
-                  <li> <!-- Search box --> 
+                  <li> <!-- Search box -->
                     <form class="navbar-form" role="search">
                         <div class="form-group has-feedback">
                             <input type="text" class="form-control" placeholder="Buscar"/>
@@ -30,48 +30,10 @@ Se muestra el perfil del usuario -->
               </ul>
           </div>
         </nav>
-        
+
         <!-- Contenido Principal -->
         <div class="col-xs-12 col-sm-12 col-md-12">
-            
-        </div>
-        
-        <!-- Login Modal Page -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a href="../usuarios/index" class="btn btn-register"> Registrarse </a>
-                        <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
-                    </div>
 
-                    <!-- Contenido de la página login modal -->
-                    <form name="form-group">
-                        <div class="modal-body">
-                                <?php echo $this->Flash->render('auth'); ?>
-                                <?php echo $this->Form->create('Usuario'); ?>
-                                    <fieldset>
-                                        <div class="row control-group">
-                                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                                <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
-                                            </div>
-                                        </div>
-                                        <div class="row control-group">
-                                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                                <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                        </div>
-
-                        <div class="modal-footer">
-                            <div type="button" class="btn btn-default" data-dismiss="modal">Cancelar</div>
-                            <div><?php echo $this->Form->submit('Iniciar sesion', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?></div>
-                        </div>
-                        <?php echo $this->Form->end(); ?>
-                    </form>
-                </div>
-            </div>
         </div>
-    </body>  
+    </body>
 </html>
