@@ -42,7 +42,8 @@ Vista en detalle de una pregunta -->
                                 <div class="centrado">
                                     <!-- Imagen formulario post para incrementar los votos positivos -->
                                     <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarNegativo"));  ?>
-                                    <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>      
+                                    <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
+				    
                                     <?php echo $this->Form->end('/img/negativo.png'); ?>
                                 </div>
                                 <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
@@ -112,7 +113,8 @@ Vista en detalle de una pregunta -->
                                     <div class="centrado opSansReFont">
                                         <!-- Imagen formulario post para incrementar los votos positivos -->
                                         <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"votarPositivo"));  ?>
-                                        <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>      
+                                        <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>
+					<?php echo $this->Form->hidden('idPregunta',array('value' => $pregunta['Pregunta']['id'])); ?>
                                         <?php echo $this->Form->end('/img/positivo.png'); ?>
                                     </div>
                                     <div class="centrado opSansReFont"><?php echo $respuesta['positivos']; ?></div>
@@ -121,7 +123,8 @@ Vista en detalle de una pregunta -->
                                     <div class="centrado">
                                         <!-- Imagen formulario post para incrementar los votos positivos -->
                                         <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"votarNegativo"));  ?>
-                                        <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>      
+                                        <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>
+				        <?php echo $this->Form->hidden('idPregunta',array('value' => $pregunta['Pregunta']['id'])); ?>
                                         <?php echo $this->Form->end('/img/negativo.png'); ?>
                                     </div>
                                     <div class="centrado opSansReFont"><?php echo $respuesta['negativos']; ?></div>

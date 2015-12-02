@@ -35,6 +35,7 @@ class RespuestasController extends AppController {
             //Actualizar el contador de numero de respuestas de la pregunta
             $id = $this->request->data['Respuesta']['id'];
             $respuesta = $this->Respuesta->findById($id);
+            $idPregunta = $respuesta['Pregunta']['id'];
             $numPositivos = $respuesta['Respuesta']['positivos'];
             $numPositivos += 1;
             
@@ -42,7 +43,7 @@ class RespuestasController extends AppController {
                 array('Respuesta.positivos' => "'$numPositivos'"),
                 array('Respuesta.id' => "$id")
             );
-            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $id));
+            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $idPregunta));
         }
     }
     
@@ -52,6 +53,7 @@ class RespuestasController extends AppController {
             //Actualizar el contador de numero de respuestas de la pregunta
             $id = $this->request->data['Respuesta']['id'];
             $respuesta = $this->Respuesta->findById($id);
+            $idPregunta = $respuesta['Pregunta']['id'];
             $numPositivos = $respuesta['Respuesta']['negativos'];
             $numPositivos += 1;
             
@@ -59,7 +61,7 @@ class RespuestasController extends AppController {
                 array('Respuesta.negativos' => "'$numPositivos'"),
                 array('Respuesta.id' => "$id")
             );
-            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $id));
+            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $idPregunta));
         }
     }
 }
