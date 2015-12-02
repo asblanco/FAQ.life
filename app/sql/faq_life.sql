@@ -95,22 +95,22 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Insercion de datos en las tablas
 
 INSERT INTO `usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`) VALUES
-(1, 'manolo', '$2a$10$OwSsRUbGDPwJwJ9kT9Mz..vT/w8fEqbRNVwXfKtqq7XSQufpQgSUO', 'Manolo Pérez', 'img_users/superman.jpg', 'ES'),
-(2, 'juanito', '$2a$10$BJdR5.cvZrV9Y06qmMUNe..zJkHHM3T./WIhT1NxniKNjBBh7hWUq', 'Juan Sánchez', 'img_users/default.png', 'EN'),
-(3, 'carlitos', '$2a$10$JlS1DEAdsVXIV8ieoWTp/.zKEiObYAw9BTBNL.kAVyXENpsKK86V2', 'Carlos Méndez', 'img_users/default.png', 'ES'),
-(4, 'marco', '$2a$10$zSn4yxbFaLUv5HrBqNAUL.VBSzGdwOBuMHt4K6KF/7kDp1Z9c6Ghm', 'Marco Pérez', 'img_users/pluto_lengua.jpg', 'ES'),
-(5, 'lucas', '$2a$10$4YTabU7ZcCIBxHVXZMJd8OUIM5/ASXJGmfPjJwmB9o5TLiTt8t.Zq', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
+(null, 'manolo', '$2a$10$OwSsRUbGDPwJwJ9kT9Mz..vT/w8fEqbRNVwXfKtqq7XSQufpQgSUO', 'Manolo Pérez', 'img_users/superman.jpg', 'ES'),
+(null, 'juanito', '$2a$10$BJdR5.cvZrV9Y06qmMUNe..zJkHHM3T./WIhT1NxniKNjBBh7hWUq', 'Juan Sánchez', 'img_users/default.png', 'EN'),
+(null, 'carlitos', '$2a$10$JlS1DEAdsVXIV8ieoWTp/.zKEiObYAw9BTBNL.kAVyXENpsKK86V2', 'Carlos Méndez', 'img_users/default.png', 'ES'),
+(null, 'marco', '$2a$10$zSn4yxbFaLUv5HrBqNAUL.VBSzGdwOBuMHt4K6KF/7kDp1Z9c6Ghm', 'Marco Pérez', 'img_users/pluto_lengua.jpg', 'ES'),
+(null, 'lucas', '$2a$10$4YTabU7ZcCIBxHVXZMJd8OUIM5/ASXJGmfPjJwmB9o5TLiTt8t.Zq', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'EN');
 
 INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
-(0, 'Religion'),
-(1, 'Electricidad'),
-(2, 'Noticias');
+(null, 'Religion'),
+(null, 'Electricidad'),
+(null, 'Noticias');
 
 INSERT INTO `preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `usuario_id`, `categoria_id`) VALUES
-(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 1, 0),
-(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 3, 1),
+(null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 16, 2, 16, 15, 1, 1),
+(null, '¿A dónde va la luz cuando le doy al interruptor?', 'Simpre que le doy al interruptor para apagar la luz me pregunto a donde va, porque cuando le vuelvo a dar se vuelve a encender inmediatamente. Se queda esperando?', '2015-10-18 11:30:00', 124, 65, 32, 12, 3, 2),
 (null, 'Carlinhos Brown perseguirá a los morosos tocando el tambor', 'Tras expirar su contrato con el correccional de Guantánamo, el cantante y percusionista Carlinhos Brown ha creado la empresa “Pe pe pe pepepe pe pe SL”, que ofrece un servicio de cobro de morosos.
-El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 3, 2);
+El artista brasileño perseguirá a los deudores bailando al ritmo de una samba y tocando el tambor constantemente, una actividad que el cerebro humano no puede soportar más de dos horas seguidas, según los expertos.', '2015-10-19 22:41:00', 218, 48, 96, 3, 3, 3);
 
 INSERT INTO `respuestas` (`id`, `cuerpo_res`, `fecha_res`, `positivos`, `negativos`, `usuario_id`, `pregunta_id`) VALUES
 (null, 'yo siempre dije q satanas era un buen loco incomprendido por esta sociedad posmoderna', '2015-10-18 11:30:00', 1, 0, 4, 1),
