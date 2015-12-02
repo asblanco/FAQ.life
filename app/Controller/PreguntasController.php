@@ -34,7 +34,6 @@ class PreguntasController extends AppController {
 
     public function view($id = null) {
         $this->layout = 'faq_life';
-
         if (!$id) {
             throw new NotFoundException(__('Invalid pregunta'));
         }
@@ -43,7 +42,17 @@ class PreguntasController extends AppController {
         if (!$pregunta) {
             throw new NotFoundException(__('Invalid pregunta'));
         }
-        // print_r($pregunta);
+        
+        
+        //Aumentar el contador de vistos de la pregunta
+        $numVistos = $pregunta['Pregunta']['visto'];
+        $numVistos += 1;
+        $this->Pregunta->updateAll(
+            array('Pregunta.visto' => "'$numVistos'"),
+            array('Pregunta.id' => "$id")
+        );
+        
+        // print_r($pregunta); die();
         $this->set('pregunta', $pregunta);
 
         //Array con las fotos de todos los usuarios que respondieron en el mismo orden que las respuestas
