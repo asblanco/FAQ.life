@@ -55,5 +55,37 @@ class PreguntasController extends AppController {
         $this->set('usuarios', $usuarios);
     }
 
+    public function buscar() {
+        $this->layout = 'faq_life';
+        $busquedas = array();
+        if (!empty($this->request->query)) {
+            $query = $this->request->query['search'];
+            $conditionsPregunta = array(
+                'conditions' => array(
+                    'or' => array(
+                        'Pregunta.titulo LIKE' => "%".$query."%",
+                        'Pregunta.cuerpo LIKE' => "%$query%",
+                        // 'Respuesta.cuerpo_res LIKE' => "%$query%",
+                        'Usuario.username LIKE' => "%$query%",
+                        'Usuario.nombre LIKE' => "%$query%",
+                        'Categoria.nombre_categoria LIKE' => "%$query%"
+                    )
+                )
+            );
+            // $conditionsRespuesta = array(
+            //     'conditions' => array(
+            //         'or' => array(
+            //             'Respuesta.cuerpo_res LIKE' => "%$query%"
+            //         )
+            //     )
+            // );
+            $preguntas = ClassRegistry::init('Pregunta')->find('all', $conditionsPregunta);
+            // $respuestas = ClassRegistry::init('Respuesta')->find('all', $conditionsRespuesta);
+            // $busquedas = array_merge($preguntas,$respuestas);
+        }
+        $this->set('busquedas', $preguntas);
+        // $this->set('busquedas', $busquedas);
+    }
+
 }
 ?>

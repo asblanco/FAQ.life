@@ -39,7 +39,8 @@
                             <li><a><?php if($loggedUser['username']) echo "Hola, ".$loggedUser["username"]." :)"; ?></a></li>
                             <li> <!-- Search box -->
                                 <!-- <form class="navbar-form" role="search"> -->
-                                <?php echo $this->Form->create('Buscar', array("controller"=>"preguntas", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
+
+                                <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"buscars", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
                                     <div class="form-group has-feedback">
                                         <!-- <input type="text" class="form-control" placeholder="Buscar"/> -->
                                         <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Buscar', 'label' => false));?>
@@ -83,7 +84,7 @@
                       <li><a><?php if($loggedUser['username']) echo "Hola, ".$loggedUser["username"]." :)"; ?></a></li>
                       <li> <!-- Search box -->
                           <!-- <form class="navbar-form" role="search"> -->
-                          <?php echo $this->Form->create('Buscar', array("controller"=>"preguntas", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
+                          <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"buscars", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
                               <div class="form-group has-feedback">
                                   <!-- <input type="text" class="form-control" placeholder="Buscar"/> -->
                                   <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Buscar', 'label' => false));?>

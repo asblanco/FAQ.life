@@ -134,8 +134,14 @@ h1 {
     text-align: center;
 }
 
+.pcolor {
+    color: #842d85 !important;
+}
+
 div#contador {
     padding-top: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .preview-pregunta {

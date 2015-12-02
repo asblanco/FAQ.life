@@ -61,10 +61,8 @@ class AppController extends Controller {
     //En la funcion beforeFilter se indican las paginas que no requieren login
     //En este caso todas las que se llamen index y view de cualquier controlador se pueden acceder
     public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
-
-
+        $this->Auth->allow('index', 'view', 'buscar');
         $this->set("loggedUser", $this->Auth->user());
-
     }
+
 }
