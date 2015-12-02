@@ -100,7 +100,16 @@ class PreguntasController extends AppController {
                 array('Pregunta.positivos' => "'$numPositivos'"),
                 array('Pregunta.id' => "$id")
             );
-            $this->redirect(array('action' => 'index'));
+
+            /*Quitar el comiendo de la url del metodo referer para 
+              poder comparar solo la url como si fuera $this->here*/
+            $here = str_replace("http://localhost","",$this->request->referer());
+            /*Condicion para redirigir a la pagina en la que se vote positivo*/
+            if ($here == '/FAQ.life/'){
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->redirect(array('action' => 'view', $id));                
+            }
         }
     }
     
@@ -117,7 +126,16 @@ class PreguntasController extends AppController {
                 array('Pregunta.negativos' => "'$numPositivos'"),
                 array('Pregunta.id' => "$id")
             );
-            $this->redirect(array('action' => 'index'));
+
+            /*Quitar el comiendo de la url del metodo referer para 
+              poder comparar solo la url como si fuera $this->here*/
+            $here = str_replace("http://localhost","",$this->request->referer());
+            /*Condicion para redirigir a la pagina en la que se vote positivo*/
+            if ($here == '/FAQ.life/'){
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->redirect(array('action' => 'view', $id));                
+            }
         }
     }
 }
