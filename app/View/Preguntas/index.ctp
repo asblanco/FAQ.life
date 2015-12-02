@@ -10,20 +10,9 @@ Lista de todas las preguntas -->
             <div class="col-xs-12 col-sm-2 col-md-2"></div>
             <div class="col-xs-12 col-sm-8 col-md-8" id="caja-pregunta">
                 <div class="col-xs-8 col-sm-8 col-md-8 cajaTituloCategoria">
-                    <!-- <input type="text" class="form-control preguntaTitulo opSansBFont" placeholder="Titulo"> -->
                     <?php echo $this->Form->input('titulo', array('type' => 'text', 'class' => 'form-control preguntaTitulo opSansBFont', 'label' => false ,'placeholder' => 'Titulo'));?>
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4 cajaTituloCategoria">
-                    <!-- <select class="form-control preguntaCategoria cajaTituloCategoria opSansLiFont">
-                        <option disabled selected>-Categoria-</option>
-                        <option>Alimentación</option>
-                        <option>Coches</option>
-                        <option>Electricidad</option>
-                        <option>Hogar</option>
-                        <option>Noticias</option>
-                        <option>Religión</option>
-                        <option>Programación</option>
-                    </select> -->
                     <?php
                         $cat = '';
                         foreach ($categorias as $categoria):
@@ -33,7 +22,6 @@ Lista de todas las preguntas -->
                             'label' => false, 'options' => array($cat), 'empty' => '---Categoría---' ));
                     ?>
                 </div>
-                <!-- <textarea class="form-control preguntaCuerpo opSansLiFont" rows="4" placeholder="Explicación"></textarea> -->
                 <?php echo $this->Form->textarea('cuerpo', array('class' => 'form-control preguntaCuerpo opSansLiFont', 'rows' => 4, 'placeholder' => 'Explicación')); ?>
                 <!-- <button type="submit" class="btn-login button-preguntar">Preguntar!</button> -->
                 <?php echo $this->Form->submit('Preguntar!', array('class' => 'btn-login button-preguntar')); ?>
@@ -62,14 +50,20 @@ Lista de todas las preguntas -->
                     <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['respuestas']; ?></div>
                 </div>
                 <div class="col-xs-3 col-sm-6 col-md-6">
-                    <div class="centrado opSansReFont">
-                        <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
+                    <div class="centrado">
+                        <!-- Imagen formulario post para incrementar los votos positivos -->
+                        <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarPositivo"));  ?>
+                        <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>      
+                        <?php echo $this->Form->end('/img/positivo.png'); ?>
                     </div>
                     <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
                 </div>
                 <div class="col-xs-3 col-sm-6 col-md-6">
                     <div class="centrado">
-                        <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')); ?>
+                        <!-- Imagen formulario post para incrementar los votos positivos -->
+                        <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarNegativo"));  ?>
+                        <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>      
+                        <?php echo $this->Form->end('/img/negativo.png'); ?>
                     </div>
                     <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
                 </div>

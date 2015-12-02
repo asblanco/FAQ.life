@@ -31,13 +31,19 @@ Vista en detalle de una pregunta -->
                             </div>
                             <div class="col-xs-3 col-sm-6 col-md-6">
                                 <div class="centrado opSansReFont">
-                                    <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos')) ?>
+                                    <!-- Imagen formulario post para incrementar los votos positivos -->
+                                    <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarPositivo"));  ?>
+                                    <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>      
+                                    <?php echo $this->Form->end('/img/positivo.png'); ?>
                                 </div>
                                 <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
                             </div>
                             <div class="col-xs-3 col-sm-6 col-md-6">
                                 <div class="centrado">
-                                    <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')) ?>
+                                    <!-- Imagen formulario post para incrementar los votos positivos -->
+                                    <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarNegativo"));  ?>
+                                    <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>      
+                                    <?php echo $this->Form->end('/img/negativo.png'); ?>
                                 </div>
                                 <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
                             </div>
@@ -62,7 +68,7 @@ Vista en detalle de una pregunta -->
                         <!-- <textarea class="form-control respuestaCuerpo opSansLiFont" rows="4" placeholder="Respuesta"></textarea> -->
                         <?php echo $this->Form->textarea('cuerpo_res', array('class' => 'form-control respuestaCuerpo opSansLiFont', 'rows' => 4, 'placeholder' => 'Respuesta')); ?>
                         <!-- <button type="submit" class="btn-login button-preguntar">Responder!</button> -->
-                        <?php echo $this->Form->input('id',array('value' => $pregunta['Pregunta']['id'], 'hiden' => true)); ?>
+                        <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
                         <?php echo $this->Form->submit('Responder!', array('class' => 'btn-login button-preguntar')); ?>
                     </div>
                     <div class="col-xs-12 col-sm-2 col-md-2"></div>
@@ -104,13 +110,19 @@ Vista en detalle de una pregunta -->
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="centrado opSansReFont">
-                                        <?php echo $this->Html->image('positivo.png', array('class' => 'centrado', 'iconos'));?>
+                                        <!-- Imagen formulario post para incrementar los votos positivos -->
+                                        <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"votarPositivo"));  ?>
+                                        <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>      
+                                        <?php echo $this->Form->end('/img/positivo.png'); ?>
                                     </div>
                                     <div class="centrado opSansReFont"><?php echo $respuesta['positivos']; ?></div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="centrado">
-                                        <?php echo $this->Html->image('negativo.png', array('class' => 'centrado', 'iconos')); ?>
+                                        <!-- Imagen formulario post para incrementar los votos positivos -->
+                                        <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"votarNegativo"));  ?>
+                                        <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>      
+                                        <?php echo $this->Form->end('/img/negativo.png'); ?>
                                     </div>
                                     <div class="centrado opSansReFont"><?php echo $respuesta['negativos']; ?></div>
                                 </div>
@@ -141,8 +153,5 @@ Vista en detalle de una pregunta -->
             <?php endforeach; ?>
 
         </div>
-
-        <!-- Login Modal Page -->
-
     </body>
 </html>

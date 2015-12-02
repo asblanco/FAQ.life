@@ -4,6 +4,7 @@ class RespuestasController extends AppController {
 
     public function responder() {
         if ($this->request->is('post')) {
+            //print_r($this->request->data); die();
             $this->request->data['Respuesta']['fecha_res'] = date('Y-m-d H:i:s');
             $this->request->data['Respuesta']['usuario_id'] = $this->Auth->user('id');
             $idPregunta = $this->request->data['Respuesta']['id'];
@@ -25,6 +26,40 @@ class RespuestasController extends AppController {
                 $this->Flash->success('Your answer has been saved.');
                 $this->redirect(array('controller' => 'preguntas', 'action' => 'view/', $idPregunta));
             }
+        }
+    }
+    
+        public function votarPositivo (){
+        //$this->autoRender = false;
+        if ($this->request->is('post')) {
+            //Actualizar el contador de numero de respuestas de la pregunta
+            $id = $this->request->data['Respuesta']['id'];
+            $respuesta = $this->Respuesta->findById($id);
+            $numPositivos = $respuesta['Respuesta']['positivos'];
+            $numPositivos += 1;
+            
+            $this->Respuesta->updateAll(
+                array('Respuesta.positivos' => "'$numPositivos'"),
+                array('Respuesta.id' => "$id")
+            );
+            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $id));
+        }
+    }
+    
+    public function votarNegativo (){
+        //$this->autoRender = false;
+        if ($this->request->is('post')) {
+            //Actualizar el contador de numero de respuestas de la pregunta
+            $id = $this->request->data['Respuesta']['id'];
+            $respuesta = $this->Respuesta->findById($id);
+            $numPositivos = $respuesta['Respuesta']['negativos'];
+            $numPositivos += 1;
+            
+            $this->Respuesta->updateAll(
+                array('Respuesta.negativos' => "'$numPositivos'"),
+                array('Respuesta.id' => "$id")
+            );
+            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $id));
         }
     }
 }

@@ -1,7 +1,8 @@
 <?php
 class PreguntasController extends AppController {
     public $helpers = array('Html', 'Form', 'Flash');
-
+    public $components = array('RequestHandler'); //para ajax
+    
     /*funcion index que se corresponde con la vista index.ctp
     La vista index.ctp podra acceder a la variable preguntas, que contiene todas las filas de la tabla
     Pregunta*/
@@ -21,7 +22,7 @@ class PreguntasController extends AppController {
                 $this->request->data['Pregunta']['usuario_id'] = $this->Auth->user('id');
                 $this->request->data['Pregunta']['fecha'] = date('Y-m-d H:i:s');
                 if ($this->Pregunta->save($this->request->data)) {
-                    $this->Flash->success('Your post has been saved.');
+                    $this->Flash->success(__('Your post has been saved.'));
                     $this->redirect(array('action' => 'index'));
                 }
             }
@@ -35,12 +36,12 @@ class PreguntasController extends AppController {
     public function view($id = null) {
         $this->layout = 'faq_life';
         if (!$id) {
-            throw new NotFoundException(__('Invalid pregunta'));
+            throw new NotFoundException(__('Invalid question'));
         }
 
         $pregunta = $this->Pregunta->findById($id);
         if (!$pregunta) {
-            throw new NotFoundException(__('Invalid pregunta'));
+            throw new NotFoundException(__('Invalid question'));
         }
         
         
@@ -72,29 +73,52 @@ class PreguntasController extends AppController {
             $conditionsPregunta = array(
                 'conditions' => array(
                     'or' => array(
-                        'Pregunta.titulo LIKE' => "%".$query."%",
+                        'Pregunta.titulo LIKE' => "%$query%",
                         'Pregunta.cuerpo LIKE' => "%$query%",
-                        // 'Respuesta.cuerpo_res LIKE' => "%$query%",
                         'Usuario.username LIKE' => "%$query%",
                         'Usuario.nombre LIKE' => "%$query%",
                         'Categoria.nombre_categoria LIKE' => "%$query%"
                     )
                 )
             );
-            // $conditionsRespuesta = array(
-            //     'conditions' => array(
-            //         'or' => array(
-            //             'Respuesta.cuerpo_res LIKE' => "%$query%"
-            //         )
-            //     )
-            // );
-            $preguntas = ClassRegistry::init('Pregunta')->find('all', $conditionsPregunta);
-            // $respuestas = ClassRegistry::init('Respuesta')->find('all', $conditionsRespuesta);
-            // $busquedas = array_merge($preguntas,$respuestas);
+            
+            $preguntas = $this->Pregunta->find('all', $conditionsPregunta);
         }
         $this->set('busquedas', $preguntas);
-        // $this->set('busquedas', $busquedas);
     }
-
+    
+    public function votarPositivo (){
+        //$this->autoRender = false;
+        if ($this->request->is('post')) {
+            //Actualizar el contador de numero de respuestas de la pregunta
+            $id = $this->request->data['Pregunta']['id'];
+            $pregunta = $this->Pregunta->findById($id);
+            $numPositivos = $pregunta['Pregunta']['positivos'];
+            $numPositivos += 1;
+            
+            $this->Pregunta->updateAll(
+                array('Pregunta.positivos' => "'$numPositivos'"),
+                array('Pregunta.id' => "$id")
+            );
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+    
+    public function votarNegativo (){
+        //$this->autoRender = false;
+        if ($this->request->is('post')) {
+            //Actualizar el contador de numero de respuestas de la pregunta
+            $id = $this->request->data['Pregunta']['id'];
+            $pregunta = $this->Pregunta->findById($id);
+            $numPositivos = $pregunta['Pregunta']['negativos'];
+            $numPositivos += 1;
+            
+            $this->Pregunta->updateAll(
+                array('Pregunta.negativos' => "'$numPositivos'"),
+                array('Pregunta.id' => "$id")
+            );
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 }
 ?>
