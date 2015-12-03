@@ -4,34 +4,6 @@ Registro de nuevos usuarios -->
 <!DOCTYPE html>
 <html lang="en">
     <body>
-      <!-- Barra de navegacion -->
-      <nav class="head navigation-text col-xs-12 col-sm-12 col-md-12">
-          <!-- div con el titulo y el icono en modo movil -->
-          <div class="col-md-2 navbar-header page-scroll">
-              <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
-                  <span class="text-menu-toggle osSansFont-menu">Menu</span>
-              </button>
-              <?php
-                echo $this->Html->link("FAQ.life", array("controller"=>"preguntas", "action"=>"index"), array("class"=>"navbar-logo pacificoFont-menu"));
-            ?>
-          </div>
-          <!-- div con la lista de navegacion -->
-          <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
-              <ul class="nav navbar-nav navbar-right osSansFont">
-                  <li> <!-- Search box -->
-                    <form class="navbar-form" role="search">
-                        <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="Buscar"/>
-                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        </div>
-                    </form>
-                  </li>
-                  <li><a href="categorias.html">Categorias</a></li>
-                  <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
-              </ul>
-          </div>
-      </nav>
-
       <!-- Contenido Principal -->
       <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="row"><p></p></div> <!-- div superior de separacion -->
@@ -40,14 +12,18 @@ Registro de nuevos usuarios -->
             <div class="form-group">
             <?php echo $this->Form->create('Usuario'); ?>
                 <fieldset>
-                    <legend><?php echo __('Registrarse'); ?></legend>
-                    <?php echo $this->Form->input('username', array('label' => 'Nombre de usuario *','class' => 'form-control'));
-                    echo $this->Form->input('password', array('label' => 'Contraseña *', 'class' => 'form-control'));
-                    echo $this->Form->input('password_confirm', array('label' => 'Confirmar contraseña *', 'maxLength' => 255, 'title' => 'Confirm password', 'type'=>'password', 'class' => 'form-control'));
-                    echo $this->Form->input('nombre', array('label' => 'Nombre *', 'class' => 'form-control'));
-                    echo $this->Form->input('foto', array('label' => 'Foto de perfil', 'type' => 'file'));
+                    <legend><?php echo __('Register'); ?></legend>
+                    <?php echo $this->Form->input('username', array('label' => __('Username *'),'class' => 'form-control'));
                     echo "<br>";
-                    echo $this->Form->submit('Submit', array('class' => 'btn-login',  'title' => 'Click here to add the user') ); ?>
+                    echo $this->Form->input('password', array('label' => __('Password *'), 'class' => 'form-control'));
+                    echo "<br>";
+                    echo $this->Form->input('password_confirm', array('label' => __('Password confirm *'), 'maxLength' => 255, 'title' => 'Confirm password', 'type'=>'password', 'class' => 'form-control'));
+                    echo "<br>";
+                    echo $this->Form->input('nombre', array('label' => __('Name *'), 'class' => 'form-control'));
+                    echo "<br>";
+                    echo $this->Form->input('foto', array('label' => __('Profile photo'), 'type' => 'file'));
+                    echo "<br>";
+                    echo $this->Form->submit(__('Submit'), array('class' => 'btn-login')); ?>
                 </fieldset>
             <?php echo $this->Form->end(); ?>
             </div>

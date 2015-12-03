@@ -36,25 +36,25 @@
                     <!-- div con la lista de navegacion -->
                     <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
                         <ul class="nav navbar-nav navbar-right osSansFont">
-                            <li><a><?php if($loggedUser['username']) echo "Hola, ".$loggedUser["username"]." :)"; ?></a></li>
+                            <li><a><?php if($loggedUser['username']) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a></li>
                             <li> <!-- Search box -->
                                 <!-- <form class="navbar-form" role="search"> -->
 
                                 <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"buscars", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
                                     <div class="form-group has-feedback">
                                         <!-- <input type="text" class="form-control" placeholder="Buscar"/> -->
-                                        <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Buscar', 'label' => false));?>
+                                        <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => __('Search'), 'label' => false));?>
                                         <!-- <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
                                     </div>
                                 <?php echo $this->Form->end(); ?>
                             </li>
-                            <li><a href="categorias.html">Categorias</a></li>
+                            <li><a href="categorias.html"><?php echo __('Categories') ?></a></li>
                             <?php if($this->Session->check('Auth.User')){ ?>
                             <li><?php
-                                echo $this->Html->link("Logout", array("controller"=>"usuarios", "action"=>"logout"));
+                                echo $this->Html->link(__('logout',true), array("controller"=>"usuarios", "action"=>"logout"));
                             ?></li>
                             <?php }else { ?>
-                                <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#loginModal"><?php echo __('Login') ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -62,7 +62,7 @@
 
                 <!-- div con la frase de la pagina -->
                 <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                  <div class="index-phrase opSansBFontTitle">Pregunta!</div>
+                  <div class="index-phrase opSansBFontTitle"><?php echo __('Question!') ?></div>
                   <hr class="small">
                 </div>
             </header>
@@ -72,7 +72,7 @@
               <!-- div con el titulo y el icono en modo movil -->
               <div class="col-md-2 navbar-header page-scroll">
                   <button type="button" class="navbar-toggle2 button-menu" data-toggle="collapse" data-target="#navbar-collapse1">
-                      <span class="text-menu-toggle osSansFont-menu">Menu</span>
+                      <span class="text-menu-toggle osSansFont-menu"><?php echo __('Question!') ?></span>
                   </button>
                   <?php
                     echo $this->Html->link("FAQ.life", array("controller"=>"preguntas", "action"=>"index"), array("class"=>"navbar-logo pacificoFont-menu"));
@@ -81,24 +81,24 @@
               <!-- div con la lista de navegacion -->
               <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
                   <ul class="nav navbar-nav navbar-right osSansFont">
-                      <li><a><?php if($loggedUser['username']) echo "Hola, ".$loggedUser["username"]." :)"; ?></a></li>
+                      <li><a><?php if(!empty($loggedUser['username'])) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a></li>
                       <li> <!-- Search box -->
                           <!-- <form class="navbar-form" role="search"> -->
                           <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"buscars", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
                               <div class="form-group has-feedback">
                                   <!-- <input type="text" class="form-control" placeholder="Buscar"/> -->
-                                  <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => 'Buscar', 'label' => false));?>
+                                  <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => __('Search'), 'label' => false));?>
                                   <!-- <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
                               </div>
                           <?php echo $this->Form->end(); ?>
                       </li>
-                      <li><a href="categorias.html">Categorias</a></li>
+                      <li><a href="categorias.html"><?php echo __('Categories') ?></a></li>
                       <?php if($this->Session->check('Auth.User')){ ?>
                       <li><?php
-                          echo $this->Html->link("Logout", array("controller"=>"usuarios", "action"=>"logout"));
+                          echo $this->Html->link(__('logout',true), array("controller"=>"usuarios", "action"=>"logout"));
                       ?></li>
                       <?php }else { ?>
-                          <li><a href="" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                          <li><a href="" data-toggle="modal" data-target="#loginModal"><?php echo __('Login') ?></a></li>
                       <?php } ?>
                   </ul>
               </div>
@@ -125,10 +125,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <?php
-                        echo $this->Html->link("Registrarse", array("controller"=>"usuarios", "action"=>"index"), array("class"=>"btn btn-register"));
+                        echo $this->Html->link(__('Register',true), array("controller"=>"usuarios", "action"=>"index"), array("class"=>"btn btn-register"));
                     ?>
 
-                    <h4 class="modal-title osSansFont" id="myModalLabel">Log in</h4>
+                    <h4 class="modal-title osSansFont" id="myModalLabel"><?php echo __('Login') ?></h4>
                 </div>
 
                 <!-- Contenido de la página login modal -->
@@ -138,27 +138,25 @@
                                 <fieldset>
                                     <div class="row control-group">
                                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                                            <?php echo $this->Form->input('username', array('class' => 'form-control'));?>
+                                            <?php echo $this->Form->input('username', array('class' => 'form-control', 'label' => __('Usernanme')));?>
                                         </div>
                                     </div>
                                     <div class="row control-group">
                                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                                            <?php echo $this->Form->input('password', array('class' => 'form-control'));?>
+                                            <?php echo $this->Form->input('password', array('class' => 'form-control', 'label' => __('Password')));?>
                                         </div>
                                     </div>
                                 </fieldset>
                     </div>
 
                     <div class="modal-footer">
-                        <?php echo $this->Form->submit('Iniciar sesion', array('class' => 'btn-login')); ?> <!-- ,  'title' => 'Click here to add the user' -->
+                        <?php echo $this->Form->submit(__('Login'), array('class' => 'btn-login')); ?> <!-- ,  'title' => 'Click here to add the user' -->
                         <!-- <div type="button" class="btn btn-default" data-dismiss="modal">Cancelar</div> -->
-                        <?php echo $this->Form->submit('Cancelar', array('class' => 'btn btn-default btn-cancel', 'data-dismiss' => 'modal')); ?>
+                        <?php echo $this->Form->submit(__('Cancelar'), array('class' => 'btn btn-default btn-cancel', 'data-dismiss' => 'modal')); ?>
                     </div>
                     <?php echo $this->Form->end(); ?>
 
             </div>
         </div>
     </div>
-
-    <?php //$loggedUser["username"]?>
 </html>

@@ -5,11 +5,11 @@ Se muestran las búsquedas -->
     <body>
         <!-- Contenido Principal -->
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="index-phrase opSansBFontTitle pcolor">Resultados</div>
+            <div class="index-phrase opSansBFontTitle pcolor"><?php echo __('Results') ?></div>
             <hr class="small" id="separador">
             <?php if(empty($busquedas)){ ?>
                 <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2">
-                    <p class="opSansReFont">No hubo suerte con la búsqueda!</p>
+                    <p class="opSansReFont"><?php echo __('Ooooh!! No data for you.') ?></p>
                 </div>
             <?php } ?>
             <?php foreach ($busquedas as $busqueda): ?>
@@ -53,7 +53,7 @@ Se muestran las búsquedas -->
                             <h1><?php echo $this->Html->link($busqueda['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'view', $busqueda['Pregunta']['id']), array('class' => 'opSansBFont')); ?></h1>
                         </a>
                         <p class="opSansReFont"><?php echo $busqueda['Pregunta']['cuerpo']; ?><p>
-                        <p class="opSansItFont">Preguntado por <a href=""><?php echo $busqueda['Usuario']['username']; ?></a> el <?php echo $this->Time->format($busqueda['Pregunta']['fecha'], '%e %B %Y a las %H:%M'); ?> horas en la categoría de <a href=""><?php echo $busqueda['Categoria']['nombre_categoria']; ?></a>.</p>
+                        <p class="opSansItFont"><?php echo __('Asked for') ?> <a href=""><?php echo $busqueda['Usuario']['username']; ?></a> <?php echo __('at') ?> <?php echo $this->Time->format($busqueda['Pregunta']['fecha'], '%e %B %Y %H:%M'); ?> <?php echo __('at category of') ?> <a href=""><?php echo $busqueda['Categoria']['nombre_categoria']; ?></a>.</p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <hr class="small" id="separador">

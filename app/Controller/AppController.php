@@ -63,6 +63,34 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->Auth->allow('index', 'view', 'buscar');
         $this->set("loggedUser", $this->Auth->user());
+
+        $this->Session->write('Config.language', 'eng');
+        // if(!empty($lang)){
+        //     if($lang == 'eng') {
+        //         $this->Session->write('Config.language', 'eng');
+        //     } else if($lang == 'spa') {
+        //         $this->Session->write('Config.language', 'esp');
+        //     } else if($lang == 'glg') {
+        //         $this->Session->write('Config.language', 'glg');
+        //     }
+        //     //in order to redirect the user to the page from which it was called
+        //     $this->redirect($this->referer());
+        // }
     }
+
+    // public function changeLanguage($lang){
+    //     if(!empty($lang)){
+    //         if($lang == 'du'){
+    //             $this->Session->write('Config.language', 'du');
+    //         }
+    //
+    //         else if($lang == 'en'){
+    //             $this->Session->write('Config.language', 'en');
+    //         }
+    //
+    //         //in order to redirect the user to the page from which it was called
+    //         $this->redirect($this->referer());
+    //     }
+    // }
 
 }

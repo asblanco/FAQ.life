@@ -1,0 +1,223 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/PostsController.php:11;16
+msgid "Invalid post"
+msgstr ""
+
+#: Controller/PostsController.php:26
+#: Controller/PreguntasController.php:25
+msgid "Your post has been saved."
+msgstr ""
+
+#: Controller/PreguntasController.php:39;44
+msgid "Invalid question"
+msgstr ""
+
+#: Controller/UsuariosController.php:19
+msgid "The user has been created"
+msgstr ""
+
+#: Controller/UsuariosController.php:22
+msgid "The user could not be created. Please, try again."
+msgstr ""
+
+#: Controller/UsuariosController.php:31;39;58
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsuariosController.php:43
+msgid "The user has been saved"
+msgstr ""
+
+#: Controller/UsuariosController.php:46
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsuariosController.php:61
+msgid "User deleted"
+msgstr ""
+
+#: Controller/UsuariosController.php:64
+msgid "User was not deleted"
+msgstr ""
+
+#: Controller/UsuariosController.php:79
+msgid "Welcome, "
+msgstr ""
+
+#: Controller/UsuariosController.php:84
+msgid "Invalid username or password"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:39;84
+msgid "Hello"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:46;90
+msgid "Search"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:51;95
+msgid "Categories"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:54;98
+msgid "logout"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:57;101;131;153
+msgid "Login"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:65;75
+msgid "Question!"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:128
+#: View/Usuarios/index.ctp:15
+msgid "Register"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:141
+msgid "Usernanme"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:146
+msgid "Password"
+msgstr ""
+
+#: View/Layouts/faq_life.ctp:155
+msgid "Cancelar"
+msgstr ""
+
+#: View/Preguntas/buscar.ctp:8
+msgid "Resultados"
+msgstr ""
+
+#: View/Preguntas/buscar.ctp:12
+msgid "Ooooh!! No data for you."
+msgstr ""
+
+#: View/Preguntas/buscar.ctp:56
+#: View/Preguntas/index.ctp:78
+#: View/Preguntas/view.ctp:55
+msgid "Asked for"
+msgstr ""
+
+#: View/Preguntas/buscar.ctp:56
+#: View/Preguntas/index.ctp:78
+#: View/Preguntas/view.ctp:55;142
+msgid "at"
+msgstr ""
+
+#: View/Preguntas/buscar.ctp:56
+#: View/Preguntas/index.ctp:78
+#: View/Preguntas/view.ctp:55
+msgid "at category of"
+msgstr ""
+
+#: View/Preguntas/index.ctp:13
+msgid "Tittle"
+msgstr ""
+
+#: View/Preguntas/index.ctp:22
+msgid "---Categories---"
+msgstr ""
+
+#: View/Preguntas/index.ctp:25
+msgid "Explaination"
+msgstr ""
+
+#: View/Preguntas/index.ctp:27
+msgid "Ask!"
+msgstr ""
+
+#: View/Preguntas/view.ctp:69
+msgid "Answer"
+msgstr ""
+
+#: View/Preguntas/view.ctp:72
+msgid "Response!"
+msgstr ""
+
+#: View/Preguntas/view.ctp:82
+msgid "This question hasn't been answered yet. Be the first!"
+msgstr ""
+
+#: View/Preguntas/view.ctp:140
+msgid "Responding by"
+msgstr ""
+
+#: View/Preguntas/view.ctp:142
+msgid "hours"
+msgstr ""
+
+#: View/Usuarios/index.ctp:16
+msgid "Username *"
+msgstr ""
+
+#: View/Usuarios/index.ctp:18
+msgid "Password *"
+msgstr ""
+
+#: View/Usuarios/index.ctp:20
+msgid "Password confirm *"
+msgstr ""
+
+#: View/Usuarios/index.ctp:22
+msgid "Name *"
+msgstr ""
+
+#: View/Usuarios/index.ctp:24
+msgid "Profile photo"
+msgstr ""
+
+#: View/Usuarios/index.ctp:26
+msgid "Submit"
+msgstr ""
+
+#: Model/Usuario.php:validation for field username
+msgid "A username is required"
+msgstr ""
+
+#: Model/Usuario.php:validation for field username
+msgid "This username is already in use"
+msgstr ""
+
+#: Model/Usuario.php:validation for field username
+msgid "Username can only be letters, numbers and underscores"
+msgstr ""
+
+#: Model/Usuario.php:validation for field password
+msgid "A password is required"
+msgstr ""
+
+#: Model/Usuario.php:validation for field password;validation for field password_update
+msgid "Password must have a mimimum of 6 characters"
+msgstr ""
+
+#: Model/Usuario.php:validation for field password_confirm
+msgid "Please confirm your password"
+msgstr ""
+
+#: Model/Usuario.php:validation for field password_confirm;validation for field password_confirm_update
+msgid "Both passwords must match."
+msgstr ""
+
+#: Model/Usuario.php:validation for field nombre
+msgid "Por favor, introduce el nombre completo"
+msgstr ""
+

@@ -66,7 +66,7 @@ class UsuariosController extends AppController {
     }
 
     public function login() {
-        // print_r($this->Auth->redirectUrl()); die();
+        // print_r($this->request->data); die();
         $this->layout = 'faq_life';
         //if already logged-in, redirect
         if($this->Session->check('Auth.Usuario')){

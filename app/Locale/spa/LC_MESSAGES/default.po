@@ -1,0 +1,223 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/PostsController.php:11;16
+msgid "Invalid post"
+msgstr "Mensaje no válido"
+
+#: Controller/PostsController.php:26
+#: Controller/PreguntasController.php:25
+msgid "Your post has been saved."
+msgstr "Tu pregunta ha sido guardada."
+
+#: Controller/PreguntasController.php:39;44
+msgid "Invalid question"
+msgstr "Pregunta inválida"
+
+#: Controller/UsuariosController.php:19
+msgid "The user has been created"
+msgstr "El usuario ha sido creado"
+
+#: Controller/UsuariosController.php:22
+msgid "The user could not be created. Please, try again."
+msgstr "El usuario no pudo ser creado. Por favor, vuelva a intentarlo."
+
+#: Controller/UsuariosController.php:31;39;58
+msgid "Invalid user"
+msgstr "Usuario inválido"
+
+#: Controller/UsuariosController.php:43
+msgid "The user has been saved"
+msgstr "El usuario ha sido guardado"
+
+#: Controller/UsuariosController.php:46
+msgid "The user could not be saved. Please, try again."
+msgstr "El usuario no se ha podido guardar. Por favor, vuelva a intentarlo."
+
+#: Controller/UsuariosController.php:61
+msgid "User deleted"
+msgstr "Usuario eliminado"
+
+#: Controller/UsuariosController.php:64
+msgid "User was not deleted"
+msgstr "El usuario no se ha eliminado"
+
+#: Controller/UsuariosController.php:79
+msgid "Welcome, "
+msgstr "Bienvenid@, "
+
+#: Controller/UsuariosController.php:84
+msgid "Invalid username or password"
+msgstr "Usuario o contraseña inválidos"
+
+#: View/Layouts/faq_life.ctp:39;84
+msgid "Hello"
+msgstr "Hola"
+
+#: View/Layouts/faq_life.ctp:46;90
+msgid "Search"
+msgstr "Buscar"
+
+#: View/Layouts/faq_life.ctp:51;95
+msgid "Categories"
+msgstr "Categorías"
+
+#: View/Layouts/faq_life.ctp:54;98
+msgid "logout"
+msgstr "Cerrar sesión"
+
+#: View/Layouts/faq_life.ctp:57;101;131;153
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: View/Layouts/faq_life.ctp:65;75
+msgid "Question!"
+msgstr "Pregunta!"
+
+#: View/Layouts/faq_life.ctp:128
+#: View/Usuarios/index.ctp:15
+msgid "Register"
+msgstr "Registro"
+
+#: View/Layouts/faq_life.ctp:141
+msgid "Usernanme"
+msgstr "Nombre de usuario"
+
+#: View/Layouts/faq_life.ctp:146
+msgid "Password"
+msgstr "Contraseña"
+
+#: View/Layouts/faq_life.ctp:155
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: View/Preguntas/buscar.ctp:8
+msgid "Resultados"
+msgstr "Resultados"
+
+#: View/Preguntas/buscar.ctp:12
+msgid "Ooooh!! No data for you."
+msgstr "Ooooh !! No hay datos para ti."
+
+#: View/Preguntas/buscar.ctp:56
+#: View/Preguntas/index.ctp:78
+#: View/Preguntas/view.ctp:55
+msgid "Asked for"
+msgstr "Preguntado por"
+
+#: View/Preguntas/buscar.ctp:56
+#: View/Preguntas/index.ctp:78
+#: View/Preguntas/view.ctp:55;142
+msgid "at"
+msgstr "a las"
+
+#: View/Preguntas/buscar.ctp:56
+#: View/Preguntas/index.ctp:78
+#: View/Preguntas/view.ctp:55
+msgid "at category of"
+msgstr "en la categoría de"
+
+#: View/Preguntas/index.ctp:13
+msgid "Tittle"
+msgstr "Título"
+
+#: View/Preguntas/index.ctp:22
+msgid "---Categories---"
+msgstr "--- Categorías ---"
+
+#: View/Preguntas/index.ctp:25
+msgid "Explaination"
+msgstr "Explicación"
+
+#: View/Preguntas/index.ctp:27
+msgid "Ask!"
+msgstr "Preguntar!"
+
+#: View/Preguntas/view.ctp:69
+msgid "Answer"
+msgstr "Responder"
+
+#: View/Preguntas/view.ctp:72
+msgid "Response!"
+msgstr "Responder!"
+
+#: View/Preguntas/view.ctp:82
+msgid "This question hasn't been answered yet. Be the first!"
+msgstr "Esta pregunta aún no ha recibido ninguna respuesta. !Se el primero!"
+
+#: View/Preguntas/view.ctp:140
+msgid "Responding by"
+msgstr "Respondiendo por"
+
+#: View/Preguntas/view.ctp:142
+msgid "hours"
+msgstr "horas"
+
+#: View/Usuarios/index.ctp:16
+msgid "Username *"
+msgstr "Nombre de usuario *"
+
+#: View/Usuarios/index.ctp:18
+msgid "Password *"
+msgstr "Contraseña *"
+
+#: View/Usuarios/index.ctp:20
+msgid "Password confirm *"
+msgstr "Confirmación de contraseña *"
+
+#: View/Usuarios/index.ctp:22
+msgid "Name *"
+msgstr "Nombre *"
+
+#: View/Usuarios/index.ctp:24
+msgid "Profile photo"
+msgstr "Foto de perfil"
+
+#: View/Usuarios/index.ctp:26
+msgid "Submit"
+msgstr "Enviar"
+
+#: Model/Usuario.php:validation for field username
+msgid "A username is required"
+msgstr "Se requiere un nombre de usuario"
+
+#: Model/Usuario.php:validation for field username
+msgid "This username is already in use"
+msgstr "Este nombre de usuario ya está en uso"
+
+#: Model/Usuario.php:validation for field username
+msgid "Username can only be letters, numbers and underscores"
+msgstr "El nombre de usuario sólo puede ser letras, números y guiones bajos"
+
+#: Model/Usuario.php:validation for field password
+msgid "A password is required"
+msgstr "Se requiere una contraseña"
+
+#: Model/Usuario.php:validation for field password;validation for field password_update
+msgid "Password must have a mimimum of 6 characters"
+msgstr "La contraseña debe tener un mínimo de 6 caracteres"
+
+#: Model/Usuario.php:validation for field password_confirm
+msgid "Please confirm your password"
+msgstr "Por favor, confirme su contraseña"
+
+#: Model/Usuario.php:validation for field password_confirm;validation for field password_confirm_update
+msgid "Both passwords must match."
+msgstr "Ambas contraseñas deben coincidir."
+
+#: Model/Usuario.php:validation for field nombre
+msgid "Por favor, introduce el nombre completo"
+msgstr "Por favor, introduzca el nombre completo"
+
