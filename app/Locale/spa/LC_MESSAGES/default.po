@@ -104,7 +104,7 @@ msgid "Cancelar"
 msgstr "Cancelar"
 
 #: View/Preguntas/buscar.ctp:8
-msgid "Resultados"
+msgid "Results"
 msgstr "Resultados"
 
 #: View/Preguntas/buscar.ctp:12
@@ -220,4 +220,3 @@ msgstr "Ambas contraseñas deben coincidir."
 #: Model/Usuario.php:validation for field nombre
 msgid "Por favor, introduce el nombre completo"
 msgstr "Por favor, introduzca el nombre completo"
-

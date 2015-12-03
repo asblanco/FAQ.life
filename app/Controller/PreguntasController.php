@@ -2,7 +2,7 @@
 class PreguntasController extends AppController {
     public $helpers = array('Html', 'Form', 'Flash');
     public $components = array('RequestHandler'); //para ajax
-    
+
     /*funcion index que se corresponde con la vista index.ctp
     La vista index.ctp podra acceder a la variable preguntas, que contiene todas las filas de la tabla
     Pregunta*/
@@ -43,8 +43,8 @@ class PreguntasController extends AppController {
         if (!$pregunta) {
             throw new NotFoundException(__('Invalid question'));
         }
-        
-        
+
+
         //Aumentar el contador de vistos de la pregunta
         $numVistos = $pregunta['Pregunta']['visto'];
         $numVistos += 1;
@@ -52,7 +52,7 @@ class PreguntasController extends AppController {
             array('Pregunta.visto' => "'$numVistos'"),
             array('Pregunta.id' => "$id")
         );
-        
+
         // print_r($pregunta); die();
         $this->set('pregunta', $pregunta);
 
@@ -81,12 +81,12 @@ class PreguntasController extends AppController {
                     )
                 )
             );
-            
+
             $preguntas = $this->Pregunta->find('all', $conditionsPregunta);
         }
         $this->set('busquedas', $preguntas);
     }
-    
+
     public function votarPositivo (){
         //$this->autoRender = false;
         if ($this->request->is('post')) {
@@ -95,24 +95,24 @@ class PreguntasController extends AppController {
             $pregunta = $this->Pregunta->findById($id);
             $numPositivos = $pregunta['Pregunta']['positivos'];
             $numPositivos += 1;
-            
+
             $this->Pregunta->updateAll(
                 array('Pregunta.positivos' => "'$numPositivos'"),
                 array('Pregunta.id' => "$id")
             );
 
-            /*Quitar el comiendo de la url del metodo referer para 
+            /*Quitar el comiendo de la url del metodo referer para
               poder comparar solo la url como si fuera $this->here*/
             $here = str_replace("http://localhost","",$this->request->referer());
             /*Condicion para redirigir a la pagina en la que se vote positivo*/
             if ($here == '/FAQ.life/'){
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->redirect(array('action' => 'view', $id));                
+                $this->redirect(array('action' => 'view', $id));
             }
         }
     }
-    
+
     public function votarNegativo (){
         //$this->autoRender = false;
         if ($this->request->is('post')) {
@@ -121,21 +121,45 @@ class PreguntasController extends AppController {
             $pregunta = $this->Pregunta->findById($id);
             $numPositivos = $pregunta['Pregunta']['negativos'];
             $numPositivos += 1;
-            
+
             $this->Pregunta->updateAll(
                 array('Pregunta.negativos' => "'$numPositivos'"),
                 array('Pregunta.id' => "$id")
             );
 
-            /*Quitar el comiendo de la url del metodo referer para 
+            /*Quitar el comiendo de la url del metodo referer para
               poder comparar solo la url como si fuera $this->here*/
             $here = str_replace("http://localhost","",$this->request->referer());
             /*Condicion para redirigir a la pagina en la que se vote positivo*/
             if ($here == '/FAQ.life/'){
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->redirect(array('action' => 'view', $id));                
+                $this->redirect(array('action' => 'view', $id));
             }
+        }
+    }
+
+    public function idioma() {
+        // print_r($this->request->data); die();
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $idioma = $this->request->data['Pregunta']['idioma'];
+            switch ($idioma) {
+                case 'eng':
+                    $this->Session->write('Config.language', 'eng');
+                    break;
+                case 'spa':
+                    $this->Session->write('Config.language', 'spa');
+                    break;
+                case 'glg':
+                    $this->Session->write('Config.language', 'glg');
+                    break;
+                default:
+                    $this->Session->write('Config.language', 'spa');
+                    break;
+            }
+            $this->redirect(array('controller' => 'preguntas', 'action' => 'index'));
+            // $this->referer();
         }
     }
 }
