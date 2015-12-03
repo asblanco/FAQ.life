@@ -10,7 +10,7 @@ Registro de nuevos usuarios -->
           <div class="col-sm-2 col-md-2 hidden-phone"></div>
           <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="form-group">
-            <?php echo $this->Form->create('Usuario'); ?>
+            <?php echo $this->Form->create('Usuario', array('type' => 'file')); ?>
                 <fieldset>
                     <legend><?php echo __('Register'); ?></legend>
                     <?php echo $this->Form->input('username', array('label' => __('Username *'),'class' => 'form-control'));
@@ -21,7 +21,12 @@ Registro de nuevos usuarios -->
                     echo "<br>";
                     echo $this->Form->input('nombre', array('label' => __('Name *'), 'class' => 'form-control'));
                     echo "<br>";
-                    echo $this->Form->input('foto', array('label' => __('Profile photo'), 'type' => 'file'));
+		    echo $this->Form->input('idioma', array('label' => __('Idioma '),
+		    'options' => array( 'spa' => 'Español', 'glg' => 'Galego', 'eng' => 'English')
+		    ));
+		    echo "<br>";
+		    echo $this->Form->input('foto', array('type' => 'file'));
+		    echo $this->Form->input('dir', array('type'=>'hidden'));
                     echo "<br>";
                     echo $this->Form->submit(__('Submit'), array('class' => 'btn-login')); ?>
                 </fieldset>

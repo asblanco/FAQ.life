@@ -13,7 +13,7 @@ class UsuariosController extends AppController {
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
                 $this->Flash->success(__('The user has been created'));
-                $this->redirect(array('action' => '../preguntas/index'));
+                $this->redirect(array('controller' => 'preguntas', 'action' => 'index'));
             } else {
                 $this->Flash->set(__('The user could not be created. Please, try again.'));
             }

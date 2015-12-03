@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`usuarios` (
   `username` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
   `nombre` VARCHAR(100) NOT NULL,
-  `foto` VARCHAR(50) NULL DEFAULT 'default.png',
+  `foto` VARCHAR(50) NULL DEFAULT 'img_users/default.png',
   `idioma` VARCHAR(3) NULL DEFAULT 'spa',
   CONSTRAINT CK_usuarios_idioma
     CHECK (idioma IN  ('spa', 'eng', 'glg')) )
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`preguntas` (
   `negativos` INT NULL DEFAULT 0,
   `usuario_id` INT UNSIGNED NOT NULL,
   `categoria_id` INT UNSIGNED NOT NULL,
-  CONSTRAINT `fk_s_usuarios`
+  CONSTRAINT `fk_preguntas_usuarios`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `faq_life`.`usuarios` (`id`)
     ON DELETE CASCADE
