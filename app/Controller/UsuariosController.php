@@ -1,13 +1,9 @@
 <?php
-App::uses('AppController', 'Controller');
-App::uses('AuthComponent', 'Controller/Component');
+//App::uses('AppController', 'Controller');
+//App::uses('AuthComponent', 'Controller/Component');
 
 class UsuariosController extends AppController {
     public $helpers = array('Html', 'Form');
-
-     public function beforeFilter() {
-         $this->Auth->allow('index', 'view');
-    }
 
     //El index de usuarios es el registro de un nuevo usuario
     public function index() {
@@ -66,34 +62,32 @@ class UsuariosController extends AppController {
     }
 
     public function login() {
-        // print_r($this->request->data); die();
         $this->layout = 'faq_life';
         //if already logged-in, redirect
-        if($this->Session->check('Auth.Usuario')){
+        if($this->Session->check('Auth.User')){
             $this->redirect(array('action' => 'index'));
         }
         // if we get the post information, try to authenticate
         if ($this->request->is('post')) {
-            // print_r($this->request->data);
             if ($this->Auth->login()) {
+                //Seleccionar el idioma definido por el usuario
+                $username = $this->request->data['Usuario']['username'];
+                $usu = $this->Usuario->find('all', array('conditions'=> array ('Usuario.username' => $username)));
+                $idioma = $usu['0']['Usuario']['idioma'];
+                $this->setIdioma($idioma);
+                
                 $this->Flash->success(__('Welcome, '. $this->Auth->user('username')));
                 $this->redirect($this->Auth->redirectUrl());
-
-                // $this->redirect($this->here);
             } else {
                 $this->Flash->warning(__('Invalid username or password'));
-                // $this->Flash->error("fuera de aqui!");
-                // $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
             }
         }
-        $this->Flash->error("fuera de aqui!");
+        $this->Flash->error("Lo sentimos pero debes loguearte primero.");
         $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
     }
 
      public function logout() {
          $this->Auth->logout();
          $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
-    }
-
-}
+    }}
 ?>

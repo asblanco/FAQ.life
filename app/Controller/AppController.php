@@ -58,6 +58,50 @@ class AppController extends Controller {
         )
     );
 
+    
+    public function idioma() {
+        $this->autoRender = false;
+        if($this->request->is('post')) {
+            $here = str_replace("http://localhost","",$this->request->referer());
+            if ($here == '/FAQ.life/usuarios')
+                $idioma = $this->request->data['Usuario']['idioma'];
+            else
+                $idioma = $this->request->data['Pregunta']['idioma'];
+        
+            $this->setIdioma($idioma);
+            
+             if ($here == '/FAQ.life/'){
+                $this->redirect(array('controller'=>'preguntas', 'action' => 'index'));
+            } else if ($here == '/FAQ.life/categorias'){
+                $this->redirect(array('controller' => 'categorias', 'action' => 'index'));
+            } else if ($here == '/FAQ.life/usuarios'){
+                $this->redirect(array('controller' => 'usuarios', 'action' => 'index'));
+            }
+            else {
+                $here = str_replace("/FAQ.life/preguntas/view/","",$here);
+                $this->redirect(array('controller'=>'preguntas', 'action' => 'view', $here));
+            }
+        }
+    }
+
+    public function setIdioma($idioma) {
+        $this->autoRender = false;
+        switch ($idioma) {
+                case 'eng':
+                    $this->Session->write('Config.language', 'eng');
+                    break;
+                case 'spa':
+                    $this->Session->write('Config.language', 'spa');
+                    break;
+                case 'glg':
+                    $this->Session->write('Config.language', 'glg');
+                    break;
+                default:
+                    $this->Session->write('Config.language', 'spa');
+                    break;
+            }
+    }
+
     //En la funcion beforeFilter se indican las paginas que no requieren login
     //En este caso todas las que se llamen index y view de cualquier controlador se pueden acceder
     public function beforeFilter() {

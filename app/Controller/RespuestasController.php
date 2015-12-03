@@ -4,7 +4,6 @@ class RespuestasController extends AppController {
 
     public function responder() {
         if ($this->request->is('post')) {
-            //print_r($this->request->data); die();
             $this->request->data['Respuesta']['fecha_res'] = date('Y-m-d H:i:s');
             $this->request->data['Respuesta']['usuario_id'] = $this->Auth->user('id');
             $idPregunta = $this->request->data['Respuesta']['id'];

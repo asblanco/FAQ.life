@@ -39,21 +39,21 @@
                             <li><a>
                                 <!-- <?php echo $this->Html->image('eng.png', array('class' => 'centrado', 'iconos')) ?> -->
                                 <!-- Imagen formulario post para cambiar el idioma a inglés -->
-                                <?php echo $this->Form->create(null, array("controller"=>"preguntas", "action"=>"idioma"));  ?>
+                                <?php echo $this->Form->create(null, array("action"=>"idioma"));  ?>
                                 <?php echo $this->Form->hidden('idioma',array('value' => 'eng')); ?>
                                 <?php echo $this->Form->end('/img/eng.png'); ?>
                             </a></li>
                             <li><a>
                                 <!-- <?php echo $this->Html->image('spa.png', array('class' => 'centrado', 'iconos')) ?> -->
                                 <!-- Imagen formulario post para cambiar el idioma a castellano -->
-                                <?php echo $this->Form->create(null, array("controller"=>"preguntas", "action"=>"idioma"));  ?>
+                                <?php echo $this->Form->create(null, array("action"=>"idioma"));  ?>
                                 <?php echo $this->Form->hidden('idioma',array('value' => 'spa')); ?>
                                 <?php echo $this->Form->end('/img/spa.png'); ?>
                             </a></li>
                             <li><a>
                                 <!-- <?php echo $this->Html->image('glg.png', array('class' => 'centrado', 'iconos')) ?> -->
                                 <!-- Imagen formulario post para cambiar el idioma a gallego -->
-                                <?php echo $this->Form->create(null, array("controller"=>"preguntas", "action"=>"idioma"));  ?>
+                                <?php echo $this->Form->create(null, array("action"=>"idioma"));  ?>
                                 <?php echo $this->Form->hidden('idioma',array('value' => 'glg')); ?>
                                 <?php echo $this->Form->end('/img/glg.png'); ?>
                             </a></li>
@@ -69,7 +69,11 @@
                                     </div>
                                 <?php echo $this->Form->end(); ?>
                             </li>
-                            <li><a href="categorias.html"><?php echo __('Categories') ?></a></li>
+			    <li>
+			    <?php
+                            echo $this->Html->link( __('Categories'), array("controller"=>"categorias", "action"=>"index"));
+                            ?>
+			    </li>
                             <?php if($this->Session->check('Auth.User')){ ?>
                             <li><?php
                                 echo $this->Html->link(__('logout',true), array("controller"=>"usuarios", "action"=>"logout"));
@@ -103,38 +107,37 @@
               <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
                   <ul class="nav navbar-nav navbar-right osSansFont">
                       <li><a>
-                          <!-- <?php echo $this->Html->image('eng.png', array('class' => 'centrado', 'iconos')) ?> -->
                           <!-- Imagen formulario post para cambiar el idioma a inglés -->
-                          <?php echo $this->Form->create(null, array("controller"=>"preguntas", "action"=>"idioma"));  ?>
+                          <?php echo $this->Form->create(null, array("action"=>"idioma"));  ?>
                           <?php echo $this->Form->hidden('idioma',array('value' => 'eng')); ?>
                           <?php echo $this->Form->end('/img/eng.png'); ?>
                       </a></li>
                       <li><a>
-                          <!-- <?php echo $this->Html->image('spa.png', array('class' => 'centrado', 'iconos')) ?> -->
                           <!-- Imagen formulario post para cambiar el idioma a castellano -->
-                          <?php echo $this->Form->create(null, array("controller"=>"preguntas", "action"=>"idioma"));  ?>
+                          <?php echo $this->Form->create(null, array("action"=>"idioma"));  ?>
                           <?php echo $this->Form->hidden('idioma',array('value' => 'spa')); ?>
                           <?php echo $this->Form->end('/img/spa.png'); ?>
                       </a></li>
                       <li><a>
-                          <!-- <?php echo $this->Html->image('glg.png', array('class' => 'centrado', 'iconos')) ?> -->
                           <!-- Imagen formulario post para cambiar el idioma a gallego -->
-                          <?php echo $this->Form->create(null, array("controller"=>"preguntas", "action"=>"idioma"));  ?>
+                          <?php echo $this->Form->create(null, array("action"=>"idioma"));  ?>
                           <?php echo $this->Form->hidden('idioma',array('value' => 'glg')); ?>
                           <?php echo $this->Form->end('/img/glg.png'); ?>
                       </a></li>
                       <li><a><?php if(!empty($loggedUser['username'])) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a></li>
-                      <li> <!-- Search box -->
-                          <!-- <form class="navbar-form" role="search"> -->
+                      <li>
+			<!-- Search box -->
                           <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"preguntas", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
                               <div class="form-group has-feedback">
-                                  <!-- <input type="text" class="form-control" placeholder="Buscar"/> -->
                                   <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => __('Search'), 'label' => false));?>
-                                  <!-- <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
                               </div>
                           <?php echo $this->Form->end(); ?>
                       </li>
-                      <li><a href="categorias.html"><?php echo __('Categories') ?></a></li>
+		      <li>
+			<?php
+                           echo $this->Html->link( __('Categories'), array("controller"=>"categorias", "action"=>"index"));
+			?>
+		      </li>
                       <?php if($this->Session->check('Auth.User')){ ?>
                       <li><?php
                           echo $this->Html->link(__('logout',true), array("controller"=>"usuarios", "action"=>"logout"));

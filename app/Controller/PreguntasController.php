@@ -13,7 +13,6 @@ class PreguntasController extends AppController {
     }
 
     public function add() {
-        // print_r($this->request->data['Pregunta']['categoria_id']); echo "NADA"; die();
         if ($this->request->is('post')) {
             if($this->request->data['Pregunta']['categoria_id'] == "") {
                 $this->Flash->success('Select a category.');
@@ -53,7 +52,6 @@ class PreguntasController extends AppController {
             array('Pregunta.id' => "$id")
         );
 
-        // print_r($pregunta); die();
         $this->set('pregunta', $pregunta);
 
         //Array con las fotos de todos los usuarios que respondieron en el mismo orden que las respuestas
@@ -89,6 +87,7 @@ class PreguntasController extends AppController {
 
     public function votarPositivo (){
         //$this->autoRender = false;
+        $this->layout = 'faq_life';
         if ($this->request->is('post')) {
             //Actualizar el contador de numero de respuestas de la pregunta
             $id = $this->request->data['Pregunta']['id'];
@@ -114,7 +113,7 @@ class PreguntasController extends AppController {
     }
 
     public function votarNegativo (){
-        //$this->autoRender = false;
+        $this->autoRender = false;
         if ($this->request->is('post')) {
             //Actualizar el contador de numero de respuestas de la pregunta
             $id = $this->request->data['Pregunta']['id'];
@@ -136,30 +135,6 @@ class PreguntasController extends AppController {
             } else {
                 $this->redirect(array('action' => 'view', $id));
             }
-        }
-    }
-
-    public function idioma() {
-        // print_r($this->request->data); die();
-        $this->autoRender = false;
-        if ($this->request->is('post')) {
-            $idioma = $this->request->data['Pregunta']['idioma'];
-            switch ($idioma) {
-                case 'eng':
-                    $this->Session->write('Config.language', 'eng');
-                    break;
-                case 'spa':
-                    $this->Session->write('Config.language', 'spa');
-                    break;
-                case 'glg':
-                    $this->Session->write('Config.language', 'glg');
-                    break;
-                default:
-                    $this->Session->write('Config.language', 'spa');
-                    break;
-            }
-            $this->redirect(array('controller' => 'preguntas', 'action' => 'index'));
-            // $this->referer();
         }
     }
 }

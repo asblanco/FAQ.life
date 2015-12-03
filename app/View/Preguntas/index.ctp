@@ -3,7 +3,7 @@ Lista de todas las preguntas -->
 <!DOCTYPE html>
 <!-- Contenido Principal -->
 <div class="col-xs-12 col-sm-12 col-md-12">
-    <?php if($this->Session->check('Auth.User')){ ?>
+  <?php if($this->Session->check('Auth.User')){ ?>
     <!-- PREGUNTAR -->
     <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"add")); ?>
         <div class="col-xs-12 col-sm-12 col-md-12">
