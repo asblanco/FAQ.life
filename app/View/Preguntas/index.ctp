@@ -14,12 +14,12 @@ Lista de todas las preguntas -->
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4 cajaTituloCategoria">
                     <?php
-                        $cat = '';
-                        foreach ($categorias as $categoria):
-                            $cat[] .= $categoria['Categoria']['nombre_categoria'];
-                        endforeach;
-                        echo $this->Form->input('categoria_id', array('class' => 'form-control preguntaCategoria cajaTituloCategoria opSansLiFont',
-                            'label' => false, 'options' => array($cat), 'empty' => __('---Categories---') ));
+                       $cat = '';
+                       foreach ($categorias as $categoria) {
+                       $cat[] .= $categoria['Categoria']['nombre_categoria'];
+                       }
+                       echo $this->Form->input('categoria_id', array('class' => 'form-control preguntaCategoria cajaTituloCategoria opSansLiFont',
+                    'label' => false, 'options' => array($cat), 'empty' => __('---Categories---') ));
                     ?>
                 </div>
                 <?php echo $this->Form->textarea('cuerpo', array('class' => 'form-control preguntaCuerpo opSansLiFont', 'rows' => 4, 'placeholder' => __('Explaination'))); ?>
