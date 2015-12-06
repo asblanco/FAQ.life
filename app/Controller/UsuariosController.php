@@ -9,8 +9,26 @@ class UsuariosController extends AppController {
     public function index() {
         $this->layout = 'faq_life';
         if ($this->request->is('post')) {
-
             $this->Usuario->create();
+            if ($this->data['Usuario']['foto']['name'] != null) {
+                $file = new File($this->data['Usuario']['foto']['tmp_name']);
+				$type = $this->request->data['Usuario']['foto']['type'];
+				if ($type != 'image/jpeg') {
+					$this->Session->setFlash(__('Only you can upload JPG or PNG images'));
+					$this->render();
+				} else {
+					$filename = $this->data['Usuario']['username'];
+					$data = $file->read();
+					$file->close();
+					$file = new File(WWW_ROOT.'/img/img_users/'.$filename.".jpg",true);
+					$file->write($data);
+					$file->close();
+                    $this->data['Usuario']['foto'] = $this->data['Usuario']['foto']['name'];
+                    $this->request->data['Usuario']['foto'] = "img_users/".$this->data['Usuario']['username'].".jpg";
+				}
+			} else {
+                $this->request->data['Usuario']['foto'] = "img_users/default.png";
+            }
             if ($this->Usuario->save($this->request->data)) {
                 $this->Flash->success(__('The user has been created'));
                 $this->redirect(array('controller' => 'preguntas', 'action' => 'index'));
@@ -75,7 +93,7 @@ class UsuariosController extends AppController {
                 $usu = $this->Usuario->find('all', array('conditions'=> array ('Usuario.username' => $username)));
                 $idioma = $usu['0']['Usuario']['idioma'];
                 $this->setIdioma($idioma);
-                
+
                 $this->Flash->success(__('Welcome, '. $this->Auth->user('username')));
                 $this->redirect($this->Auth->redirectUrl());
             } else {
