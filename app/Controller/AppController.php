@@ -59,29 +59,10 @@ class AppController extends Controller {
     );
 
     
-    public function idioma() {
+    public function idioma($idioma) {
         $this->autoRender = false;
-        if($this->request->is('post')) {
-            $here = str_replace("http://localhost","",$this->request->referer());
-            if ($here == '/FAQ.life/usuarios')
-                $idioma = $this->request->data['Usuario']['idioma'];
-            else
-                $idioma = $this->request->data['Pregunta']['idioma'];
-        
-            $this->setIdioma($idioma);
-            
-             if ($here == '/FAQ.life/'){
-                $this->redirect(array('controller'=>'preguntas', 'action' => 'index'));
-            } else if ($here == '/FAQ.life/categorias'){
-                $this->redirect(array('controller' => 'categorias', 'action' => 'index'));
-            } else if ($here == '/FAQ.life/usuarios'){
-                $this->redirect(array('controller' => 'usuarios', 'action' => 'index'));
-            }
-            else {
-                $here = str_replace("/FAQ.life/preguntas/view/","",$here);
-                $this->redirect(array('controller'=>'preguntas', 'action' => 'view', $here));
-            }
-        }
+        $this->setIdioma($idioma);
+        $this->redirect($this->request->referer());
     }
 
     public function setIdioma($idioma) {

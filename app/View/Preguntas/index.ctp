@@ -1,6 +1,6 @@
 <!-- app/View/Preguntas/index.ctp
 Lista de todas las preguntas -->
-<!DOCTYPE html>
+
 <!-- Contenido Principal -->
 <div class="col-xs-12 col-sm-12 col-md-12">
   <?php if($this->Session->check('Auth.User')){ ?>

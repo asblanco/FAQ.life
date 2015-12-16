@@ -100,7 +100,7 @@ class UsuariosController extends AppController {
                 $this->Flash->warning(__('Invalid username or password'));
             }
         }
-        $this->Flash->error("Lo sentimos pero debes loguearte primero.");
+        $this->Flash->error(__('Sorry, you must login first'));
         $this->redirect(array("controller"=>"preguntas", "action"=>"index"));
     }
 
