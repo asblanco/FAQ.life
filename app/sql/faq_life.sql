@@ -10,11 +10,15 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema faq_life
 -- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `faq_life` DEFAULT CHARACTER SET utf8 ;
+
 
 -- -----------------------------------------------------
--- Schema faq_life
+-- Users And Pivileges
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `faq_life` DEFAULT CHARACTER SET utf8 ;
+CREATE USER IF NOT EXISTS 'faq_life'@'localhost' identified by 'faqpass';
+GRANT ALL PRIVILEGES ON faq_life.* TO 'faq_life'@'localhost' WITH GRANT OPTION;
+
 USE `faq_life` ;
 
 -- -----------------------------------------------------
@@ -143,10 +147,6 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`usuarios_has_preguntas` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Users
--- -----------------------------------------------------
-CREATE USER 'faq_life' IDENTIFIED BY 'faqpass';
 
 -- -----------------------------------------------------
 -- Other Options
