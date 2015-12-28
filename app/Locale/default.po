@@ -100,7 +100,7 @@ msgid "Password"
 msgstr ""
 
 #: View/Layouts/faq_life.ctp:155
-msgid "Cancelar"
+msgid "Cancel"
 msgstr ""
 
 #: View/Preguntas/buscar.ctp:8
@@ -120,7 +120,7 @@ msgstr ""
 #: View/Preguntas/buscar.ctp:56
 #: View/Preguntas/index.ctp:78
 #: View/Preguntas/view.ctp:55;142
-msgid "at"
+msgid " at"
 msgstr ""
 
 #: View/Preguntas/buscar.ctp:56
@@ -220,4 +220,3 @@ msgstr ""
 #: Model/Usuario.php:validation for field nombre
 msgid "Por favor, introduce el nombre completo"
 msgstr ""
-

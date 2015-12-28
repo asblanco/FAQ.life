@@ -1,7 +1,7 @@
 <?php
 class Respuesta extends AppModel {
     public $belongsTo = array(
-        'Pregunta', 'Usuario'
+        'Pregunta', 'Usuario', 'Rvoto'
     );
 
     public $validate = array(

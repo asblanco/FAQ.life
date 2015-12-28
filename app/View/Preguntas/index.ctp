@@ -52,17 +52,19 @@ Lista de todas las preguntas -->
                 <div class="col-xs-3 col-sm-6 col-md-6">
                     <div class="centrado">
                         <!-- Imagen formulario post para incrementar los votos positivos -->
-                        <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarPositivo"));  ?>
+                        <?php echo $this->Form->create('Rvoto', array("controller"=>"rvotos", "action"=>"votarPositivo"));  ?>
                         <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
+                        <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
                         <?php echo $this->Form->end('/img/positivo.png'); ?>
                     </div>
                     <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
                 </div>
                 <div class="col-xs-3 col-sm-6 col-md-6">
                     <div class="centrado">
-                        <!-- Imagen formulario post para incrementar los votos positivos -->
-                        <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarNegativo"));  ?>
+                        <!-- Imagen formulario post para incrementar los votos negativos -->
+                        <?php echo $this->Form->create('Rvoto', array("controller"=>"rvotos", "action"=>"votarNegativo"));  ?>
                         <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
+                        <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
                         <?php echo $this->Form->end('/img/negativo.png'); ?>
                     </div>
                     <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
@@ -75,7 +77,7 @@ Lista de todas las preguntas -->
                     <h1><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'view', $pregunta['Pregunta']['id']), array('class' => 'opSansBFont')); ?></h1>
                 </a>
                 <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
-                <p class="opSansItFont"><?php echo __('Asked for') ?> <a href=""><?php echo $pregunta['Usuario']['username']; ?></a><?php echo __('at') ?> <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y %H:%M'); ?> <?php echo __('at category of') ?> <a href=""><?php echo $pregunta['Categoria']['nombre_categoria']; ?></a>.</p>
+                <p class="opSansItFont"><?php echo __('Asked for') ?> <a href=""><?php echo $pregunta['Usuario']['username']; ?></a><?php echo __(' at') ?> <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y %H:%M'); ?> <?php echo __('at category of') ?> <a href=""><?php echo $pregunta['Categoria']['nombre_categoria']; ?></a>.</p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <hr class="small" id="separador">

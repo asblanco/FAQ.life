@@ -180,9 +180,8 @@
         </div>
 
         <div class="modal-footer">
-          <?php echo $this->Form->submit(__('Login'), array('class' => 'btn-login')); ?> <!-- ,  'title' => 'Click here to add the user' -->
-          <!-- <div type="button" class="btn btn-default" data-dismiss="modal">Cancelar</div> -->
-          <?php echo $this->Form->submit(__('Cancelar'), array('class' => 'btn btn-default btn-cancel', 'data-dismiss' => 'modal')); ?>
+          <?php echo $this->Form->submit(__('Login'), array('class' => 'btn-login')); ?>
+          <?php echo $this->Form->submit(__('Cancel'), array('class' => 'btn btn-default btn-cancel', 'data-dismiss' => 'modal')); ?>
         </div>
         <?php echo $this->Form->end(); ?>
 

@@ -100,11 +100,11 @@ msgid "Password"
 msgstr "Contrasinal"
 
 #: View/Layouts/faq_life.ctp:155
-msgid "Cancelar"
+msgid "Cancel"
 msgstr "Cancelar"
 
 #: View/Preguntas/buscar.ctp:8
-msgid "Resultados"
+msgid "Results"
 msgstr "Resultados"
 
 #: View/Preguntas/buscar.ctp:12
@@ -220,4 +220,3 @@ msgstr "Ambas as claves deben corresponder."
 #: Model/Usuario.php:validation for field nombre
 msgid "Por favor, introduce el nombre completo"
 msgstr "Por favor, introduza o nombre completo"
-

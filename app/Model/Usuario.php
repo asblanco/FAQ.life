@@ -5,7 +5,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class Usuario extends AppModel {
     public $hasMany = array(
-        'Pregunta', 'Respuesta'
+        'Pregunta', 'Respuesta', 'Rvoto'
     );
 
     public $validate = array(

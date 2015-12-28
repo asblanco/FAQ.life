@@ -30,17 +30,19 @@
           <div class="col-xs-3 col-sm-6 col-md-6">
             <div class="centrado opSansReFont">
               <!-- Imagen formulario post para incrementar los votos positivos -->
-              <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarPositivo"));  ?>
+              <?php echo $this->Form->create('Pvoto', array("controller"=>"pvotos", "action"=>"votarPositivo"));  ?>
               <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
+              <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
               <?php echo $this->Form->end('/img/positivo.png'); ?>
             </div>
             <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
           </div>
           <div class="col-xs-3 col-sm-6 col-md-6">
             <div class="centrado">
-              <!-- Imagen formulario post para incrementar los votos positivos -->
-              <?php echo $this->Form->create('Pregunta', array("controller"=>"preguntas", "action"=>"votarNegativo"));  ?>
+              <!-- Imagen formulario post para incrementar los votos negativos -->
+              <?php echo $this->Form->create('Pvoto', array("controller"=>"pvotos", "action"=>"votarNegativo")); ?>
               <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
+              <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
               <?php echo $this->Form->end('/img/negativo.png'); ?>
             </div>
             <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
@@ -95,13 +97,13 @@
           <!-- Profile picture -->
           <div id="container-imagen"> <!--  class="col-xs-12 col-sm-12 col-md-12"  -->
             <?php
-               //Recorre los usuarios que respondieron
-               foreach($usuarios as $clave => $usu){
-            //Si cont coincide con la clave, es la foto del usuario actual
-            if($clave == $cont){
-            echo $this->Html->image($usu['Usuario']['foto'], array('class' => 'centrado', 'iconos'));
-            }
-            }
+                //Recorre los usuarios que respondieron
+                foreach($usuarios as $clave => $usu) {
+                    //Si cont coincide con la clave, es la foto del usuario actual
+                    if($clave == $cont) {
+                        echo $this->Html->image($usu['Usuario']['foto'], array('class' => 'centrado', 'iconos'));
+                    }
+                }
             ?>
           </div>
           <!-- Votos -->
@@ -109,17 +111,19 @@
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="centrado opSansReFont">
                 <!-- Imagen formulario post para incrementar los votos positivos -->
-                <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"votarPositivo"));  ?>
+                <?php echo $this->Form->create('Rvoto', array("controller"=>"rvotos", "action"=>"votarPositivo")); ?>
                 <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>
+                <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
                 <?php echo $this->Form->end('/img/positivo.png'); ?>
               </div>
               <div class="centrado opSansReFont"><?php echo $respuesta['positivos']; ?></div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="centrado">
-                <!-- Imagen formulario post para incrementar los votos positivos -->
-                <?php echo $this->Form->create('Respuesta', array("controller"=>"respuestas", "action"=>"votarNegativo"));  ?>
+                <!-- Imagen formulario post para incrementar los votos negativos -->
+                <?php echo $this->Form->create('Rvoto', array("controller"=>"rvotos", "action"=>"votarNegativo")); ?>
                 <?php echo $this->Form->hidden('id',array('value' => $respuesta['id'])); ?>
+                <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
                 <?php echo $this->Form->end('/img/negativo.png'); ?>
               </div>
               <div class="centrado opSansReFont"><?php echo $respuesta['negativos']; ?></div>
