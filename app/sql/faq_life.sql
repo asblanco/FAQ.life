@@ -83,17 +83,16 @@ CREATE TABLE IF NOT EXISTS `faq_life`.`respuestas` (
   `positivos` INT NOT NULL DEFAULT 0,
   `negativos` INT NOT NULL DEFAULT 0,
   `usuario_id` INT NOT NULL,
-  `pregunta_id` INT NOT NULL,
+  `pregunta_id` INT UNSIGNED NOT NULL,
   `rvoto_id` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_respuestas_usuarios_idx` (`usuario_id` ASC),
   INDEX `fk_respuestas_preguntas1_idx` (`pregunta_id` ASC),
   CONSTRAINT `fk_respuestas_usuarios`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `faq_life`.`usuarios` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_respuestas_preguntas1`
+  CONSTRAINT `fk_respuestas_preguntas`
     FOREIGN KEY (`pregunta_id`)
     REFERENCES `faq_life`.`preguntas` (`id`)
     ON DELETE CASCADE
