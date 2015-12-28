@@ -15,7 +15,7 @@ class PreguntasController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             if($this->request->data['Pregunta']['categoria_id'] == "") {
-                $this->Flash->success('Select a category.');
+                $this->Flash->success(__('Select a category'));
                 $this->redirect(array('action' => 'index'));
             } else {
                 /*Se aumenta en 1 el id de categorias porque de la vista el dropdown empieza en 0, y en la base de datos, usando
@@ -45,7 +45,6 @@ class PreguntasController extends AppController {
         if (!$pregunta) {
             throw new NotFoundException(__('Invalid question'));
         }
-
 
         //Aumentar el contador de vistos de la pregunta
         $numVistos = $pregunta['Pregunta']['visto'];
@@ -87,58 +86,6 @@ class PreguntasController extends AppController {
         }
         $this->set('busquedas', $preguntas);
     }
-
-    public function votarPositivo (){
-        //$this->autoRender = false;
-        $this->layout = 'faq_life';
-        if ($this->request->is('post')) {
-            //Actualizar el contador de numero de respuestas de la pregunta
-            $id = $this->request->data['Pregunta']['id'];
-            $pregunta = $this->Pregunta->findById($id);
-            $numPositivos = $pregunta['Pregunta']['positivos'];
-            $numPositivos += 1;
-
-            $this->Pregunta->updateAll(
-                array('Pregunta.positivos' => "'$numPositivos'"),
-                array('Pregunta.id' => "$id")
-            );
-
-            /*Quitar el comiendo de la url del metodo referer para
-              poder comparar solo la url como si fuera $this->here*/
-            $here = str_replace("http://localhost","",$this->request->referer());
-            /*Condicion para redirigir a la pagina en la que se vote positivo*/
-            if ($here == '/FAQ.life/'){
-                $this->redirect(array('action' => 'index'));
-            } else {
-                $this->redirect(array('action' => 'view', $id));
-            }
-        }
-    }
-
-    public function votarNegativo (){
-        $this->autoRender = false;
-        if ($this->request->is('post')) {
-            //Actualizar el contador de numero de respuestas de la pregunta
-            $id = $this->request->data['Pregunta']['id'];
-            $pregunta = $this->Pregunta->findById($id);
-            $numPositivos = $pregunta['Pregunta']['negativos'];
-            $numPositivos += 1;
-
-            $this->Pregunta->updateAll(
-                array('Pregunta.negativos' => "'$numPositivos'"),
-                array('Pregunta.id' => "$id")
-            );
-
-            /*Quitar el comiendo de la url del metodo referer para
-              poder comparar solo la url como si fuera $this->here*/
-            $here = str_replace("http://localhost","",$this->request->referer());
-            /*Condicion para redirigir a la pagina en la que se vote positivo*/
-            if ($here == '/FAQ.life/'){
-                $this->redirect(array('action' => 'index'));
-            } else {
-                $this->redirect(array('action' => 'view', $id));
-            }
-        }
-    }
+    
 }
 ?>

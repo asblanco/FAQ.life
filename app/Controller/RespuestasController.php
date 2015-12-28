@@ -9,7 +9,7 @@ class RespuestasController extends AppController {
             $idPregunta = $this->request->data['Respuesta']['id'];
             $this->request->data['Respuesta']['pregunta_id'] = $idPregunta;
             $this->request->data['Respuesta']['id'] = null;
-            
+
             //Guardar los datos de la nueva respuesta
             if ($this->Respuesta->save($this->request->data)) {
                 //Actualizar el contador de numero de respuestas de la pregunta
@@ -20,7 +20,7 @@ class RespuestasController extends AppController {
                     array('Pregunta.respuestas' => "'$numResp'"),
                     array('Pregunta.id' => "$idPregunta")
                 );
-                
+
                 //Mostrar mensaje de confirmacion y redirigir
                 $this->Flash->success('Your answer has been saved.');
                 $this->redirect(array('controller' => 'preguntas', 'action' => 'view/', $idPregunta));
@@ -28,40 +28,5 @@ class RespuestasController extends AppController {
         }
     }
     
-        public function votarPositivo (){
-        //$this->autoRender = false;
-        if ($this->request->is('post')) {
-            //Actualizar el contador de numero de respuestas de la pregunta
-            $id = $this->request->data['Respuesta']['id'];
-            $respuesta = $this->Respuesta->findById($id);
-            $idPregunta = $respuesta['Pregunta']['id'];
-            $numPositivos = $respuesta['Respuesta']['positivos'];
-            $numPositivos += 1;
-            
-            $this->Respuesta->updateAll(
-                array('Respuesta.positivos' => "'$numPositivos'"),
-                array('Respuesta.id' => "$id")
-            );
-            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $idPregunta));
-        }
-    }
-    
-    public function votarNegativo (){
-        //$this->autoRender = false;
-        if ($this->request->is('post')) {
-            //Actualizar el contador de numero de respuestas de la pregunta
-            $id = $this->request->data['Respuesta']['id'];
-            $respuesta = $this->Respuesta->findById($id);
-            $idPregunta = $respuesta['Pregunta']['id'];
-            $numPositivos = $respuesta['Respuesta']['negativos'];
-            $numPositivos += 1;
-            
-            $this->Respuesta->updateAll(
-                array('Respuesta.negativos' => "'$numPositivos'"),
-                array('Respuesta.id' => "$id")
-            );
-            $this->redirect(array('controller' => 'preguntas', 'action' => 'view', $idPregunta));
-        }
-    }
 }
 ?>

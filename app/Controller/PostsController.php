@@ -1,11 +1,12 @@
 <?php
+// Ejemplo por defecto
 class PostsController extends AppController {
     public $helpers = array('Html', 'Form');
 
     public function index() {
         $this->set('post', $this->Post->find('all'));
     }
-    
+
     public function view($id = null) {
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
@@ -17,7 +18,7 @@ class PostsController extends AppController {
         }
         $this->set('post', $post);
     }
-    
+
     public function add() {
         if ($this->request->is('post')) {
             //Added this line
@@ -28,7 +29,7 @@ class PostsController extends AppController {
             }
         }
     }
-    
+
     public function isAuthorized($user) {
         // All registered users can add posts
         if ($this->action === 'add') {
