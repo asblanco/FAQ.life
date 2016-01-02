@@ -34,3 +34,8 @@
    width:20px;
    height:20px;
 }
+
+form .categorias .submit input {
+   width: auto;
+   height: 200px;
+}

@@ -18,8 +18,7 @@ class PreguntasController extends AppController {
                 $this->Flash->success(__('Select a category'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                /*Se aumenta en 1 el id de categorias porque de la vista el dropdown empieza en 0, y en la base de datos, usando
-                 null se empieza en 1*/
+                /*Se aumenta en 1 el id de categorias porque de la vista el dropdown empieza en 0, y en la base de datos, usando null se empieza en 1*/
                 $this->request->data['Pregunta']['categoria_id'] += 1;
                 $this->request->data['Pregunta']['usuario_id'] = $this->Auth->user('id');
                 $this->request->data['Pregunta']['fecha'] = date('Y-m-d H:i:s');

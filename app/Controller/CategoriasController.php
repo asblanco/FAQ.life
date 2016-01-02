@@ -6,5 +6,19 @@ class CategoriasController extends AppController {
         $this->layout = 'faq_life';
         $this->set('categorias', $this->Categoria->find('all', array('order' => array('nombre_categoria' => 'desc'))));
     }
+    
+    public function view() {
+        $this->layout = 'faq_life';
+        $busquedas = array();
+        if ($this->request->is('post')) {
+            $cat_id = $this->request->data['Categoria']['categoria_id'];
+            $cat = $this->Categoria->findById($cat_id);
+
+            $preguntas = ClassRegistry::init('Pregunta')->find('all',
+                   array('conditions'=>array('Pregunta.categoria_id'=>$cat_id)));
+            $this->set('busquedas', $preguntas);
+            $this->set('categoria', $cat['Categoria']['nombre_categoria']);
+        }
+    }
 }
 ?>

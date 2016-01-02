@@ -2,11 +2,14 @@
      Se muestran las categorias posibles para filtrar. -->
 
 <!-- Contenido Principal -->
-<div class="col-xs-11 col-sm-11 col-md-11">
-<h1>Categorias</h1>
+<div class="col-xs-10 col-sm-10 col-md-10 col-md-offset-1">
+<h2>Categorias</h2>
     <?php foreach ($categorias as $categoria): ?>
 	<div class="view fourth-effect">
-        <a title="<?php echo $categoria['Categoria']['nombre_categoria']; ?>"><?php echo $this->Html->image($categoria['Categoria']['url_imagen'], array('class' => 'categorias')) ?></a>
+        <!-- Imagen categoria -->
+        <?php echo $this->Form->create('Categoria', array("controller"=>"categorias", "action"=>"view"));  ?>
+        <?php echo $this->Form->hidden('categoria_id',array('value' => $categoria['Categoria']['id'])); ?>
+        <div class="categorias"><?php echo $this->Form->end($categoria['Categoria']['url_imagen']); ?></div>
 		<div class="mask"></div>
 	</div>
     <?php endforeach; ?>
