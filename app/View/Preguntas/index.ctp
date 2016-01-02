@@ -73,9 +73,9 @@ Lista de todas las preguntas -->
 
             <!-- Div preview pregunta -->
             <div class="col-xs-12 col-sm-9 col-md-10" id="pregunta">
-                <a href="pregunta.html" class="preview-pregunta">
+                <div class="preview-pregunta">
                     <h1><?php echo $this->Html->link($pregunta['Pregunta']['titulo'], array('controller' => 'preguntas', 'action' => 'view', $pregunta['Pregunta']['id']), array('class' => 'opSansBFont')); ?></h1>
-                </a>
+                </div>
                 <p class="opSansReFont"><?php echo $pregunta['Pregunta']['cuerpo']; ?><p>
                 <p class="opSansItFont"><?php echo __('Asked for') ?> <a href=""><?php echo $pregunta['Usuario']['username']; ?></a><?php echo __(' at') ?> <?php echo $this->Time->format($pregunta['Pregunta']['fecha'], '%e %B %Y %H:%M'); ?> <?php echo __('at category of') ?> <a href=""><?php echo $pregunta['Categoria']['nombre_categoria']; ?></a>.</p>
             </div>
