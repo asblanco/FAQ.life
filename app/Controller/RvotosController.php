@@ -7,8 +7,6 @@ class RvotosController extends AppController {
     }
 
     public function votarPositivo() {
-        //$this->autoRender = false;
-        //$this->layout = 'faq_life';
         if ($this->request->is('post')) {
             $usuario_id = $this->request->data['Rvoto']['user'];
             $respuesta_id = $this->request->data['Rvoto']['id'];
@@ -49,12 +47,12 @@ class RvotosController extends AppController {
                 $this->Flash->success(__('You have already voted this answer'));
                 $this->redirect($this->referer());
             }
-        }
+        } else{
+					$this->redirect($this->referer());
+				}
     }
 
     public function votarNegativo() {
-        //$this->autoRender = false;
-        //$this->layout = 'faq_life';
         if ($this->request->is('post')) {
             $usuario_id = $this->request->data['Rvoto']['user'];
             $respuesta_id = $this->request->data['Rvoto']['id'];
@@ -95,7 +93,9 @@ class RvotosController extends AppController {
                 $this->Flash->success(__('You have already voted this answer'));
                 $this->redirect($this->referer());
             }
-        }
+        } else{
+					$this->redirect($this->referer());
+				}
     }
 
 }
