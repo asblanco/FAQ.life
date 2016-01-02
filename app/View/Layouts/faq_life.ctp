@@ -14,12 +14,17 @@
 
     <!-- Custom CSS -->
     <?php echo $this->Html->css(array('main','fonts')); ?>
+		
+		<!-- CSS3 hover effect -->
+    <?php echo $this->Html->css(array('style', 'fourtheffect')); ?>
   </head>
 
   <body>
+	<!-- BARRA DE NAVEGACION -->
     <?php
        echo $this->Flash->render();
     if ($this->here == '/FAQ.life/'){ ?>
+		<!-- PAGINA PRINCIPAL -->
     <header class="head-index">
       <!-- Barra de navegacion -->
       <nav class="navigation-text col-xs-12 col-sm-12 col-md-12">
@@ -36,7 +41,7 @@
         <!-- div con la lista de navegacion -->
         <div class="col-md-10 collapse navbar-collapse navbar-right" id="navbar-collapse1">
           <ul class="nav navbar-nav navbar-right osSansFont">
-	    <li>
+	    			<li>
               <!-- Imagen link  para cambiar el idioma a inglés -->
 	      <?php echo $this->Html->image('/img/eng.png', array("alt" => "eng", "url"=>array("action"=>"idioma", "eng"))); ?>
             </li>
@@ -46,29 +51,27 @@
             </li>
             <li>
               <!-- Imagen link para cambiar el idioma a gallego -->
-	      <?php echo $this->Html->image('/img/glg.png', array("alt" => "glg", "url"=>array("action"=>"idioma", "glg"))); ?>
-	    </li>
-            <li><a><?php if($loggedUser['username']) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a></li>
+	      			<?php echo $this->Html->image('/img/glg.png', array("alt" => "glg", "url"=>array("action"=>"idioma", "glg"))); ?>
+	    			</li>
+            <li>
+							<a><?php if($loggedUser['username']) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a>
+						</li>
             <li> <!-- Search box -->
-              <!-- <form class="navbar-form" role="search"> -->
-
               <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"preguntas", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
               <div class="form-group has-feedback">
                 <!-- <input type="text" class="form-control" placeholder="Buscar"/> -->
                 <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => __('Search'), 'label' => false));?>
-                <!-- <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
               </div>
               <?php echo $this->Form->end(); ?>
             </li>
-	    <li>
-	      <?php
-                 echo $this->Html->link( __('Categories'), array("controller"=>"categorias", "action"=>"index"));
-              ?>
-	    </li>
+						<li>
+							<?php echo $this->Html->link( __('Categories'), array("controller"=>"categorias", "action"=>"index")); ?>
+						</li>
             <?php if($this->Session->check('Auth.User')){ ?>
             <li><?php
                    echo $this->Html->link(__('logout',true), array("controller"=>"usuarios", "action"=>"logout"));
-              ?></li>
+              ?>
+						</li>
             <?php }else { ?>
             <li><a href="" data-toggle="modal" data-target="#loginModal"><?php echo __('Login') ?></a></li>
             <?php } ?>
@@ -83,7 +86,7 @@
       </div>
     </header>
     <?php } else { ?>
-    <!-- Barra de navegacion -->
+		<!-- EN LAS DEMAS PAGINAS -->
     <nav class="head navigation-text col-xs-12 col-sm-12 col-md-12">
       <!-- div con el titulo y el icono en modo movil -->
       <div class="col-md-2 navbar-header page-scroll">
@@ -108,25 +111,25 @@
           <li>
             <!-- Imagen link para cambiar el idioma a gallego -->
 	    <?php echo $this->Html->image('/img/glg.png', array("alt" => "glg", "url"=>array("action"=>"idioma", "glg"))); ?>
-	  </li>
-          <li><a><?php if(!empty($loggedUser['username'])) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a></li>
+	  			</li>
+          <li><a><?php if(!empty($loggedUser['username'])) echo __('Hello').", ".$loggedUser["username"]." :)"; ?></a>
+					</li>
           <li>
-	    <!-- Search box -->
+	    		<!-- Search box -->
             <?php echo $this->Form->create(false, array("type"=>"GET", "controller"=>"preguntas", "action"=>"buscar", 'class' => 'navbar-form', 'role' => 'search')); ?>
             <div class="form-group has-feedback">
               <?php echo $this->Form->input('search', array('type' => 'text', 'class' => 'form-control', 'placeholder' => __('Search'), 'label' => false));?>
             </div>
             <?php echo $this->Form->end(); ?>
           </li>
-	  <li>
-	    <?php
-               echo $this->Html->link( __('Categories'), array("controller"=>"categorias", "action"=>"index"));
-	    ?>
-	  </li>
+					<li>
+						<?php echo $this->Html->link( __('Categories'), array("controller"=>"categorias", "action"=>"index"));?>
+					</li>
           <?php if($this->Session->check('Auth.User')){ ?>
           <li><?php
                  echo $this->Html->link(__('logout',true), array("controller"=>"usuarios", "action"=>"logout"));
-            ?></li>
+            ?>
+					</li>
           <?php }else { ?>
           <li><a href="" data-toggle="modal" data-target="#loginModal"><?php echo __('Login') ?></a></li>
           <?php } ?>
@@ -134,7 +137,6 @@
       </div>
     </nav>
     <?php }
-
           echo $this->fetch('content'); ?>
   </body>
 
@@ -184,8 +186,8 @@
           <?php echo $this->Form->submit(__('Cancel'), array('class' => 'btn btn-default btn-cancel', 'data-dismiss' => 'modal')); ?>
         </div>
         <?php echo $this->Form->end(); ?>
-
       </div>
     </div>
   </div>
+	
 </html>
