@@ -3,24 +3,11 @@
 
 <!-- Contenido Principal -->
 <div class="col-xs-11 col-sm-11 col-md-11">
-<h1>Prueba categorias</h1>
+<h1>Categorias</h1>
+    <?php foreach ($categorias as $categoria): ?>
 	<div class="view fourth-effect">
-		<a href="#"><img src="images/4.jpg" /></a>
+        <a title="<?php echo $categoria['Categoria']['nombre_categoria']; ?>"><?php echo $this->Html->image($categoria['Categoria']['url_imagen'], array('class' => 'categorias')) ?></a>
 		<div class="mask"></div>
 	</div>
-    
-    <div class="view fourth-effect">
-		<a href="#"><img src="images/3.jpg" /></a>
-		<div class="mask"></div>
-	</div>
-    
-    <div class="view fourth-effect">
-		<a href="#"><img src="images/2.jpg" /></a>
-		<div class="mask"></div>
-	</div>
-    
-    <div class="view fourth-effect">
-		<a href="#"><img src="images/1.jpg" /></a>
-		<div class="mask"></div>
-	</div>
+    <?php endforeach; ?>
 </div>

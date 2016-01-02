@@ -33,6 +33,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `faq_life`.`categorias` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre_categoria` VARCHAR(30) NOT NULL,
+  `url_imagen` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -152,13 +153,13 @@ INSERT INTO `usuarios` (`id`,`username`, `password`, `nombre`, `foto`, `idioma`)
 (null, 'marco', '$2a$10$zSn4yxbFaLUv5HrBqNAUL.VBSzGdwOBuMHt4K6KF/7kDp1Z9c6Ghm', 'Marco Pérez', 'img_users/pluto_lengua.jpg', 'spa'),
 (null, 'lucas', '$2a$10$4YTabU7ZcCIBxHVXZMJd8OUIM5/ASXJGmfPjJwmB9o5TLiTt8t.Zq', 'Lucas Rodriguez', 'img_users/pluto_posando.jpg', 'eng');
 
-INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
-(null, 'Religion'),
-(null, 'Electricidad'),
-(null, 'Noticias'),
-(null, 'Comida'),
-(null, 'Naturaleza'),
-(null, 'Deporte');
+INSERT INTO `categorias` (`id`, `nombre_categoria`, `url_imagen`) VALUES
+(null, 'Religion', 'categories/religion.png'),
+(null, 'Electricidad', 'categories/electricidad.jpg'),
+(null, 'Noticias', 'categories/noticias.png'),
+(null, 'Comida', 'categories/comida.jpg'),
+(null, 'Naturaleza', 'categories/naturaleza.jpg'),
+(null, 'Deporte', 'categories/deporte.jpg');
 
 INSERT INTO `preguntas` (`id`, `titulo`, `cuerpo`, `fecha`, `visto`, `respuestas`, `positivos`, `negativos`, `usuario_id`, `categoria_id`) VALUES
 (null, '¿Si satanas castiga a los malos, eso no lo hace ser bueno?', 'Pues los malos se van al infierno y satanas les da su merecido, eso no lo hace bueno?', '2015-10-22 10:20:00', 0, 2, 0, 0, 1, 1),

@@ -31,8 +31,8 @@
             <div class="centrado opSansReFont">
               <!-- Imagen formulario post para incrementar los votos positivos -->
               <?php echo $this->Form->create('Pvoto', array("controller"=>"pvotos", "action"=>"votarPositivo"));  ?>
-              <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
-              <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
+              <?php echo $this->Form->hidden('pregunta_id',array('value' => $pregunta['Pregunta']['id'])); ?>
+              <?php echo $this->Form->hidden('usuario_id',array('value' => $this->Session->read('Auth.User.id'))); ?>
               <?php echo $this->Form->end('/img/positivo.png'); ?>
             </div>
             <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['positivos']; ?></div>
@@ -41,8 +41,8 @@
             <div class="centrado">
               <!-- Imagen formulario post para incrementar los votos negativos -->
               <?php echo $this->Form->create('Pvoto', array("controller"=>"pvotos", "action"=>"votarNegativo")); ?>
-              <?php echo $this->Form->hidden('id',array('value' => $pregunta['Pregunta']['id'])); ?>
-              <?php echo $this->Form->hidden('user',array('value' => $this->Session->read('Auth.User.id'))); ?>
+              <?php echo $this->Form->hidden('pregunta_id',array('value' => $pregunta['Pregunta']['id'])); ?>
+              <?php echo $this->Form->hidden('usuario_id',array('value' => $this->Session->read('Auth.User.id'))); ?>
               <?php echo $this->Form->end('/img/negativo.png'); ?>
             </div>
             <div class="centrado opSansReFont"><?php echo $pregunta['Pregunta']['negativos']; ?></div>
