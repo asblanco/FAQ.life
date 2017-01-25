@@ -1,2 +1,17 @@
-# CakePHP
-"Stackoverflow" website to upload and vote questions and answers using CakePHP for a University Project. The couse was called Technologies and Web Services
+# FAQ.life
+**Group project for Web Technologies and Services at University of Vigo**
+
+## Authors
+* Andrea Sánchez Blanco
+* Borxa Méndez Candeias
+
+## Description
+
+It is a "Stackoverflow" alike website where unlogged users can:
+* Read questions and answers with its number of views and positive or negative votes.
+* Register or login
+
+And logged users, in addition to the unlogged user features can:
+* Post new questions
+* Answer questions
+* Give positive or negative votes to questions and answers
